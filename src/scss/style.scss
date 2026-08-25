@@ -1860,9 +1860,9 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     gap: var(--clients-gap);
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-    &:hover .clients__list {
-      animation-play-state: paused;
-    }
+    // &:hover .clients__list {
+    //   animation-play-state: paused;
+    // }
   }
   &__list {
     display: flex;
