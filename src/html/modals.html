@@ -1,0 +1,60 @@
+<div class="modals">
+  <div class="modal modal-feedback" data-type="feedback" data-lenis-prevent>
+    <button class="modal__close" type="button">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.68 24.216L11.816 23.352L17.064 18.072L11.816 12.792L12.68 11.928L17.928 17.208L23.144 11.928L24.008 12.792L18.76 18.072L24.008 23.352L23.144 24.216L17.928 18.968L12.68 24.216Z" fill="#B8B8B8"/>
+      </svg>
+    </button>
+
+    <div class="modal__head">
+      <h2 class="modal__title">Оставьте заявку</h2>
+    </div>
+
+    <form class="form" action="#" method="POST">
+      <input type="hidden" name="topic" data-modal-topic />
+      <label class="form__field">
+        <span class="form__label">Имя<i>*</i></span>
+        <input class="form__input" type="text" name="name" placeholder="Введите ваше имя" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">Номер телефона<i>*</i></span>
+        <input class="form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" data-mask="+7 (___) ___-__-__" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">E-mail<i>*</i></span>
+        <input class="form__input" type="email" name="email" placeholder="mail@example.com" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">Сообщение</span>
+        <textarea class="form__input form__input--area" name="message" placeholder="Опишите вашу задачу или задайте вопрос"></textarea>
+      </label>
+      <div class="form__bottom">
+        <label class="form__check">
+          <input type="checkbox" name="agree" checked required />
+          <span class="form__check-box">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="form__check-text">Я согласен на обработку персональных данных</span>
+        </label>
+        <button class="button button-primary form__submit" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal modal-success" data-type="success" data-lenis-prevent>
+    <button class="modal__close" type="button">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.68 24.216L11.816 23.352L17.064 18.072L11.816 12.792L12.68 11.928L17.928 17.208L23.144 11.928L24.008 12.792L18.76 18.072L24.008 23.352L23.144 24.216L17.928 18.968L12.68 24.216Z" fill="#B8B8B8"/>
+      </svg>
+    </button>
+
+    <div class="modal__img">
+      <img src="@img/modal-success.png" alt="" />
+    </div>
+    <h2 class="modal__title">Заявка отправлена</h2>
+    <div class="modal__text">Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее рабочее время.</div>
+    <button class="button button-border modal__button" type="button" data-modal-close>Закрыть</button>
+  </div>
+</div>

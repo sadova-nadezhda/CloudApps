@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "Кейсы и сценарии" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="cases cases-page section-top section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="cases__container" data-filter-grid data-step="8">
+            <div class="cases__head">
+              <h1 class="cases__title s">Кейсы и сценарии</h1>
+              <div class="cases__text">Реальные проекты, в которых мы решали задачи наших клиентов.</div>
+            </div>
+            <div class="filters">
+              <button class="filter is-active" type="button" data-filter="all">Все</button>
+              <button class="filter" type="button" data-filter="consulting">Консалтинг</button>
+              <button class="filter" type="button" data-filter="migration">Миграция</button>
+              <button class="filter" type="button" data-filter="support">Поддержка</button>
+            </div>
+            <div class="cases__grid">
+              <a href="cases-inner.html" class="cases__card" data-category="consulting">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-1.jpg" alt="Резервная площадка и аварийное восстановление" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Резервная площадка и аварийное восстановление</h3>
+                  <div class="cases__card-text">Крупнейший агропромышленный холдинг Казахстана столкнулся с необходимостью модернизации ИТ-инфраструктуры.</div>
+                  <ul class="cases__card-tags">
+                    <li>консалтинг</li>
+                    <li>защита данных</li>
+                    <li>отказоустойчивость</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="migration">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-2.jpg" alt="Оптимизация бизнес-процессов в ритейле" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Оптимизация бизнес-процессов в ритейле</h3>
+                  <div class="cases__card-text">Сеть супермаркетов внедряет цифровые решения для улучшения клиентского опыта.</div>
+                  <ul class="cases__card-tags">
+                    <li>миграция</li>
+                    <li>интеграция CRM</li>
+                    <li>автоматизация продаж</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="support">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-3.jpg" alt="Развитие омниканального маркетинга" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Развитие омниканального маркетинга</h3>
+                  <div class="cases__card-text">Интеграция онлайн и офлайн продаж для повышения лояльности клиентов.</div>
+                  <ul class="cases__card-tags">
+                    <li>мультиканальность</li>
+                    <li>персонализация предложений</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="support">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-4.jpg" alt="Аналитика поведения потребителей" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Аналитика поведения потребителей</h3>
+                  <div class="cases__card-text">Использование больших данных для прогнозирования спроса на товары.</div>
+                  <ul class="cases__card-tags">
+                    <li>поддержка</li>
+                    <li>машинное обучение</li>
+                    <li>защита данных</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="consulting">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-1.jpg" alt="Корпоративная инфраструктура в облаке" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Корпоративная инфраструктура в облаке</h3>
+                  <div class="cases__card-text">Проектирование целевого ландшафта и подготовка проекта к запуску без остановки бизнеса.</div>
+                  <ul class="cases__card-tags">
+                    <li>консалтинг</li>
+                    <li>архитектура</li>
+                    <li>отказоустойчивость</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="migration">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-2.jpg" alt="Миграция баз данных в облако" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Миграция баз данных в облако</h3>
+                  <div class="cases__card-text">Поэтапный перенос корпоративных СУБД с проверкой целостности данных на каждом шаге.</div>
+                  <ul class="cases__card-tags">
+                    <li>миграция</li>
+                    <li>защита данных</li>
+                    <li>резервное копирование</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="support">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-3.jpg" alt="Использование ИИ в анализе потребительского поведения" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Использование ИИ в анализе потребительского поведения</h3>
+                  <div class="cases__card-text">Применение машинного обучения для прогнозирования предпочтений клиентов.</div>
+                  <ul class="cases__card-tags">
+                    <li>поддержка</li>
+                    <li>машинное обучение</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="support">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-4.jpg" alt="Внедрение программ лояльности с геймификацией" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Внедрение программ лояльности с геймификацией</h3>
+                  <div class="cases__card-text">Создание интерактивных акций и бонусных систем для лояльных клиентов.</div>
+                  <ul class="cases__card-tags">
+                    <li>поддержка</li>
+                    <li>интеграция</li>
+                    <li>удержание аудитории</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="consulting">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-1.jpg" alt="Подготовка к аудиту информационной безопасности" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Подготовка к аудиту информационной безопасности</h3>
+                  <div class="cases__card-text">Анализ соответствия текущих практик требованиям стандарта и план устранения замечаний.</div>
+                  <ul class="cases__card-tags">
+                    <li>консалтинг</li>
+                    <li>защита данных</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="migration">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-2.jpg" alt="Перенос 1С в отказоустойчивый контур" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Перенос 1С в отказоустойчивый контур</h3>
+                  <div class="cases__card-text">Миграция учётных систем с резервированием и согласованным окном работ.</div>
+                  <ul class="cases__card-tags">
+                    <li>миграция</li>
+                    <li>1С</li>
+                    <li>непрерывность бизнеса</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="support">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-3.jpg" alt="Круглосуточный мониторинг инфраструктуры" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Круглосуточный мониторинг инфраструктуры</h3>
+                  <div class="cases__card-text">Наблюдение за доступностью сервисов и реакция на инциденты по регламенту.</div>
+                  <ul class="cases__card-tags">
+                    <li>поддержка</li>
+                    <li>мониторинг</li>
+                    <li>SLA</li>
+                  </ul>
+                </div>
+              </a>
+              <a href="cases-inner.html" class="cases__card" data-category="consulting">
+                <div class="cases__card-img">
+                  <img class="cases__card-back" src="@img/case-4.jpg" alt="Единая гибридная платформа" />
+                  <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO" />
+                </div>
+                <span class="cases__card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="cases__card-body">
+                  <h3 class="cases__card-title">Единая гибридная платформа</h3>
+                  <div class="cases__card-text">Обследование инфраструктуры, стратегия модернизации и план построения гибридной среды.</div>
+                  <ul class="cases__card-tags">
+                    <li>консалтинг</li>
+                    <li>гибридная инфраструктура</li>
+                    <li>единые системы</li>
+                  </ul>
+                </div>
+              </a>
+            </div>
+            <button class="button button-light show-more" data-more type="button">Показать ещё</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "CloudApps" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="hero section-top section-hidden">
+        <div class="container">
+          <div class="hero__container">
+            <div class="hero__body">
+              <h1 class="hero__title title-decor">Облачная <strong>инфраструктура</strong> для корпоративных задач</h1>
+              <div class="hero__text">Инфраструктура в Казахстане, опытная команда инженеров, поддержка 24/7</div>
+              <div class="hero__buttons">
+                <a class="button button-primary modal-btn" data-type="feedback">Обсудить задачу</a>
+                <a href="calc.html" class="button button-border">Рассчитать стоимость</a>
+              </div>
+            </div>
+            <div class="hero__img">
+              <img src="@img/hero.png" alt="Облачная инфраструктура CloudApps" />
+            </div>
+            <div class="hero__partners">
+              <div class="hero__partners-title">С нами работают 60+ компаний и государственных организаций Казахстана</div>
+              <div class="clients__marquee">
+                <ul class="clients__list">
+                  <li><img src="@img/partner-1.png" alt="Bolashak" /></li>
+                  <li><img src="@img/partner-2.png" alt="Qitas" /></li>
+                  <li><img src="@img/partner-3.png" alt="Kazakh Tourism Development" /></li>
+                  <li><img src="@img/partner-4.png" alt="cb-xp" /></li>
+                  <li><img src="@img/partner-5.png" alt="" /></li>
+                  <li><img src="@img/partner-6.png" alt="" /></li>
+                  <li><img src="@img/partner-7.png" alt="" /></li>
+                  <li><img src="@img/partner-8.png" alt="" /></li>
+                  <li><img src="@img/partner-9.png" alt="" /></li>
+                  <li><img src="@img/partner-10.png" alt="" /></li>
+                </ul>
+                <ul class="clients__list" aria-hidden="true">
+                  <li><img src="@img/partner-1.png" alt="" /></li>
+                  <li><img src="@img/partner-2.png" alt="" /></li>
+                  <li><img src="@img/partner-3.png" alt="" /></li>
+                  <li><img src="@img/partner-4.png" alt="" /></li>
+                  <li><img src="@img/partner-5.png" alt="" /></li>
+                  <li><img src="@img/partner-6.png" alt="" /></li>
+                  <li><img src="@img/partner-7.png" alt="" /></li>
+                  <li><img src="@img/partner-8.png" alt="" /></li>
+                  <li><img src="@img/partner-9.png" alt="" /></li>
+                  <li><img src="@img/partner-10.png" alt="" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      @@include('html/advantages.html', { "class": "section-pad" })
+      @@include('html/regions.html')
+      <section class="platform section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="platform__container" data-tabs>
+            <h2 class="platform__title">Единая облачная платформа для создания, размещения и сопровождения корпоративной ИТ-инфраструктуры</h2>
+            <div class="platform__tabs">
+              <button class="platform__tab is-active" type="button" data-tab="infra">Инфраструктура</button>
+              <button class="platform__tab" type="button" data-tab="solutions">Готовые решения</button>
+            </div>
+            <div class="platform__grid">
+              <div class="platform__group is-active" data-tab-panel="infra">
+                <div class="platform__cat">
+                  <h3 class="platform__cat-title">Инфраструктура</h3>
+                  <div class="platform__cat-text">Базовые облачные сервисы для построения и размещения ИТ-инфраструктуры.</div>
+                  <a href="platform.html" class="platform__cat-button button button-light">Подробнее</a>
+                </div>
+                <a href="infrastructure.html" class="platform__card">
+                  <div class="platform__card-name">Виртуальные машины</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-vm.png" alt="" /></div>
+                </a>
+                <a href="infrastructure.html" class="platform__card">
+                  <div class="platform__card-name">Объектное хранилище</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-storage.png" alt="" /></div>
+                </a>
+                <a href="infrastructure.html" class="platform__card">
+                  <div class="platform__card-name">Виртуальные сети</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-web.png" alt="" /></div>
+                </a>
+                <a href="infrastructure.html" class="platform__card">
+                  <div class="platform__card-name">Виртуальный фаервол</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-firewall.png" alt="" /></div>
+                </a>
+                <a href="infrastructure.html" class="platform__card">
+                  <div class="platform__card-name">Резервное копирование</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-backup.png" alt="" /></div>
+                </a>
+              </div>
+              <div class="platform__group" data-tab-panel="solutions">
+                <div class="platform__cat">
+                  <h3 class="platform__cat-title">Готовые решения</h3>
+                  <div class="platform__cat-text">Готовые облачные решения под конкретные задачи вашего бизнеса.</div>
+                  <a href="platform.html" class="platform__cat-button button button-light">Подробнее</a>
+                </div>
+                <a href="solutions.html" class="platform__card">
+                  <div class="platform__card-name">Инфраструктура для 1С</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-1c.png" alt="" /></div>
+                </a>
+                <a href="solutions.html" class="platform__card">
+                  <div class="platform__card-name">Облачные СУБД</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-dbms.png" alt="" /></div>
+                </a>
+                <a href="solutions.html" class="platform__card">
+                  <div class="platform__card-name">Контейнерная платформа</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-containers.png" alt="" /></div>
+                </a>
+                <a href="solutions.html" class="platform__card">
+                  <div class="platform__card-name">Платформа для ИИ</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-ai.png" alt="" /></div>
+                </a>
+                <a href="solutions.html" class="platform__card">
+                  <div class="platform__card-name">Аварийное восстановление</div>
+                  <span class="platform__card-arrow">
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.0594 0.193461C12.3275 0.198885 12.544 0.415652 12.5497 0.683696L12.744 10.3898C12.7494 10.6656 12.5296 10.8938 12.2538 10.8995C11.9777 10.905 11.7485 10.6854 11.743 10.4093L11.5731 1.87803L0.853378 12.5968C0.658116 12.792 0.341609 12.792 0.146347 12.5968C-0.0487156 12.4015 -0.0488488 12.0849 0.146347 11.8898L10.8651 1.171L2.33385 1.0001C2.05792 0.99451 1.83923 0.766242 1.84459 0.490336C1.85015 0.214282 2.07829 -0.00541956 2.35435 0.000101832L12.0594 0.193461Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div class="platform__card-img"><img src="@img/service-dr.png" alt="" /></div>
+                </a>
+              </div>
+              <div class="platform__cta">
+                <h3 class="platform__cta-title">Расскажите о задаче — предложим решение</h3>
+                <div class="platform__cta-text">Определим, что вам необходимо, предложим оптимальный вариант и рассчитаем стоимость.</div>
+                <a class="button button-primary modal-btn" data-type="feedback">Обсудить задачу</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="services section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="services__container">
+            <div class="services__head">
+              <div class="services__head-body">
+                <h2 class="services__title">Наши услуги</h2>
+                <div class="services__text">Помогаем на каждом этапе — проектирование, миграция и дальнейшее сопровождение инфраструктуры</div>
+              </div>
+              <a href="services.html" class="button button-light services__button">Подробнее об услугах</a>
+            </div>
+            @@include('html/services__swiper.html')
+          </div>
+        </div>
+      </section>
+      <section class="cases section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="cases__container">
+            <div class="cases__head">
+              <h2 class="cases__title">Кейсы и сценарии</h2>
+              <div class="cases__text">Реальные кейсы, в которых мы решали задачи наших клиентов.</div>
+            </div>
+            <div class="swiper cases__swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a href="cases-inner.html" class="cases__card">
+                    <div class="cases__card-img">
+                      <img class="cases__card-back" src="@img/case-1.jpg" alt="OLZHA AGRO" />
+                      <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO">
+                    </div>
+                    <span class="cases__card-arrow">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="cases__card-body">
+                      <h3 class="cases__card-title">Корпоративная инфраструктура в облаке</h3>
+                      <div class="cases__card-text">Крупнейший агропромышленный холдинг Казахстана столкнулся с необходимостью модернизации ИТ-инфраструктуры.</div>
+                      <ul class="cases__card-tags">
+                        <li>резервное копирование</li>
+                        <li>защита данных</li>
+                        <li>отказоустойчивость</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="cases-inner.html" class="cases__card">
+                    <div class="cases__card-img">
+                      <img class="cases__card-back" src="@img/case-2.jpg" alt="OLZHA AGRO" />
+                      <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO">
+                    </div>
+                    <span class="cases__card-arrow">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="cases__card-body">
+                      <h3 class="cases__card-title">Резервная площадка и аварийное восстановление</h3>
+                      <div class="cases__card-text">Крупнейший агропромышленный холдинг Казахстана столкнулся с необходимостью модернизации ИТ-инфраструктуры.</div>
+                      <ul class="cases__card-tags">
+                        <li>резервное копирование</li>
+                        <li>защита данных</li>
+                        <li>непрерывность бизнеса</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="cases-inner.html" class="cases__card cases__card--wide">
+                    <div class="cases__card-img">
+                      <img class="cases__card-back" src="@img/case-3.jpg" alt="OLZHA AGRO" />
+                      <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO">
+                    </div>
+                    <span class="cases__card-arrow">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="cases__card-body">
+                      <h3 class="cases__card-title">Миграция инфраструктуры</h3>
+                      <div class="cases__card-text">Наша команда провела комплексное обследование существующей инфраструктуры, разработала стратегию её модернизации и подготовила план построения единой гибридной ИТ-инфраструктуры.</div>
+                      <ul class="cases__card-tags">
+                        <li>гибридная инфраструктура</li>
+                        <li>единые системы</li>
+                        <li>защита данных</li>
+                        <li>резервное копирование</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a href="cases-inner.html" class="cases__card cases__card--wide">
+                    <div class="cases__card-img">
+                      <img class="cases__card-back" src="@img/case-4.jpg" alt="OLZHA AGRO" />
+                      <img class="cases__card-logo" src="@img/cases-logo.svg" alt="OLZHA AGRO">
+                    </div>
+                    <span class="cases__card-arrow">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div class="cases__card-body">
+                      <h3 class="cases__card-title">Единая гибридная платформа</h3>
+                      <div class="cases__card-text">Наша команда провела комплексное обследование существующей инфраструктуры, разработала стратегию её модернизации и подготовила план построения единой гибридной ИТ-инфраструктуры.</div>
+                      <ul class="cases__card-tags">
+                        <li>гибридная инфраструктура</li>
+                        <li>единые системы</li>
+                        <li>защита данных</li>
+                        <li>резервное копирование</li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="cases.html" class="button button-light cases__button">Узнать подробней</a>
+          </div>
+        </div>
+      </section>
+      <section class="faq section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="faq__container">
+            <h2 class="faq__title">Часто задаваемые вопросы</h2>
+            <div class="faq__body">
+              <div class="faq__item is-open">
+                <button class="faq__question" type="button">
+                  Чем управляемое облако отличается от обычного хостинга?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">В хостинге вы покупаете ресурсы и работаете с ними сами. В управляемом облаке инженерная работа — проектирование, миграция, мониторинг, обновления, реакция на инциденты — входит в услугу. Вы платите не за сервер, а за то, что он работает.</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Сколько времени займёт переход и будет ли простой?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Сроки зависят от объёма: типовой перенос занимает от нескольких дней до пары недель. Мы делаем тестовый перенос, согласуем окно работ и держим наготове сценарий отката, поэтому простой сводится к минутам переключения.</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Где физически находятся данные?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Все данные размещаются в дата-центрах на территории Казахстана — в Астане, Алматы, Павлодаре и Караганде, уровня Tier II и Tier III.</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Что если у нас уже есть своя ИТ-команда?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Мы работаем вместе с вашей командой: берём на себя инфраструктурный слой и круглосуточное дежурство, а ваши специалисты занимаются продуктом. Роли и зоны ответственности фиксируем на старте.</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Можно ли забрать инфраструктуру обратно?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Да. Инфраструктура остаётся вашей: по запросу мы передаём образы виртуальных машин, конфигурации и резервные копии, а также помогаем с обратной миграцией.</div>
+              </div>
+              <div class="faq__nav">
+                <div class="faq__counter"><span class="faq__counter-current">1</span> / <span class="faq__counter-total">5</span></div>
+                <div class="faq__arrows">
+                  <button class="faq__arrow faq__arrow--prev" type="button" aria-label="Предыдущий вопрос">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.86481 0.153225C7.05605 -0.045823 7.3727 -0.0515289 7.57184 0.139553C7.77097 0.330871 7.77781 0.647456 7.58649 0.846584L1.67438 6.9999L16.8336 6.9999C17.1097 6.9999 17.3335 7.2238 17.3336 7.4999C17.3336 7.77605 17.1097 7.9999 16.8336 7.9999L1.67438 7.9999L7.58649 14.1532C7.77781 14.3524 7.77097 14.6689 7.57184 14.8603C7.37271 15.0514 7.05608 15.0457 6.86481 14.8466L0.139227 7.84658C-0.0463807 7.65311 -0.0464375 7.34666 0.139227 7.15322L6.86481 0.153225Z" fill="white"/>
+                    </svg>
+                  </button>
+                  <button class="faq__arrow faq__arrow--next" type="button" aria-label="Следующий вопрос">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="white"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <a class="button button-light faq__button modal-btn" data-type="feedback">Задать вопрос</a>
+          </div>
+        </div>
+      </section>
+      @@include('html/cta.html')
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

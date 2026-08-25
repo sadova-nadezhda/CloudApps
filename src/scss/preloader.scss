@@ -1,0 +1,235 @@
+@import "vars.scss";
+
+// ====== Preloader ======
+
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--page-bg, $page-bg);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+
+  // Дальний ореол на всю область
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(760 * var(--width-multiplier));
+    height: calc(760 * var(--width-multiplier));
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(138, 56, 245, 0.28) 0%, rgba(138, 56, 245, 0.08) 45%, rgba(138, 56, 245, 0) 70%);
+    pointer-events: none;
+    animation: preloader-glow 3s ease-in-out infinite;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(32 * var(--width-multiplier));
+  }
+
+  &__cloud {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(200 * var(--width-multiplier));
+    @media (max-width: 767px) {
+      width: calc(160 * var(--width-multiplier));
+    }
+
+    // Неоновая подсветка
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 125%;
+      height: 135%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(138, 56, 245, 0.85) 0%, rgba(138, 56, 245, 0.35) 42%, rgba(138, 56, 245, 0) 72%);
+      filter: blur(calc(26 * var(--width-multiplier)));
+      pointer-events: none;
+      animation: preloader-neon 2.6s ease-in-out infinite;
+    }
+  }
+
+  &__svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 0 calc(16 * var(--width-multiplier)) rgba(138, 56, 245, 0.65));
+  }
+
+  &__outline {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.14);
+    stroke-width: 14;
+    stroke-linejoin: round;
+  }
+
+  &__trace {
+    fill: none;
+    stroke: var(--primary, $primary);
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    // --trace-len выставляет JS через getTotalLength()
+    stroke-dasharray: var(--trace-len, 600) var(--trace-len, 600);
+    stroke-dashoffset: var(--trace-len, 600);
+    animation: preloader-trace 2.4s linear infinite;
+  }
+
+  &__wave {
+    fill: var(--primary, $primary);
+    animation: preloader-wave 2.6s linear infinite;
+  }
+
+  &__bit {
+    fill: rgba(159, 245, 73, 0.55);
+    animation: preloader-bit 2.8s ease-in-out infinite;
+
+    &:nth-child(2) {
+      fill: rgba(138, 56, 245, 0.75);
+      animation-duration: 3.4s;
+      animation-delay: -0.6s;
+    }
+    &:nth-child(3) {
+      animation-duration: 3.1s;
+      animation-delay: -1.4s;
+    }
+    &:nth-child(4) {
+      fill: rgba(255, 255, 255, 0.4);
+      animation-duration: 2.5s;
+      animation-delay: -2s;
+    }
+    &:nth-child(5) {
+      fill: rgba(138, 56, 245, 0.6);
+      animation-duration: 3.6s;
+      animation-delay: -1s;
+    }
+  }
+
+  &__bar {
+    position: relative;
+    width: calc(220 * var(--width-multiplier));
+    height: calc(4 * var(--width-multiplier));
+    border-radius: calc(4 * var(--width-multiplier));
+    background-color: var(--card-bg, $card-bg);
+    overflow: hidden;
+    @media (max-width: 767px) {
+      width: calc(180 * var(--width-multiplier));
+    }
+
+    &-line {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, $primary 0%, $secondary 100%);
+    }
+  }
+
+  &__caption {
+    font: 500 calc(13 * var(--width-multiplier))/1 Nunito;
+    letter-spacing: calc(2 * var(--width-multiplier));
+    text-transform: uppercase;
+    color: var(--txt-gray, $txt-gray);
+  }
+}
+
+@keyframes preloader-trace {
+  0% {
+    stroke-dashoffset: var(--trace-len, 600);
+  }
+  100% {
+    stroke-dashoffset: calc(var(--trace-len, 600) * -1);
+  }
+}
+
+@keyframes preloader-wave {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-640px);
+  }
+}
+
+@keyframes preloader-bit {
+  0% {
+    transform: translateY(560px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+@keyframes preloader-neon {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+
+@keyframes preloader-glow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    &::before,
+    &__trace,
+    &__wave,
+    &__bit {
+      animation: none;
+    }
+    &__cloud::before {
+      animation: none;
+      opacity: 0.8;
+    }
+    &__trace {
+      stroke-dashoffset: 0;
+    }
+  }
+}

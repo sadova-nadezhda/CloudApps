@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Прелоудеры — варианты · CloudApps</title>
+  <style>
+    @font-face {
+      font-family: Nunito; font-display: swap; font-weight: 400; font-style: normal;
+      src: url("fonts/Nunito-Regular.woff2") format("woff2"), url("fonts/Nunito-Regular.woff") format("woff"), url("fonts/Nunito-Regular.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: Nunito; font-display: swap; font-weight: 500; font-style: normal;
+      src: url("fonts/Nunito-Medium.woff2") format("woff2"), url("fonts/Nunito-Medium.woff") format("woff"), url("fonts/Nunito-Medium.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: Nunito; font-display: swap; font-weight: 700; font-style: normal;
+      src: url("fonts/Nunito-Bold.woff2") format("woff2"), url("fonts/Nunito-Bold.woff") format("woff"), url("fonts/Nunito-Bold.ttf") format("truetype");
+    }
+
+    :root {
+      --page-bg: #121314;
+      --card-bg: #1F2227;
+      --primary: #8A38F5;
+      --secondary: #9FF549;
+      --txt-white: #FFFFFF;
+      --txt-gray: #B8B8B8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; padding: 48px 40px 80px; background: var(--page-bg); color: var(--txt-white); font: 400 16px/1.4 Nunito, system-ui, sans-serif; }
+    @media (max-width: 767px) { body { padding: 32px 16px 60px; } }
+
+    .page__head { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+    .page__title { margin: 0 0 12px; font: 700 36px/1.1 Nunito, sans-serif; }
+    .page__title strong { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .page__text { margin: 0; color: var(--txt-gray); font-size: 15px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; max-width: 1360px; margin: 0 auto; }
+
+    .card { position: relative; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; background: var(--card-bg); overflow: hidden; }
+    .card__stage { display: flex; align-items: center; justify-content: center; min-height: 360px; padding: 32px; background: var(--page-bg); background-image: radial-gradient(circle at 50% 45%, rgba(138,56,245,.16) 0%, rgba(138,56,245,0) 60%); }
+    .card__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; }
+    .card__name { font: 700 17px/1.2 Nunito, sans-serif; }
+    .card__desc { margin: 6px 0 0; color: var(--txt-gray); font-size: 13px; line-height: 1.45; }
+    .card__badge { position: absolute; top: 16px; right: 16px; padding: 6px 12px; border-radius: 999px; background: rgba(159,245,73,.14); color: var(--secondary); font: 700 11px/1 Nunito, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .card__btn { flex: none; padding: 11px 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: transparent; color: var(--txt-white); font: 500 14px/1 Nunito, sans-serif; cursor: pointer; transition: background-color .25s, border-color .25s; }
+    .card__btn:hover { background: var(--primary); border-color: var(--primary); }
+
+    /* ====== Общее для всех вариантов ====== */
+    .pl { --p: 0; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+    .pl__percent { font: 700 30px/1 Nunito, sans-serif; }
+    .pl__bar { position: relative; width: 220px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .pl__bar i { display: block; height: 100%; width: calc(var(--p) * 1%); border-radius: inherit; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+    .pl__caption { color: var(--txt-gray); font: 500 13px/1 Nunito, sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    .pl__svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+    /* ====== 1. Наполнение облака ====== */
+    .pl--fill .pl__cloud { position: relative; width: 200px; }
+    .pl--fill .pl__cloud::before { content: ""; position: absolute; top: 50%; left: 50%; width: 125%; height: 135%; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(138,56,245,.85) 0%, rgba(138,56,245,.35) 42%, rgba(138,56,245,0) 72%); filter: blur(26px); pointer-events: none; animation: neon 2.6s ease-in-out infinite; }
+    .pl--fill .pl__svg { position: relative; z-index: 1; filter: drop-shadow(0 0 16px rgba(138,56,245,.65)); }
+    .pl--fill .outline { fill: none; stroke: rgba(255,255,255,.14); stroke-width: 14; stroke-linejoin: round; }
+    .pl--fill .trace { fill: none; stroke: var(--primary); stroke-width: 14; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: var(--len, 600) var(--len, 600); stroke-dashoffset: var(--len, 600); animation: trace 2.4s linear infinite; }
+    .pl--fill .level { transform: translateY(calc((100 - var(--p)) * 5.36px)); }
+    .pl--fill .wave { fill: var(--primary); animation: wave 2.6s linear infinite; }
+    .pl--fill .bit { fill: rgba(159,245,73,.55); animation: bit 2.8s ease-in-out infinite; }
+    .pl--fill .bit:nth-child(2) { fill: rgba(138,56,245,.75); animation-duration: 3.4s; animation-delay: -.6s; }
+    .pl--fill .bit:nth-child(3) { animation-duration: 3.1s; animation-delay: -1.4s; }
+    .pl--fill .bit:nth-child(4) { fill: rgba(255,255,255,.4); animation-duration: 2.5s; animation-delay: -2s; }
+    .pl--fill .bit:nth-child(5) { fill: rgba(138,56,245,.6); animation-duration: 3.6s; animation-delay: -1s; }
+    @keyframes trace { from { stroke-dashoffset: var(--len, 600); } to { stroke-dashoffset: calc(var(--len, 600) * -1); } }
+    @keyframes wave { from { transform: translateX(0); } to { transform: translateX(-640px); } }
+    @keyframes bit { 0% { transform: translateY(560px); opacity: 0; } 15%, 85% { opacity: 1; } 100% { transform: translateY(-80px); opacity: 0; } }
+    @keyframes neon { 0%, 100% { opacity: .55; transform: translate(-50%, -50%) scale(.94); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); } }
+
+    /* ====== 2. Орбита данных ====== */
+    .pl--orbit .pl__ring { position: relative; width: 210px; }
+    .pl--orbit .pl__percent { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%); font-size: 20px; }
+    .pl--orbit .track { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 6; }
+    .pl--orbit .value { fill: none; stroke: url(#gradOrbit); stroke-width: 6; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 100px 100px; stroke-dasharray: 553px; stroke-dashoffset: calc((100 - var(--p)) * 5.53px); }
+    .pl--orbit .orbit { transform-origin: 100px 100px; animation: spin 6s linear infinite; }
+    .pl--orbit .orbit circle { fill: var(--secondary); }
+    .pl--orbit .orbit circle:nth-child(2) { fill: var(--primary); }
+    .pl--orbit .orbit circle:nth-child(3) { fill: rgba(255,255,255,.7); }
+    .pl--orbit .core { fill: url(#gradOrbit); opacity: calc(.3 + var(--p) * .007); }
+    .pl--orbit .core-line { fill: none; stroke: rgba(255,255,255,.18); stroke-width: 14; stroke-linejoin: round; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ====== 3. Пиксельное облако ====== */
+    .pl--pixel .pl__cloud { position: relative; width: 215px; }
+    .pl--pixel .outline { fill: none; stroke: rgba(255,255,255,.1); stroke-width: 12; stroke-linejoin: round; }
+    .pl--pixel .cell { transform-box: fill-box; transform-origin: center; opacity: clamp(0, calc((var(--p) - var(--i)) / 12), 1); transform: scale(clamp(.35, calc((var(--p) - var(--i)) / 12), 1)); }
+
+    /* ====== 4. Логотип ====== */
+    .pl--logo .pl__logo { position: relative; width: 220px; height: 111px; }
+    .pl--logo .pl__logo span { position: absolute; left: 0; width: 100%; -webkit-mask: url("img/logo.svg") no-repeat bottom / 220px 111px; mask: url("img/logo.svg") no-repeat bottom / 220px 111px; }
+    .pl--logo .pl__logo .base { top: 0; height: 100%; background: rgba(255,255,255,.1); }
+    .pl--logo .pl__logo .fill { bottom: 0; height: calc(var(--p) * 1%); background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+    .pl--logo .pl__logo .shine { bottom: 0; height: calc(var(--p) * 1%); background: linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(255,255,255,0) 12%); }
+
+    /* ====== Полноэкранный показ ====== */
+    .fs { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; background: var(--page-bg); }
+    .fs.is-open { display: flex; }
+    .fs::before { content: ""; position: absolute; top: 50%; left: 50%; width: 720px; height: 720px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(138,56,245,.22) 0%, rgba(138,56,245,0) 65%); pointer-events: none; }
+    .fs__stage { position: relative; transform: scale(1.25); }
+    .fs.is-done { opacity: 0; transition: opacity .5s ease-out; }
+    .fs__hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.35); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="page__head">
+    <h1 class="page__title">Прелоудер <strong>CloudApps</strong></h1>
+    <p class="page__text">Четыре варианта в фирменной палитре. Прогресс в превью зациклен на 3 секунды — столько же прелоудер держится на сайте. Кнопка «На весь экран» показывает вариант так, как его увидит пользователь, вместе с финальным затуханием.</p>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <span class="card__badge">Сейчас на сайте</span>
+      <div class="card__stage">
+        <div class="pl pl--fill" data-pl>
+          <div class="pl__cloud">
+            <svg class="pl__svg" viewBox="0 0 640 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="clipFill"><path data-cloud /></clipPath>
+              </defs>
+              <g clip-path="url(#clipFill)">
+                <rect x="0" y="0" width="640" height="512" fill="#1F2227" />
+                <g>
+                  <rect class="bit" x="150" y="0" width="46" height="46" rx="10" />
+                  <rect class="bit" x="250" y="0" width="30" height="30" rx="8" />
+                  <rect class="bit" x="340" y="0" width="52" height="52" rx="12" />
+                  <rect class="bit" x="440" y="0" width="34" height="34" rx="8" />
+                  <rect class="bit" x="90" y="0" width="26" height="26" rx="7" />
+                </g>
+                <g class="level">
+                  <path class="wave" d="M0 26 Q80 2 160 26 T320 26 T480 26 T640 26 T800 26 T960 26 T1120 26 T1280 26 V560 H0 Z" />
+                </g>
+              </g>
+              <path class="outline" data-cloud />
+              <path class="trace" data-cloud data-trace />
+            </svg>
+          </div>
+          <div class="pl__bar"><i></i></div>
+          <div class="pl__caption">Разворачиваем облако</div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <div>
+          <div class="card__name">1 · Наполнение облака</div>
+          <p class="card__desc">Волна поднимается внутри облака как заполнение хранилища, снизу летят пакеты данных, по контуру бежит подсветка. Заливка — primary, сзади неоновый ореол.</p>
+        </div>
+        <button class="card__btn" type="button" data-fs-open>На весь экран</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__stage">
+        <div class="pl pl--orbit" data-pl>
+          <div class="pl__ring">
+            <svg class="pl__svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradOrbit" x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#8A38F5" />
+                  <stop offset="1" stop-color="#9FF549" />
+                </linearGradient>
+              </defs>
+              <circle class="track" cx="100" cy="100" r="88" />
+              <circle class="value" cx="100" cy="100" r="88" />
+              <g class="orbit">
+                <circle cx="188" cy="100" r="7" />
+                <circle cx="56" cy="176.2" r="5" />
+                <circle cx="56" cy="23.8" r="4" />
+              </g>
+              <g transform="translate(53.6 62) scale(0.145)">
+                <path class="core" data-cloud />
+                <path class="core-line" data-cloud />
+              </g>
+            </svg>
+            <div class="pl__percent"><span data-p>0</span>%</div>
+          </div>
+          <div class="pl__bar"><i></i></div>
+          <div class="pl__caption">Подключаемся к облаку</div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <div>
+          <div class="card__name">2 · Орбита данных</div>
+          <p class="card__desc">Кольцевой прогресс вокруг облака, по орбите вращаются узлы сети. Самый строгий и «инженерный» вариант.</p>
+        </div>
+        <button class="card__btn" type="button" data-fs-open>На весь экран</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__stage">
+        <div class="pl pl--pixel" data-pl>
+          <div class="pl__cloud">
+            <svg class="pl__svg" viewBox="0 0 640 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="clipPixel"><path data-cloud /></clipPath>
+              </defs>
+              <path class="outline" data-cloud />
+              <g clip-path="url(#clipPixel)" data-cells></g>
+            </svg>
+          </div>
+          <div class="pl__percent"><span data-p>0</span>%</div>
+          <div class="pl__bar"><i></i></div>
+          <div class="pl__caption">Собираем инфраструктуру</div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <div>
+          <div class="card__name">3 · Пиксельное облако</div>
+          <p class="card__desc">Облако собирается из блоков данных диагональной волной — метафора сборки инфраструктуры из модулей.</p>
+        </div>
+        <button class="card__btn" type="button" data-fs-open>На весь экран</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card__stage">
+        <div class="pl pl--logo" data-pl>
+          <div class="pl__logo">
+            <span class="base"></span>
+            <span class="fill"></span>
+            <span class="shine"></span>
+          </div>
+          <div class="pl__bar"><i></i></div>
+          <div class="pl__caption"><span data-p>0</span>%</div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <div>
+          <div class="card__name">4 · Логотип</div>
+          <p class="card__desc">Минимализм: логотип CloudApps заливается градиентом снизу вверх. Самый нейтральный вариант, не спорит с первым экраном.</p>
+        </div>
+        <button class="card__btn" type="button" data-fs-open>На весь экран</button>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="fs" data-fs>
+    <div class="fs__stage" data-fs-stage></div>
+    <div class="fs__hint">Клик или Esc — закрыть</div>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const CLOUD = "M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z";
+      const CYCLE = 3000;
+      const HOLD = 700;
+
+      const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+      // Один и тот же контур облака во всех вариантах
+      $$("[data-cloud]").forEach((path) => path.setAttribute("d", CLOUD));
+      $$("[data-trace]").forEach((path) => {
+        const len = Math.round(path.getTotalLength());
+        if (len) path.style.setProperty("--len", len);
+      });
+
+      // Сетка блоков для пиксельного облака
+      $$("[data-cells]").forEach((group) => {
+        const COLS = 10;
+        const ROWS = 8;
+        const SIZE = 64;
+        const GAP = 7;
+        const colors = ["rgba(138,56,245,.85)", "rgba(159,245,73,.85)", "rgba(255,255,255,.45)"];
+
+        for (let row = 0; row < ROWS; row += 1) {
+          for (let col = 0; col < COLS; col += 1) {
+            const cell = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            // Волна идёт по диагонали: слева снизу — вправо вверх
+            const wave = ((col / (COLS - 1)) * 0.55 + (1 - row / (ROWS - 1)) * 0.45) * 88;
+            cell.setAttribute("class", "cell");
+            cell.setAttribute("x", col * SIZE + GAP / 2);
+            cell.setAttribute("y", row * SIZE + GAP / 2);
+            cell.setAttribute("width", SIZE - GAP);
+            cell.setAttribute("height", SIZE - GAP);
+            cell.setAttribute("rx", 12);
+            cell.setAttribute("fill", colors[(col + row) % 3]);
+            cell.style.setProperty("--i", wave.toFixed(1));
+            group.appendChild(cell);
+          }
+        }
+      });
+
+      const apply = (node, value) => {
+        const p = Math.min(100, Math.max(0, value));
+        node.style.setProperty("--p", p.toFixed(2));
+        $$("[data-p]", node).forEach((el) => { el.textContent = String(Math.round(p)); });
+      };
+
+      // Превью в карточках крутятся синхронно и бесконечно
+      const previews = $$("[data-pl]");
+      const start = performance.now();
+
+      const loop = () => {
+        const t = (performance.now() - start) % (CYCLE + HOLD);
+        previews.forEach((node) => apply(node, t < CYCLE ? (t / CYCLE) * 100 : 100));
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+
+      // Полноэкранный показ
+      const fs = document.querySelector("[data-fs]");
+      const fsStage = document.querySelector("[data-fs-stage]");
+      let fsRaf = 0;
+      let fsTimer = 0;
+
+      const closeFs = () => {
+        cancelAnimationFrame(fsRaf);
+        clearTimeout(fsTimer);
+        fs.classList.remove("is-open", "is-done");
+        fsStage.innerHTML = "";
+        document.body.style.overflow = "";
+      };
+
+      const openFs = (source) => {
+        closeFs();
+        const clone = source.cloneNode(true);
+        fsStage.appendChild(clone);
+        fs.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+
+        const from = performance.now();
+        const run = () => {
+          const t = performance.now() - from;
+          apply(clone, Math.min(100, (t / CYCLE) * 100));
+
+          if (t < CYCLE) {
+            fsRaf = requestAnimationFrame(run);
+            return;
+          }
+
+          // Так прелоудер уходит на реальной странице
+          fs.classList.add("is-done");
+          fsTimer = setTimeout(closeFs, 600);
+        };
+        fsRaf = requestAnimationFrame(run);
+      };
+
+      $$("[data-fs-open]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".card");
+          const source = card && card.querySelector("[data-pl]");
+          if (source) openFs(source);
+        });
+      });
+
+      fs.addEventListener("click", closeFs);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeFs();
+      });
+    })();
+  </script>
+</body>
+</html>

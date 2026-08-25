@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "404" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="page-error section-top section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="page-error__container">
+            <div class="page-error__body">
+              <h1 class="page-error__title">Страница ушла в облако</h1>
+              <div class="page-error__text">Мы не смогли найти нужную страницу. Возможно, адрес изменился или ссылка устарела.</div>
+              <a href="/" class="button button-primary page-error__button">На главную</a>
+            </div>
+            <div class="page-error__img">
+              <img src="@img/404.png" alt="Страница не найдена" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

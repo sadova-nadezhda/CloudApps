@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "Калькулятор ресурсов" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="calc section-top section-pad-bottom section-hidden" data-calc>
+        <div class="container">
+          <div class="calc__container">
+            <div class="calc__head">
+              <h1 class="calc__title">Рассчитайте стоимость облачной инфраструктуры</h1>
+              <a class="button button-primary calc__head-button modal-btn" data-type="feedback">Получить консультацию</a>
+            </div>
+            <div class="calc__text">Онлайн-калькулятор позволяет выполнить предварительный расчет стоимости облачной инфраструктуры.</div>
+            <div class="calc__periods">
+              <button class="calc__period" type="button" data-months="1">1 мес.</button>
+              <button class="calc__period" type="button" data-months="3">3 мес.</button>
+              <button class="calc__period" type="button" data-months="6">6 мес.</button>
+              <button class="calc__period is-active" type="button" data-months="12">12 мес.</button>
+            </div>
+            <div class="calc__body">
+              <div class="calc__cards">
+                <div class="calc__card">
+                  <h2 class="calc__card-title">Вычислительные ресурсы</h2>
+                  <div class="calc__grid">
+                    <label class="calc__field calc__field--stack">
+                      <span class="calc__label">Тариф CPU</span>
+                      <select class="calc__select" name="tariff" data-calc-input="tariff">
+                        <option value="C1" data-cpu="1700" data-ram="1900" data-nvme="90" data-ssd="90" data-hdd="20" selected>C1 — Intel Xeon 2.9GHz</option>
+                        <option value="C2" data-cpu="2100" data-ram="2200" data-nvme="110" data-ssd="100" data-hdd="25">C2 — Intel Xeon Gold 3.1GHz</option>
+                        <option value="C3" data-cpu="2600" data-ram="2500" data-nvme="130" data-ssd="110" data-hdd="30">C3 — AMD EPYC 3.4GHz</option>
+                      </select>
+                    </label>
+                    <label class="calc__field calc__field--stack">
+                      <span class="calc__label">ЦОД</span>
+                      <select class="calc__select" name="dc" data-calc-input="dc">
+                        <option value="ALA" data-k="1" selected>ALA — Алматы</option>
+                        <option value="AST" data-k="1">AST — Астана</option>
+                        <option value="PVL" data-k="1">PVL — Павлодар</option>
+                        <option value="KGF" data-k="1">KGF — Караганда</option>
+                      </select>
+                    </label>
+                    <label class="calc__field">
+                      <span class="calc__label">vCPU</span>
+                      <select class="calc__select" name="vcpu" data-calc-input="vcpu">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="4" selected>4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
+                      </select>
+                    </label>
+                    <label class="calc__field">
+                      <span class="calc__label">vRAM, GB</span>
+                      <select class="calc__select" name="vram" data-calc-input="vram">
+                        <option value="2">2</option>
+                        <option value="4" selected>4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
+                        <option value="64">64</option>
+                      </select>
+                    </label>
+                    <label class="calc__field">
+                      <span class="calc__label">SSD, GB</span>
+                      <input class="calc__input" type="number" name="ssd" min="0" step="10" value="50" data-calc-input="ssd" />
+                    </label>
+                    <label class="calc__field">
+                      <span class="calc__label">HDD, GB</span>
+                      <input class="calc__input" type="number" name="hdd" min="0" step="10" value="0" data-calc-input="hdd" />
+                    </label>
+                    <label class="calc__field calc__field--wide">
+                      <span class="calc__label">NVMe, GB</span>
+                      <input class="calc__input" type="number" name="nvme" min="0" step="10" value="0" data-calc-input="nvme" />
+                    </label>
+                    <label class="calc__field calc__field--wide">
+                      <span class="calc__label">Кол-во ВМ</span>
+                      <input class="calc__input" type="number" name="vm" min="1" step="1" value="1" data-calc-input="vm" />
+                    </label>
+                  </div>
+                </div>
+                <div class="calc__card">
+                  <h2 class="calc__card-title">Резервное копирование</h2>
+                  <div class="calc__grid">
+                    <label class="calc__field calc__field--full">
+                      <span class="calc__label">Тариф</span>
+                      <select class="calc__select" name="backup" data-calc-input="backup">
+                        <option value="B0" data-price="0" selected>B0 — Без резервного копирования</option>
+                        <option value="B1" data-price="1640">B1 — Ежедневное копирование, 7 дней</option>
+                        <option value="B2" data-price="2900">B2 — Ежедневное и недельное, 30 дней</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="calc__checks">
+                    <label class="form__check calc__check">
+                      <input type="checkbox" name="geo" data-calc-input="geo" data-price="900" />
+                      <span class="form__check-box">
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="form__check-text">Геокопия — дополнительная резервная копия</span>
+                    </label>
+                    <label class="form__check calc__check">
+                      <input type="checkbox" name="dr" data-calc-input="dr" data-price="3500" />
+                      <span class="form__check-box">
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="form__check-text">DR — аварийное восстановление</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="calc__card">
+                  <h2 class="calc__card-title">Сеть и дополнительные услуги</h2>
+                  <div class="calc__grid">
+                    <div class="calc__field calc__field--wide">
+                      <label class="calc__label" for="calc-s3">S3 хранилище, GB</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-s3" type="number" name="s3" min="0" step="10" value="0" data-calc-input="s3" data-price="25" />
+                        <button class="calc__stepper-btn" type="button" data-step="-10" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="10" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field calc__field--wide">
+                      <label class="calc__label" for="calc-ip">Публичные IP-адреса</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-ip" type="number" name="ip" min="0" step="1" value="0" data-calc-input="ip" data-price="1500" />
+                        <button class="calc__stepper-btn" type="button" data-step="-1" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="1" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <label class="calc__field calc__field--full">
+                      <span class="calc__label">Виртуальный NG Firewall</span>
+                      <select class="calc__select" name="firewall" data-calc-input="firewall">
+                        <option value="no" data-price="0" selected>Нет</option>
+                        <option value="standard" data-price="12000">NGFW Standard</option>
+                        <option value="advanced" data-price="25000">NGFW Advanced</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="calc__checks">
+                    <label class="form__check calc__check">
+                      <input type="checkbox" name="net100" data-calc-input="net100" data-price="15000" />
+                      <span class="form__check-box">
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="form__check-text">Выделенный интернет-канал до 100 Мбит/с</span>
+                    </label>
+                    <label class="form__check calc__check">
+                      <input type="checkbox" name="net1000" data-calc-input="net1000" data-price="45000" />
+                      <span class="form__check-box">
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="form__check-text">Выделенный интернет-канал до 1000 Мбит/с</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="calc__aside">
+                <div class="calc__total">
+                  <div class="calc__total-label">Итоговая стоимость</div>
+                  <div class="calc__total-sum" data-calc-total>0 ₸</div>
+                  <ul class="calc__total-note">
+                    <li>за <span data-calc-period>12 месяцев</span></li>
+                    <li>НДС 16%: <span data-calc-vat>0 ₸</span></li>
+                  </ul>
+                  <ul class="calc__total-list">
+                    <li class="calc__total-row"><span>vCPU</span><span data-calc-row="vcpu">0 ₸</span></li>
+                    <li class="calc__total-row"><span>vRAM</span><span data-calc-row="vram">0 ₸</span></li>
+                    <li class="calc__total-row"><span>NVMe</span><span data-calc-row="nvme">0 ₸</span></li>
+                    <li class="calc__total-row"><span>SSD</span><span data-calc-row="ssd">0 ₸</span></li>
+                    <li class="calc__total-row"><span>HDD</span><span data-calc-row="hdd">0 ₸</span></li>
+                    <li class="calc__total-row"><span>Бэкап</span><span data-calc-row="backup">0 ₸</span></li>
+                    <li class="calc__total-row" data-calc-optional hidden><span>S3</span><span data-calc-row="s3">0 ₸</span></li>
+                    <li class="calc__total-row" data-calc-optional hidden><span>IP-адреса</span><span data-calc-row="ip">0 ₸</span></li>
+                    <li class="calc__total-row" data-calc-optional hidden><span>NG Firewall</span><span data-calc-row="firewall">0 ₸</span></li>
+                    <li class="calc__total-row" data-calc-optional hidden><span>Интернет-канал</span><span data-calc-row="net">0 ₸</span></li>
+                  </ul>
+                  <div class="calc__total-month">
+                    <span>В месяц</span>
+                    <span data-calc-month>0 ₸</span>
+                  </div>
+                </div>
+                <div class="calc__tariff">
+                  <div class="calc__tariff-title" data-tariff-name>C1 — Intel Xeon 2.9GHz</div>
+                  <ul class="calc__tariff-list">
+                    <li><span>vCPU</span><span><b data-tariff-price="cpu">1 700</b> ₸ / ядро</span></li>
+                    <li><span>RAM</span><span><b data-tariff-price="ram">1 900</b> ₸ / GB</span></li>
+                    <li><span>NVMe</span><span><b data-tariff-price="nvme">90</b> ₸ / GB</span></li>
+                    <li><span>SSD</span><span><b data-tariff-price="ssd">90</b> ₸ / GB</span></li>
+                    <li><span>HDD</span><span><b data-tariff-price="hdd">20</b> ₸ / GB</span></li>
+                  </ul>
+                  <div class="calc__tariff-note">* Цены указаны без НДС 16%</div>
+                </div>
+                <div class="calc__request">
+                  <h2 class="calc__request-title">Отправить заявку</h2>
+                  <form class="form calc__form" action="#" method="POST">
+                    <input type="hidden" name="topic" value="Калькулятор стоимости" />
+                    <input type="hidden" name="calc" data-calc-summary />
+                    <label class="form__field">
+                      <span class="form__label">Имя<i>*</i></span>
+                      <input class="form__input" type="text" name="name" placeholder="Введите имя" required />
+                    </label>
+                    <label class="form__field">
+                      <span class="form__label">Email<i>*</i></span>
+                      <input class="form__input" type="email" name="email" placeholder="name@example.com" required />
+                    </label>
+                    <label class="form__field">
+                      <span class="form__label">Телефон</span>
+                      <input class="form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" data-mask="+7 (___) ___-__-__" />
+                    </label>
+                    <button class="button button-primary calc__form-submit" type="submit">Отправить заявку</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="calc__note">
+              <span class="calc__note-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="#8A38F5" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 10.6667V8" stroke="#8A38F5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7.91536 5.49992H7.9987M7.83203 5.49992C7.83203 5.40787 7.90663 5.33325 7.9987 5.33325C8.09076 5.33325 8.16536 5.40787 8.16536 5.49992C8.16536 5.59197 8.09076 5.66659 7.9987 5.66659C7.90663 5.66659 7.83203 5.59197 7.83203 5.49992Z" stroke="#8A38F5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <p class="calc__note-text">Расчет является предварительным и предназначен для ознакомления. Итоговая стоимость зависит от архитектуры решения, дополнительных услуг и условий проекта.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cta section-pad-bottom">
+        <div class="container">
+          <div class="cta__container">
+            <div class="cta__body">
+              <h2 class="cta__title">Нужна индивидуальная конфигурация?</h2>
+              <div class="cta__text">Наши специалисты помогут подобрать оптимальную конфигурацию облачной инфраструктуры и подготовят коммерческое предложение с учетом требований вашего проекта.</div>
+              <div class="cta__buttons">
+                <a class="button button-primary modal-btn" data-type="feedback">Получить коммерческое предложение</a>
+                <a href="calc.html" class="button button-light">Рассчитать стоимость</a>
+              </div>
+              <ul class="cta__list">
+                <li>Отвечаем в течение рабочего дня</li>
+                <li>Говорим с инженерами на одном языке</li>
+                <li>Без навязчивых звонков</li>
+                <li>Техническая поддержка 24/7</li>
+              </ul>
+            </div>
+            <div class="cta__img">
+              <img src="@img/feedback-img.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="faq section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="faq__container">
+            <h2 class="faq__title">Часто задаваемые вопросы</h2>
+            <div class="faq__body">
+              <div class="faq__item is-open">
+                <button class="faq__question" type="button">
+                  Является ли стоимость окончательной?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Нет. Калькулятор предназначен для предварительной оценки стоимости.</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Можно ли рассчитать нестандартную конфигурацию?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ab laudantium consequatur tenetur enim exercitationem, ut, veritatis odio id nesciunt ratione saepe, quo facilis nobis sequi vitae eius reprehenderit veniam!</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Можно ли получить скидку?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ab laudantium consequatur tenetur enim exercitationem, ut, veritatis odio id nesciunt ratione saepe, quo facilis nobis sequi vitae eius reprehenderit veniam!</div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__question" type="button">
+                  Можно ли перенести существующую инфраструктуру?
+                  <svg class="faq__question-arrow" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.3652 7.71543C16.5072 7.5824 16.6962 7.51121 16.8906 7.51754C17.0851 7.52387 17.2691 7.60718 17.4021 7.74916C17.5351 7.89114 17.6063 8.08015 17.6 8.27462C17.5937 8.46908 17.5104 8.65306 17.3684 8.7861L11.5017 14.2861C11.3658 14.4135 11.1864 14.4845 11.0001 14.4845C10.8138 14.4845 10.6344 14.4135 10.4985 14.2861L4.63185 8.7861L4.53505 8.67316C4.43725 8.53525 4.39011 8.36778 4.4016 8.1991C4.41309 8.03042 4.48252 7.8709 4.59813 7.74753C4.71373 7.62416 4.86841 7.54452 5.03599 7.5221C5.20357 7.49968 5.37375 7.53586 5.51772 7.6245L5.63505 7.71543L11.0001 12.7446L16.3652 7.71543Z" fill="white"/>
+                  </svg>
+                </button>
+                <div class="faq__answer">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ab laudantium consequatur tenetur enim exercitationem, ut, veritatis odio id nesciunt ratione saepe, quo facilis nobis sequi vitae eius reprehenderit veniam!</div>
+              </div>
+              <div class="faq__nav">
+                <div class="faq__counter"><span class="faq__counter-current">1</span> / <span class="faq__counter-total">5</span></div>
+                <div class="faq__arrows">
+                  <button class="faq__arrow faq__arrow--prev" type="button" aria-label="Предыдущий вопрос">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.86481 0.153225C7.05605 -0.045823 7.3727 -0.0515289 7.57184 0.139553C7.77097 0.330871 7.77781 0.647456 7.58649 0.846584L1.67438 6.9999L16.8336 6.9999C17.1097 6.9999 17.3335 7.2238 17.3336 7.4999C17.3336 7.77605 17.1097 7.9999 16.8336 7.9999L1.67438 7.9999L7.58649 14.1532C7.77781 14.3524 7.77097 14.6689 7.57184 14.8603C7.37271 15.0514 7.05608 15.0457 6.86481 14.8466L0.139227 7.84658C-0.0463807 7.65311 -0.0464375 7.34666 0.139227 7.15322L6.86481 0.153225Z" fill="white"/>
+                    </svg>
+                  </button>
+                  <button class="faq__arrow faq__arrow--next" type="button" aria-label="Следующий вопрос">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="white"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <a class="button button-light faq__button modal-btn" data-type="feedback">Задать вопрос</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>

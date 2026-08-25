@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "Блог CloudApps" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="news section-top section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="news__container" data-filter-grid data-step="6">
+            <div class="news__head">
+              <h1 class="news__title s">Блог CloudApps</h1>
+              <div class="news__text">Новости компании, обновления облачной платформы и материалы о развитии ИТ-инфраструктуры.</div>
+            </div>
+            <div class="filters">
+              <button class="filter is-active" type="button" data-filter="all">Все</button>
+              <button class="filter" type="button" data-filter="company">Компания</button>
+              <button class="filter" type="button" data-filter="cloud">Облачные технологии</button>
+              <button class="filter" type="button" data-filter="infra">Инфраструктура</button>
+              <button class="filter" type="button" data-filter="security">Безопасность</button>
+              <button class="filter" type="button" data-filter="platform">Обновления платформы</button>
+            </div>
+            <div class="news__grid">
+              <a href="news-inner.html" class="news__card" data-category="platform">
+                <div class="news__card-img">
+                  <img src="@img/case-1.jpg" alt="CloudApps расширяет возможности облачной инфраструктуры для корпоративных клиентов" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Обновления платформы</span>
+                    <time class="news__card-date" datetime="2026-08-06">06 августа 2026</time>
+                  </div>
+                  <h3 class="news__card-title">CloudApps расширяет возможности облачной инфраструктуры для корпоративных клиентов</h3>
+                  <div class="news__card-text">Новые возможности платформы помогают компаниям гибко масштабировать ресурсы и эффективнее управлять ИТ-инфраструктурой.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="infra">
+                <div class="news__card-img">
+                  <img src="@img/case-2.jpg" alt="CloudApps расширяет географию облачной инфраструктуры в Казахстане" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Инфраструктура</span>
+                    <time class="news__card-date" datetime="2026-07-24">24 июля 2026</time>
+                  </div>
+                  <h3 class="news__card-title">CloudApps расширяет географию облачной инфраструктуры в Казахстане</h3>
+                  <div class="news__card-text">Развитие региональной инфраструктуры позволяет повышать доступность сервисов и сокращать сетевые задержки.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="security">
+                <div class="news__card-img">
+                  <img src="@img/case-3.jpg" alt="Как CloudApps обеспечивает защиту корпоративных данных" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Безопасность</span>
+                    <time class="news__card-date" datetime="2026-07-10">10 июля 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Как CloudApps обеспечивает защиту корпоративных данных</h3>
+                  <div class="news__card-text">Рассказываем о ключевых принципах защиты данных при построении безопасной облачной инфраструктуры.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="cloud">
+                <div class="news__card-img">
+                  <img src="@img/case-4.jpg" alt="Гибридная инфраструктура: когда бизнесу нужен собственный и публичный контур" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Облачные технологии</span>
+                    <time class="news__card-date" datetime="2026-06-28">28 июня 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Гибридная инфраструктура: когда бизнесу нужен собственный и публичный контур</h3>
+                  <div class="news__card-text">Разбираем сценарии, в которых сочетание разных моделей инфраструктуры помогает бизнесу сохранять гибкость.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="company">
+                <div class="news__card-img">
+                  <img src="@img/case-1.jpg" alt="CloudApps продолжает развивать инженерную экспертизу" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Компания</span>
+                    <time class="news__card-date" datetime="2026-06-15">15 июня 2026</time>
+                  </div>
+                  <h3 class="news__card-title">CloudApps продолжает развивать инженерную экспертизу</h3>
+                  <div class="news__card-text">Команда расширяет компетенции в области облачной инфраструктуры, сетевых решений и информационной безопасности.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="platform">
+                <div class="news__card-img">
+                  <img src="@img/case-2.jpg" alt="Новые возможности управления облачными ресурсами" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Обновления платформы</span>
+                    <time class="news__card-date" datetime="2026-06-03">03 июня 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Новые возможности управления облачными ресурсами</h3>
+                  <div class="news__card-text">Обновления платформы упрощают работу с инфраструктурой и помогают централизованно управлять корпоративными сервисами.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="cloud">
+                <div class="news__card-img">
+                  <img src="@img/case-3.jpg" alt="Как выбрать модель облака под задачи компании" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Облачные технологии</span>
+                    <time class="news__card-date" datetime="2026-05-21">21 мая 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Как выбрать модель облака под задачи компании</h3>
+                  <div class="news__card-text">Сравниваем публичное, приватное и гибридное облако с точки зрения затрат, контроля и скорости запуска.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="security">
+                <div class="news__card-img">
+                  <img src="@img/case-4.jpg" alt="Резервное копирование: как проверить, что план восстановления работает" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Безопасность</span>
+                    <time class="news__card-date" datetime="2026-05-12">12 мая 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Резервное копирование: как проверить, что план восстановления работает</h3>
+                  <div class="news__card-text">Регулярные учения и понятные регламенты превращают резервные копии в реальную страховку бизнеса.</div>
+                </div>
+              </a>
+              <a href="news-inner.html" class="news__card" data-category="infra">
+                <div class="news__card-img">
+                  <img src="@img/case-1.jpg" alt="Мониторинг инфраструктуры: что отслеживать в первую очередь" />
+                  <span class="news__card-arrow">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="news__card-body">
+                  <div class="news__card-meta">
+                    <span class="news__card-tag">Инфраструктура</span>
+                    <time class="news__card-date" datetime="2026-04-29">29 апреля 2026</time>
+                  </div>
+                  <h3 class="news__card-title">Мониторинг инфраструктуры: что отслеживать в первую очередь</h3>
+                  <div class="news__card-text">Собрали метрики, которые раньше всего сигнализируют о проблемах в корпоративных сервисах.</div>
+                </div>
+              </a>
+            </div>
+            <button class="button button-light show-more" data-more type="button">Показать ещё</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>
