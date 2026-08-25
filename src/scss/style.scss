@@ -615,6 +615,11 @@
       height: calc(32 * var(--width-multiplier));
       pointer-events: none;
     }
+    img {
+      width: calc(32 * var(--width-multiplier));
+      height: calc(32 * var(--width-multiplier));
+      object-fit: contain;
+    }
   }
   &__pagination {
     display: none;
@@ -1689,6 +1694,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       width: calc(30 * var(--width-multiplier));
       height: auto;
       pointer-events: none;
+    }
+    img {
+      width: calc(30 * var(--width-multiplier));
+      height: auto;
+      object-fit: contain;
     }
   }
 }
