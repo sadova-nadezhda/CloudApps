@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html', { "title": "Карта сайта" })
+  <body>
+    @@include('html/preloader.html')
+
+    @@include('html/header.html')
+
+    <main>
+      <section class="sitemap section-top section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="sitemap__container">
+            <nav class="breadcrumbs">
+              <ul class="breadcrumbs__list">
+                <li><a href="/">Главная</a></li>
+                <li><span aria-current="page">Карта сайта</span></li>
+              </ul>
+            </nav>
+            <div class="article-head">
+              <div class="article-head__body">
+                <h1 class="article-head__title">Карта сайта</h1>
+                <div class="article-head__text">Полная навигация по разделам CloudApps: инфраструктура, решения, услуги, цены и справочная информация.</div>
+              </div>
+              <div class="article-head__meta">
+                <ul class="article-head__tags">
+                  <li>Навигация</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sitemap__grid">
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Главная</h2>
+                <ul class="sitemap__list">
+                  <li><a href="/">Главная страница</a></li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Платформа</h2>
+                <ul class="sitemap__list">
+                  <li>
+                    <a href="platform.html">Платформа</a>
+                    <ul class="sitemap__sublist">
+                      <li>
+                        <a href="infrastructure.html">Инфраструктура</a>
+                        <ul class="sitemap__sublist">
+                          <li><a href="infrastructure.html">Виртуальные машины</a></li>
+                          <li><a href="infrastructure.html">Объектное хранилище</a></li>
+                          <li><a href="infrastructure.html">Виртуальные сети</a></li>
+                          <li><a href="infrastructure.html">Виртуальный фаервол</a></li>
+                          <li><a href="infrastructure.html">Резервное копирование</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="solutions.html">Решения</a>
+                        <ul class="sitemap__sublist">
+                          <li><a href="solutions.html">Инфраструктура для 1С</a></li>
+                          <li><a href="solutions.html">Облачные СУБД</a></li>
+                          <li><a href="solutions.html">Контейнерная платформа</a></li>
+                          <li><a href="solutions.html">AI-платформа</a></li>
+                          <li><a href="solutions.html">Аварийное восстановление</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="cloud.html">Модели использования</a>
+                        <ul class="sitemap__sublist">
+                          <li><a href="cloud.html">Публичное облако</a></li>
+                          <li><a href="cloud.html">Приватное облако</a></li>
+                          <li><a href="cloud.html">Гибридное облако</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Услуги</h2>
+                <ul class="sitemap__list">
+                  <li>
+                    <a href="services.html">Услуги</a>
+                    <ul class="sitemap__sublist">
+                      <li><a href="consalting.html">Консалтинг</a></li>
+                      <li><a href="migration.html">Миграция</a></li>
+                      <li><a href="support.html">Поддержка</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Цены</h2>
+                <ul class="sitemap__list">
+                  <li><a href="calc.html">Калькулятор ресурсов</a></li>
+                  <li><a href="ts.html">Техническая поддержка</a></li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Ресурсы</h2>
+                <ul class="sitemap__list">
+                  <li><a href="" target="_blank" rel="noopener">Документация<span class="sitemap__ext">Внешний ресурс</span></a></li>
+                  <li>
+                    <a href="cases.html">Кейсы</a>
+                    <ul class="sitemap__sublist">
+                      <li><a href="cases-inner.html">Страница кейса</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="news.html">Блог</a>
+                    <ul class="sitemap__sublist">
+                      <li><a href="news-inner.html">Страница статьи</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">О компании</h2>
+                <ul class="sitemap__list">
+                  <li>
+                    <a href="about.html">О компании</a>
+                    <ul class="sitemap__sublist">
+                      <li><a href="about.html#contacts">Контакты</a></li>
+                      <li><a href="about.html#vacancies">Вакансии</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="sitemap__col">
+                <h2 class="sitemap__col-title">Правовая информация</h2>
+                <ul class="sitemap__list">
+                  <li><a href="legal.html">Политика конфиденциальности</a></li>
+                  <li><a href="terms.html">Пользовательское соглашение</a></li>
+                  <li><a href="404.html">Страница 404</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    @@include('html/modals.html')
+
+    @@include('html/footer.html') 
+    @@include('html/foot.html')
+  </body>
+</html>
