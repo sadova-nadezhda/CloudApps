@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Консалтинг</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260826132609" />
+  <link rel="stylesheet" href="css/style.css?_v=20260826132609" />
+  <script>document.documentElement.classList.add("is-loading");</script>
+</head>
+
+  <body>
+    <div class="preloader" data-preloader role="status" aria-live="polite" aria-label="Загрузка страницы">
+  <div class="preloader__inner">
+    <div class="preloader__cloud">
+      <svg class="preloader__svg" viewBox="0 0 640 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <clipPath id="preloaderClip">
+            <path d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z" />
+          </clipPath>
+        </defs>
+
+        <g clip-path="url(#preloaderClip)">
+          <rect x="0" y="0" width="640" height="512" fill="#1F2227" />
+
+          <g class="preloader__bits">
+            <rect class="preloader__bit" x="150" y="0" width="46" height="46" rx="10" />
+            <rect class="preloader__bit" x="250" y="0" width="30" height="30" rx="8" />
+            <rect class="preloader__bit" x="340" y="0" width="52" height="52" rx="12" />
+            <rect class="preloader__bit" x="440" y="0" width="34" height="34" rx="8" />
+            <rect class="preloader__bit" x="90" y="0" width="26" height="26" rx="7" />
+          </g>
+
+          <g class="preloader__level" data-preloader-level transform="translate(0 512)">
+            <path class="preloader__wave" d="M0 26 Q80 2 160 26 T320 26 T480 26 T640 26 T800 26 T960 26 T1120 26 T1280 26 V560 H0 Z" />
+          </g>
+        </g>
+
+        <path class="preloader__outline" d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z" />
+        <path class="preloader__trace" data-preloader-trace d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z" />
+      </svg>
+    </div>
+
+    <div class="preloader__bar">
+      <span class="preloader__bar-line" data-preloader-bar></span>
+    </div>
+
+    <div class="preloader__caption">Грузим страницу</div>
+  </div>
+</div>
+
+
+    <header class="header">
+  <div class="container">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <img src="img/logo.svg" alt="CloudApps" />
+      </a>
+      <nav class="header__nav">
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a href="/" class="header__menu-link">Главная</a>
+          </li>
+          <li class="header__menu-item header__menu-item--has-drop header__menu-item--mega">
+            <a class="header__menu-trigger" href="platform.html">
+              Платформа
+              <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="header__dropdown header__dropdown--mega">
+              <div class="header__mega">
+                <div class="header__mega-col">
+                  <div class="header__mega-head">
+                    <div class="header__mega-title">Инфраструктура</div>
+                    <p class="header__mega-text">Базовые сервисы для построения облачной ИТ-среды.</p>
+                  </div>
+                  <div class="header__mega-list">
+                    <a href="infrastructure.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#mega-vm)">
+                          <path d="M10 16.6672V18.334M10 1.66602V3.33282M14.167 16.6672V18.334M14.167 1.66602V3.33282M1.66602 10H3.33282M1.66602 14.167H3.33282M1.66602 5.83302H3.33282M16.6672 10H18.334M16.6672 14.167H18.334M16.6672 5.83302H18.334M5.83302 16.6672V18.334M5.83302 1.66602V3.33282M4.99962 3.33282H15.0004C15.921 3.33282 16.6672 4.07907 16.6672 4.99962V15.0004C16.6672 15.921 15.921 16.6672 15.0004 16.6672H4.99962C4.07907 16.6672 3.33282 15.921 3.33282 15.0004V4.99962C3.33282 4.07907 4.07907 3.33282 4.99962 3.33282ZM7.49982 6.66642H12.5002C12.9605 6.66642 13.3336 7.03954 13.3336 7.49982V12.5002C13.3336 12.9605 12.9605 13.3336 12.5002 13.3336H7.49982C7.03954 13.3336 6.66642 12.9605 6.66642 12.5002V7.49982C6.66642 7.03954 7.03954 6.66642 7.49982 6.66642Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                          </g>
+                          <defs>
+                          <clipPath id="mega-vm">
+                          <rect width="20" height="20" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Виртуальные машины
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Гибкие облачные ресурсы для быстрого запуска и масштабирования.</span>
+                      </span>
+                    </a>
+                    <a href="infrastructure.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.5 4.16622C17.5 5.54704 14.1421 6.66642 10 6.66642C5.85786 6.66642 2.5 5.54704 2.5 4.16622M17.5 4.16622C17.5 2.78539 14.1421 1.66602 10 1.66602C5.85786 1.66602 2.5 2.78539 2.5 4.16622M17.5 4.16622V15.8338C17.5 16.4969 16.7098 17.1328 15.3033 17.6017C13.8968 18.0706 11.9891 18.334 10 18.334C8.01088 18.334 6.10322 18.0706 4.6967 17.6017C3.29018 17.1328 2.5 16.4969 2.5 15.8338V4.16622M2.5 10C2.5 10.6631 3.29018 11.299 4.6967 11.7679C6.10322 12.2368 8.01088 12.5002 10 12.5002C11.9891 12.5002 13.8968 12.2368 15.3033 11.7679C16.7098 11.299 17.5 10.6631 17.5 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Объектное хранилище
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Масштабируемое хранение данных, резервных копий и архивов.</span>
+                      </span>
+                    </a>
+                    <a href="infrastructure.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 18.334C14.6024 18.334 18.334 14.6024 18.334 10C18.334 5.39763 14.6024 1.66602 10 1.66602C5.39763 1.66602 1.66602 5.39763 1.66602 10C1.66602 14.6024 5.39763 18.334 10 18.334Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M1.66602 10H18.334M10 1.66602C12.0844 3.94799 13.269 6.9092 13.3336 10C13.269 13.0908 12.0844 16.052 10 18.334C7.91555 16.052 6.73104 13.0908 6.66642 10C6.73104 6.9092 7.91555 3.94799 10 1.66602Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Виртуальные сети
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Сетевой доступ и защита облачной инфраструктуры.</span>
+                      </span>
+                    </a>
+                    <a href="infrastructure.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10.2833 18.2919C13.7496 17.0836 16.666 15.0002 16.666 10.8334V4.99983C16.666 4.77881 16.5782 4.56684 16.4219 4.41056C16.2657 4.25427 16.0537 4.16647 15.8327 4.16647C14.1662 4.16647 12.0914 3.17477 10.6333 1.89973C10.4567 1.74889 10.2322 1.66602 9.99998 1.66602C9.7678 1.66602 9.54324 1.74889 9.36671 1.89973C7.91686 3.16644 5.83373 4.16647 4.16723 4.16647C3.94624 4.16647 3.7343 4.25427 3.57804 4.41056C3.42177 4.56684 3.33398 4.77881 3.33398 4.99983V10.8334C3.33398 15.0002 6.25036 17.0836 9.72501 18.2836C9.90461 18.3505 10.1018 18.3534 10.2833 18.2919Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Виртуальный фаервол
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Управление сетевым доступом и защита периметра.</span>
+                      </span>
+                    </a>
+                    <a href="infrastructure.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.5 10C2.5 8.01088 3.29018 6.10322 4.6967 4.6967C6.10322 3.29018 8.01088 2.5 10 2.5C12.0967 2.50789 14.1092 3.32602 15.6167 4.78333L17.5 6.66667M13.3333 6.66667H17.5V2.5M17.5 10C17.5 11.9891 16.7098 13.8968 15.3033 15.3033C13.8968 16.7098 11.9891 17.5 10 17.5C7.90329 17.4921 5.89081 16.674 4.38333 15.2167L2.5 13.3333M2.5 17.5V13.3333H6.66667" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Резервное копирование
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Защита данных и восстановление критичных систем.</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="header__mega-col">
+                  <div class="header__mega-head">
+                    <div class="header__mega-title">Решения</div>
+                    <p class="header__mega-text">Готовые конфигурации для типовых корпоративных задач.</p>
+                  </div>
+                  <div class="header__mega-list">
+                    <a href="solutions.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.6665 1.66602H5.00048C4.5585 1.66602 4.13462 1.84163 3.82209 2.15421C3.50956 2.4668 3.33398 2.89076 3.33398 3.33282V16.6672C3.33398 17.1093 3.50956 17.5332 3.82209 17.8458C4.13462 18.1584 4.5585 18.334 5.00048 18.334H14.9995C15.4415 18.334 15.8653 18.1584 16.1779 17.8458C16.4904 17.5332 16.666 17.1093 16.666 16.6672V6.66642M11.6665 1.66602C11.9303 1.66559 12.1915 1.71736 12.4352 1.81834C12.6789 1.91932 12.9002 2.06752 13.0863 2.2544L16.076 5.24464C16.2634 5.43091 16.412 5.65246 16.5132 5.89649C16.6145 6.14052 16.6664 6.4022 16.666 6.66642M11.6665 1.66602V5.83301C11.6665 6.05405 11.7543 6.26602 11.9105 6.42232C12.0668 6.57861 12.2787 6.66641 12.4997 6.66641L16.666 6.66642M8.33348 7.49981H6.66698M13.333 10.8334H6.66698M13.333 14.167H6.66698" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Инфраструктура для 1С
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Облачная среда для размещения и работы систем 1С.</span>
+                      </span>
+                    </a>
+                    <a href="solutions.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.5 4.16622C17.5 5.54704 14.1421 6.66642 10 6.66642C5.85786 6.66642 2.5 5.54704 2.5 4.16622M17.5 4.16622C17.5 2.78539 14.1421 1.66602 10 1.66602C5.85786 1.66602 2.5 2.78539 2.5 4.16622M17.5 4.16622V15.8338C17.5 16.4969 16.7098 17.1328 15.3033 17.6017C13.8968 18.0706 11.9891 18.334 10 18.334C8.01088 18.334 6.10322 18.0706 4.6967 17.6017C3.29018 17.1328 2.5 16.4969 2.5 15.8338V4.16622M2.5 10C2.5 10.6631 3.29018 11.299 4.6967 11.7679C6.10322 12.2368 8.01088 12.5002 10 12.5002C11.9891 12.5002 13.8968 12.2368 15.3033 11.7679C16.7098 11.299 17.5 10.6631 17.5 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Облачные СУБД
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Готовая инфраструктура для корпоративных баз данных.</span>
+                      </span>
+                    </a>
+                    <a href="solutions.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.66602 9.99981C1.66562 10.1592 1.71095 10.3154 1.79663 10.4498C1.8823 10.5842 2.00473 10.6912 2.14939 10.7582L9.31655 14.0167C9.53257 14.1145 9.76697 14.1651 10.0041 14.1651C10.2412 14.1651 10.4756 14.1145 10.6916 14.0167L17.8422 10.7665C17.9897 10.7002 18.1147 10.5924 18.202 10.4563C18.2893 10.3201 18.3351 10.1615 18.3339 9.99981M1.66602 14.1667C1.66562 14.3261 1.71095 14.4823 1.79663 14.6167C1.8823 14.7511 2.00473 14.8581 2.14939 14.9251L9.31655 18.1836C9.53257 18.2814 9.76697 18.332 10.0041 18.332C10.2412 18.332 10.4756 18.2814 10.6916 18.1836L17.8422 14.9334C17.9897 14.8671 18.1147 14.7593 18.202 14.6232C18.2893 14.487 18.3351 14.3284 18.3339 14.1667M10.692 1.81632C10.4749 1.71727 10.239 1.66602 10.0003 1.66602C9.76164 1.66602 9.52574 1.71727 9.30859 1.81632L2.16643 5.0665C2.01854 5.13171 1.89281 5.23851 1.80454 5.3739C1.71627 5.50929 1.66927 5.66742 1.66927 5.82905C1.66927 5.99067 1.71627 6.1488 1.80454 6.28419C1.89281 6.41958 2.01854 6.52638 2.16643 6.59159L9.31693 9.8501C9.53408 9.94915 9.76997 10.0004 10.0086 10.0004C10.2473 10.0004 10.4832 9.94915 10.7004 9.8501L17.8509 6.59992C17.9987 6.53471 18.1245 6.42791 18.2127 6.29252C18.301 6.15714 18.348 5.999 18.348 5.83738C18.348 5.67576 18.301 5.51762 18.2127 5.38223C18.1245 5.24684 17.9987 5.14004 17.8509 5.07484L10.692 1.81632Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Контейнерная платформа
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Запуск и управление контейнерными приложениями.</span>
+                      </span>
+                    </a>
+                    <a href="solutions.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#mega-ai)">
+                          <path d="M10.0001 14.9998V4.1661M10.0001 14.9998C10.0006 15.4554 10.0945 15.9065 10.276 16.3244C10.4575 16.7423 10.7227 17.1186 11.0554 17.43C11.388 17.7414 11.781 17.9813 12.21 18.1349C12.639 18.2885 13.0949 18.3525 13.5496 18.323C14.0043 18.2935 14.4481 18.1711 14.8537 17.9634C15.2592 17.7556 15.6179 17.4669 15.9075 17.1152C16.1971 16.7634 16.4115 16.356 16.5374 15.9181C16.6634 15.4802 16.6983 15.0212 16.6398 14.5693M10.0001 14.9998C9.9996 15.4554 9.9057 15.9065 9.7242 16.3244C9.54269 16.7423 9.27743 17.1186 8.94479 17.43C8.61216 17.7414 8.21921 17.9813 7.79021 18.1349C7.36122 18.2885 6.90529 18.3525 6.45059 18.323C5.99588 18.2935 5.55205 18.1711 5.14651 17.9634C4.74096 17.7556 4.38232 17.4669 4.09272 17.1152C3.80312 16.7634 3.58871 16.356 3.46275 15.9181C3.33678 15.4802 3.30192 15.0212 3.36033 14.5693M10.0001 4.1661C10.0001 3.78261 10.0883 3.40436 10.2579 3.06041C10.4275 2.71646 10.674 2.41614 10.9782 2.18268C11.2825 1.94922 11.6364 1.78888 12.0125 1.71406C12.3887 1.63924 12.777 1.65195 13.1474 1.75121C13.5179 1.85046 13.8605 2.0336 14.1488 2.28646C14.4372 2.53932 14.6635 2.85512 14.8102 3.20942C14.957 3.56373 15.0203 3.94704 14.9952 4.32971C14.9701 4.71238 14.8573 5.08415 14.6655 5.41625M10.0001 4.1661C10.0001 3.78261 9.9119 3.40436 9.74228 3.06041C9.57267 2.71646 9.3262 2.41614 9.02195 2.18268C8.71769 1.94922 8.3638 1.78888 7.98766 1.71406C7.61151 1.63924 7.2232 1.65195 6.85275 1.75121C6.48231 1.85046 6.13966 2.0336 5.85133 2.28646C5.56299 2.53932 5.33669 2.85512 5.18994 3.20942C5.04318 3.56373 4.97991 3.94704 5.005 4.32971C5.0301 4.71238 5.1429 5.08415 5.33467 5.41625M12.5003 10.833C11.7792 10.6222 11.1459 10.1835 10.6951 9.58253C10.2444 8.98157 10.0005 8.25074 10.0001 7.49954C9.99964 8.25074 9.75577 8.98157 9.30503 9.58253C8.85428 10.1835 8.22093 10.6222 7.49987 10.833M14.9981 4.27027C15.488 4.39622 15.9428 4.63199 16.328 4.95972C16.7133 5.28745 17.0189 5.69854 17.2218 6.16187C17.4246 6.6252 17.5193 7.12861 17.4988 7.63398C17.4783 8.13934 17.343 8.63341 17.1033 9.07876M15.0005 14.9999C15.7344 14.9999 16.4477 14.7577 17.0298 14.311C17.612 13.8643 18.0305 13.238 18.2204 12.5292C18.4103 11.8205 18.3611 11.0688 18.0803 10.3909C17.7995 9.71296 17.3028 9.14662 16.6673 8.7797M4.9995 14.9999C4.26568 14.9999 3.55238 14.7577 2.97021 14.311C2.38804 13.8643 1.96954 13.238 1.77961 12.5292C1.58968 11.8205 1.63894 11.0688 1.91974 10.3909C2.20054 9.71296 2.6972 9.14662 3.33268 8.7797M5.00209 4.27027C4.51221 4.39622 4.05742 4.63199 3.67216 4.95972C3.2869 5.28745 2.98127 5.69854 2.77843 6.16187C2.57558 6.6252 2.48083 7.12861 2.50136 7.63398C2.52188 8.13934 2.65714 8.63341 2.8969 9.07876" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                          </g>
+                          <defs>
+                          <clipPath id="mega-ai">
+                          <rect width="20" height="20" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          AI-платформа
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Вычислительные ресурсы для задач искусственного интеллекта.</span>
+                      </span>
+                    </a>
+                    <a href="solutions.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#mega-dr)">
+                          <path d="M18.334 10H16.2672C15.903 9.99924 15.5485 10.1178 15.258 10.3375C14.9676 10.5573 14.7571 10.8661 14.6587 11.2168L12.7002 18.184C12.6876 18.2273 12.6613 18.2653 12.6252 18.2923C12.5892 18.3194 12.5453 18.334 12.5002 18.334C12.4551 18.334 12.4113 18.3194 12.3752 18.2923C12.3391 18.2653 12.3128 18.2273 12.3002 18.184L7.69983 1.81603C7.68721 1.77275 7.66089 1.73473 7.62482 1.70769C7.58876 1.68064 7.5449 1.66602 7.49982 1.66602C7.45473 1.66602 7.41087 1.68064 7.37481 1.70769C7.33874 1.73473 7.31242 1.77275 7.2998 1.81603L5.34131 8.78325C5.24336 9.13257 5.0341 9.4404 4.74531 9.66C4.45653 9.8796 4.10398 9.99898 3.74118 10H1.66602" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                          </g>
+                          <defs>
+                          <clipPath id="mega-dr">
+                          <rect width="20" height="20" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Аварийное восстановление
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Резервная инфраструктура для восстановления сервисов.</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="header__mega-col">
+                  <div class="header__mega-head">
+                    <div class="header__mega-title">Модели использования</div>
+                    <p class="header__mega-text">Варианты развёртывания облачной платформы.</p>
+                  </div>
+                  <div class="header__mega-list">
+                    <a href="cloud.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.5001 15.834H14.5838C15.5784 15.834 16.5323 15.4389 17.2356 14.7355C17.9389 14.0322 18.334 13.0783 18.334 12.0836C18.334 11.0889 17.9389 10.135 17.2356 9.43164C16.5323 8.72829 15.5784 8.33316 14.5838 8.33316H13.092C12.7829 7.29636 12.1917 6.36593 11.3842 5.64586C10.5768 4.92578 9.58508 4.44443 8.51986 4.25558C7.45463 4.06673 6.35788 4.17783 5.35216 4.57647C4.34644 4.9751 3.47137 5.64557 2.82474 6.51294C2.17811 7.38031 1.78539 8.41041 1.69047 9.48814C1.59555 10.5659 1.80217 11.6488 2.28723 12.6158C2.7723 13.5829 3.5167 14.396 4.43726 14.9643C5.35782 15.5326 6.41826 15.8337 7.5001 15.834Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Публичное облако
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Общедоступная инфраструктура с оплатой по потреблению.</span>
+                      </span>
+                    </a>
+                    <a href="cloud.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.83333 9.16662V5.83302C5.83333 4.72786 6.27232 3.66797 7.05372 2.8865C7.83512 2.10504 8.89493 1.66602 10 1.66602C11.1051 1.66602 12.1649 2.10504 12.9463 2.8865C13.7277 3.66797 14.1667 4.72786 14.1667 5.83302V9.16662M4.16667 9.16662H15.8333C16.7538 9.16662 17.5 9.91287 17.5 10.8334V16.6672C17.5 17.5878 16.7538 18.334 15.8333 18.334H4.16667C3.24619 18.334 2.5 17.5878 2.5 16.6672V10.8334C2.5 9.91287 3.24619 9.16662 4.16667 9.16662Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Приватное облако
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Выделенные ресурсы с полным контролем и изоляцией.</span>
+                      </span>
+                    </a>
+                    <a href="cloud.html" class="header__mega-card">
+                      <span class="header__mega-card-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.583 17.5H7.5a5.833 5.833 0 1 1 5.592-7.5h1.491a3.75 3.75 0 1 1 0 7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M18.333 8.333a2.5 2.5 0 0 0-2.5-2.5h-1.839a4.585 4.585 0 0 0-8.918.417" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span class="header__mega-card-body">
+                        <span class="header__mega-card-name">
+                          Гибридное облако
+                          <svg class="header__mega-card-arrow" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.76172 0.139648C9.96085 -0.0516216 10.2774 -0.0457908 10.4688 0.15332L17.1943 7.15332C17.3801 7.34682 17.3801 7.6532 17.1943 7.84668L10.4688 14.8467C10.2774 15.0456 9.96078 15.0515 9.76172 14.8604C9.56266 14.6691 9.55596 14.3525 9.74707 14.1533L15.6592 8L0.5 8C0.224019 7.99991 0.000135655 7.77597 0 7.5C5.15302e-07 7.22391 0.223936 7.00009 0.5 7L15.6592 7L9.74707 0.84668C9.55582 0.647623 9.5628 0.330988 9.76172 0.139648Z" fill="#9FF549"/>
+                          </svg>
+                        </span>
+                        <span class="header__mega-card-text">Сочетание публичного и приватного облака в единой среде.</span>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="header__menu-item header__menu-item--has-drop">
+            <a class="header__menu-trigger" href="services.html">
+              Услуги
+              <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="header__dropdown">
+              <ul class="header__drop-list">
+                <li><a href="consalting.html">Консалтинг</a></li>
+                <li><a href="migration.html">Миграция</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="header__menu-item header__menu-item--has-drop">
+            <button class="header__menu-trigger" type="button">
+              Ресурсы
+              <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="header__dropdown">
+              <ul class="header__drop-list">
+                <li><a href="" target="_blank">Документация</a></li>
+                <li><a href="cases.html">Кейсы</a></li>
+                <li><a href="news.html">Блог</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="header__menu-item header__menu-item--has-drop">
+            <a class="header__menu-trigger" href="about.html">
+              О компании
+              <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="header__dropdown">
+              <ul class="header__drop-list">
+                <li><a href="about.html#contacts">Контакты</a></li>
+                <li><a href="about.html#vacancies">Вакансии</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="header__menu-item header__menu-item--has-drop">
+            <button class="header__menu-trigger" type="button">
+              Цены
+              <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="header__dropdown">
+              <ul class="header__drop-list">
+                <li><a href="calc.html">Калькулятор ресурсов</a></li>
+                <li><a href="ts.html">Техническая поддержка</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <div class="header__lang">
+          <button class="header__lang-trigger" type="button">
+            <span class="header__lang-current">RU</span>
+            <svg class="header__menu-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__dropdown header__dropdown--lang">
+            <ul class="header__drop-list">
+              <li><a href="" data-lang="RU" class="is-active">Русский</a></li>
+              <li><a href="" data-lang="KZ">Казахский</a></li>
+              <li><a href="" data-lang="EN">English</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="" class="header__login">Войти в портал</a>
+        <a href="" class="header__button button button-light modal-btn" data-type="feedback">Связаться с нами</a>
+      </div>
+      <div class="header__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__mobile">
+    <nav class="header__mobile-nav">
+      <ul class="header__mobile-menu">
+        <li class="header__mobile-item">
+          <a href="/" class="header__mobile-link">Главная</a>
+        </li>
+        <li class="header__mobile-item header__mobile-item--has-drop">
+          <button class="header__mobile-trigger" type="button">
+            Платформа
+            <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__mobile-drop">
+            <div class="header__mobile-drop-inner">
+              <ul class="header__mobile-sub">
+                <li class="header__mobile-sub-item">
+                  <button class="header__mobile-sub-trigger" type="button">
+                    Инфраструктура
+                    <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div class="header__mobile-sub-drop">
+                    <ul class="header__mobile-sub-list">
+                      <li><a href="">Виртуальные машины</a></li>
+                      <li><a href="">Объектное хранилище</a></li>
+                      <li><a href="">Виртуальные сети</a></li>
+                      <li><a href="">Виртуальный фаервол</a></li>
+                      <li><a href="">Резервное копирование</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="header__mobile-sub-item">
+                  <button class="header__mobile-sub-trigger" type="button">
+                    Решения
+                    <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div class="header__mobile-sub-drop">
+                    <ul class="header__mobile-sub-list">
+                      <li><a href="">Инфраструктура для 1С</a></li>
+                      <li><a href="">Облачные СУБД</a></li>
+                      <li><a href="">Контейнерная платформа</a></li>
+                      <li><a href="">AI-платформа</a></li>
+                      <li><a href="">Аварийное восстановление</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="header__mobile-sub-item">
+                  <button class="header__mobile-sub-trigger" type="button">
+                    Модели использования
+                    <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div class="header__mobile-sub-drop">
+                    <ul class="header__mobile-sub-list">
+                      <li><a href="">Публичное облако</a></li>
+                      <li><a href="">Приватное облако</a></li>
+                      <li><a href="">Гибридное облако</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="header__mobile-item header__mobile-item--has-drop">
+          <button class="header__mobile-trigger" type="button">
+            Услуги
+            <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__mobile-drop">
+            <div class="header__mobile-drop-inner">
+              <ul class="header__mobile-drop-list">
+                <li><a href="consalting.html">Консалтинг</a></li>
+                <li><a href="migration.html">Миграция</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="header__mobile-item header__mobile-item--has-drop">
+          <button class="header__mobile-trigger" type="button">
+            Ресурсы
+            <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__mobile-drop">
+            <div class="header__mobile-drop-inner">
+              <ul class="header__mobile-drop-list">
+                <li>
+                  <a href="" target="_blank" rel="noopener">
+                    Документация
+                    <svg class="header__mobile-drop-ext" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 11L11 5M11 5H5.75M11 5V10.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </li>
+                <li><a href="news.html">Блог</a></li>
+                <li><a href="cases.html">Кейсы</a></li>
+                <li>
+                  <a href="" target="_blank" rel="noopener">
+                    Instagram
+                    <svg class="header__mobile-drop-ext" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 11L11 5M11 5H5.75M11 5V10.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="" target="_blank" rel="noopener">
+                    YouTube
+                    <svg class="header__mobile-drop-ext" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 11L11 5M11 5H5.75M11 5V10.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="header__mobile-item header__mobile-item--has-drop">
+          <button class="header__mobile-trigger" type="button">
+            О компании
+            <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__mobile-drop">
+            <div class="header__mobile-drop-inner">
+              <ul class="header__mobile-drop-list">
+                <li><a href="about.html">О компании</a></li>
+                <li><a href="about.html#contacts">Контакты</a></li>
+                <li><a href="about.html#vacancies">Вакансии</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="header__mobile-item header__mobile-item--has-drop">
+          <button class="header__mobile-trigger" type="button">
+            Цены
+            <svg class="header__mobile-arrow" width="16" height="16" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="header__mobile-drop">
+            <div class="header__mobile-drop-inner">
+              <ul class="header__mobile-drop-list">
+                <li><a href="calc.html">Калькулятор ресурсов</a></li>
+                <li><a href="ts.html">Техническая поддержка</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__mobile-bottom">
+      <a href="" class="button button-primary modal-btn" data-type="feedback">Связаться с нами</a>
+      <a href="" class="button button-border">Войти в портал</a>
+    </div>
+  </div>
+</header>
+
+
+    <main>
+      <section class="hero hero-inner section-top section-hidden">
+        <div class="container">
+          <div class="hero__container">
+            <div class="hero__body">
+              <nav class="breadcrumbs">
+                <ul class="breadcrumbs__list">
+                  <li><a href="/">Главная</a></li>
+                  <li><a href="services.html">Услуги</a></li>
+                  <li><span aria-current="page">Консалтинг</span></li>
+                </ul>
+              </nav>
+              <h1 class="hero__title title-decor">Проектируем <strong>облачную инфраструктуру,</strong> которая работает на бизнес</h1>
+              <div class="hero__text">От аудита текущей инфраструктуры до разработки архитектуры и стратегии миграции — с учетом требований по отказоустойчивости, безопасности и масштабируемости.</div>
+              <div class="hero__buttons">
+                <a href="" class="button button-primary modal-btn" data-type="feedback">Обсудить задачу</a>
+              </div>
+            </div>
+            <div class="hero__img">
+              <img src="img/hero-consalting.png" alt="Консалтинг CloudApps" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="expertise section-pad section-hidden">
+        <div class="container">
+          <div class="expertise__container">
+            <div class="expertise__body">
+              <h2 class="expertise__title">Инженерная экспертиза до начала инфраструктурных изменений</h2>
+              <div class="expertise__text">Консалтинг CloudApps — это участие сертифицированных инженеров в проектировании, оценке и подготовке инфраструктурных решений. Услуга ориентирована на организации, которые планируют переход в облако, масштабирование существующей инфраструктуры или подготовку к ИТ-аудиту.</div>
+              <div class="expertise__result">
+                <div class="expertise__result-title">Результат — конкретный документ</div>
+                <div class="expertise__result-text">Архитектурная схема, отчёт по аудиту, дорожная карта или стратегия миграции с оценкой совокупной стоимости.</div>
+              </div>
+            </div>
+            <ul class="expertise__list">
+              <li class="expertise__item is-active">
+                <span class="expertise__item-num">01</span>
+                <div class="expertise__item-body">
+                  <h3 class="expertise__item-title">Архитектурная схема</h3>
+                  <div class="expertise__item-text">Детализированная схема целевого облачного ландшафта</div>
+                </div>
+              </li>
+              <li class="expertise__item">
+                <span class="expertise__item-num">02</span>
+                <div class="expertise__item-body">
+                  <h3 class="expertise__item-title">Отчёт по аудиту</h3>
+                  <div class="expertise__item-text">Анализ уязвимостей, узких мест производительности и рекомендации</div>
+                </div>
+              </li>
+              <li class="expertise__item">
+                <span class="expertise__item-num">03</span>
+                <div class="expertise__item-body">
+                  <h3 class="expertise__item-title">Дорожная карта</h3>
+                  <div class="expertise__item-text">Пошаговый план внедрения изменений без простоя систем</div>
+                </div>
+              </li>
+              <li class="expertise__item">
+                <span class="expertise__item-num">04</span>
+                <div class="expertise__item-body">
+                  <h3 class="expertise__item-title">Страны миграции &amp; TCO</h3>
+                  <div class="expertise__item-text">Оценка совокупной стоимости владения инфраструктурой</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="result section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="result__container">
+            <h2 class="result__title">Типовые сценарии использования</h2>
+            <div class="result__grid">
+              <div class="result__card">
+                <h3 class="result__card-title">Планирование перехода в облако</h3>
+                <div class="result__card-text">Компания рассматривает перенос инфраструктуры, но не определилась с архитектурой и объёмом работ. Помогаем выбрать подходящую модель, оценить риски и сформировать план.</div>
+              </div>
+              <div class="result__card">
+                <h3 class="result__card-title">Обследование существующей инфраструктуры</h3>
+                <div class="result__card-text">Организация испытывает проблемы с производительностью, надёжностью или защищённостью. Проводим анализ, выявляем слабые места и предлагаем приоритизированный план улучшений.</div>
+              </div>
+              <div class="result__card">
+                <h3 class="result__card-title">Оценка затрат и оптимизация</h3>
+                <div class="result__card-text">Расходы на ИТ-инфраструктуру превышают ожидания. Анализируем потребление ресурсов, выявляем избыточные статьи и предлагаем конкретные меры по снижению стоимости.</div>
+              </div>
+              <div class="result__card">
+                <h3 class="result__card-title">Подготовка к проверке по информационной безопасности</h3>
+                <div class="result__card-text">Компания готовится к сертификации или внутреннему аудиту. Проводим анализ соответствия текущих практик требованиям стандарта и разрабатываем план устранения замечаний.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="how section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="how__container">
+            <div class="how__head">
+              <h2 class="how__title">Как проходит консалтинг</h2>
+            </div>
+            <div class="how__body">
+              <ol class="how__list">
+                <li class="how__item">
+                  <span class="how__item-num">1</span>
+                  <div class="how__item-body">
+                    <h3 class="how__item-title">Встреча</h3>
+                    <div class="how__item-text">Обсуждаем задачи и ограничения. При необходимости подписываем соглашение о конфиденциальности.</div>
+                  </div>
+                </li>
+                <li class="how__item">
+                  <span class="how__item-num">2</span>
+                  <div class="how__item-body">
+                    <h3 class="how__item-title">Сбор данных</h3>
+                    <div class="how__item-text">Изучаем текущую инфраструктуру: конфигурации, нагрузку, схемы сети, политики доступа.</div>
+                  </div>
+                </li>
+                <li class="how__item">
+                  <span class="how__item-num">3</span>
+                  <div class="how__item-body">
+                    <h3 class="how__item-title">Анализ</h3>
+                    <div class="how__item-text">Формируем выводы, прорабатываем возможные сценарии и оцениваем их.</div>
+                  </div>
+                </li>
+                <li class="how__item">
+                  <span class="how__item-num">4</span>
+                  <div class="how__item-body">
+                    <h3 class="how__item-title">Отчёт</h3>
+                    <div class="how__item-text">Передаём структурированный документ с планом развития, обоснованием решений и приоритетами.</div>
+                  </div>
+                </li>
+                <li class="how__item">
+                  <span class="how__item-num">5</span>
+                  <div class="how__item-body">
+                    <h3 class="how__item-title">Планы</h3>
+                    <div class="how__item-text">Обсуждаем дальнейшие действия по решению задач.</div>
+                  </div>
+                </li>
+              </ol>
+              <div class="how__img">
+                <img src="img/how-services.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="result section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="result__container">
+            <h2 class="result__title">Что входит в консалтинг</h2>
+            <div class="result__grid">
+              <div class="result__card">
+                <span class="result__icon">
+                  <svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.2002 9.65575C17.9866 9.60861 18.532 9.62465 19.2991 9.8121C20.8864 10.1988 22.2541 11.2025 23.0994 12.6009C24.3202 14.6163 24.3298 17.1557 23.0239 19.1758C22.9138 19.3461 22.8223 19.4084 22.7707 19.6177C23.1153 20.0413 23.5388 19.6073 24.0263 20.1654C24.8271 21.0823 27.2051 22.5463 25.896 23.944C24.6449 25.2798 23.3989 23.5984 22.5363 22.7105C22.2911 22.4751 21.8219 22.0505 21.7068 21.7386C21.6183 21.4986 21.7363 21.2401 21.5594 20.9745C21.4962 20.9381 21.4177 20.8668 21.3457 20.9187C19.1395 22.5102 16.1038 22.4447 13.9554 20.7532C12.6491 19.7223 11.8115 18.2099 11.6305 16.5555C11.4564 14.9084 11.9397 13.2592 12.9753 11.9668C14.0256 10.6715 15.5431 9.8414 17.2002 9.65575ZM18.1959 20.2218C20.601 20.0044 22.3808 17.8874 22.1825 15.48C21.9841 13.0725 19.8819 11.2756 17.4735 11.455C15.0381 11.6364 13.217 13.768 13.4175 16.2025C13.6181 18.637 15.7636 20.4416 18.1959 20.2218Z" fill="#FEFEFE"/>
+                    <path d="M19.4235 13.5916C19.9242 13.523 20.4625 13.6549 20.5306 14.2657C20.545 14.3942 20.4538 14.6946 20.3664 14.7893C19.5272 15.6984 18.6393 16.5702 17.7791 17.4611C16.9989 18.2587 16.7438 18.1584 16.0329 17.4125C15.7388 17.1025 14.9386 16.5066 15.0149 16.1174C15.3272 14.5225 16.4131 15.6174 16.9123 16.1051C17.5641 15.4422 18.7587 14.1454 19.4235 13.5916Z" fill="#FEFEFE"/>
+                    <path d="M1.46094 0.0272202C2.21912 -0.0178658 3.40563 0.0211177 4.19189 0.0231695L9.36526 0.0295875L14.5747 0.0211698C14.893 0.0201177 15.2155 0.0137526 15.546 0.0178561C17.0933 0.0369532 19.1181 -0.374398 19.0765 1.89026C19.0609 2.7389 19.1679 3.94986 19.0364 4.78166C19.0051 4.97352 18.9389 5.15807 18.8411 5.32611C18.5812 5.7686 18.2233 5.94311 17.7488 6.06164L6.92616 6.06106L3.43067 6.06984C2.33656 6.07242 0.4107 6.38076 0.0996458 4.97263C0.00776027 4.52287 -0.0206412 3.95117 0.0147035 3.49026C0.136779 1.901 -0.507418 0.527216 1.46094 0.0272202ZM12.2835 3.73269C12.9615 3.31397 12.7315 2.4989 12.1636 2.50274C10.4854 2.5141 8.44472 2.39999 6.79346 2.49053C6.11344 2.98395 6.41156 3.75105 7.07385 3.73679C8.72516 3.70123 10.6557 3.84453 12.2835 3.73269ZM3.52213 4.06549C3.87479 3.96716 4.14629 3.68502 4.23097 3.32875C4.3157 2.97248 4.20031 2.59833 3.9296 2.35175C3.65894 2.10517 3.27572 2.02505 2.92901 2.14258C2.41283 2.31755 2.12975 2.87174 2.29044 3.39262C2.45112 3.9135 2.99717 4.2118 3.52213 4.06549Z" fill="#FEFEFE"/>
+                    <path d="M1.56563 7.07129C3.0643 7.12164 4.62783 7.09917 6.13124 7.09907L13.1704 7.09949C14.4663 7.0987 15.7739 7.09933 17.0694 7.08802C18.3213 7.07713 18.8103 7.37868 19.0864 8.62215C17.0502 8.39309 15.9168 8.59032 14.0893 9.54323C12.6146 10.3853 11.676 11.614 10.9685 13.1234L4.69221 13.1226C3.63308 13.123 2.55175 13.1354 1.50924 13.1028C0.83438 13.0374 0.217848 12.642 0.0976136 11.9346C-0.0468682 11.0841 0.0423878 10.165 0.0271349 9.30128C0.0225064 9.03887 0.0229268 8.63278 0.0622161 8.38762C0.0949835 8.18018 0.171826 7.98222 0.287538 7.80703C0.606587 7.32571 1.03256 7.17519 1.56563 7.07129ZM11.4858 10.74C12.4438 10.4387 12.0727 9.55875 11.6855 9.51566C10.2618 9.3571 8.64407 9.43633 7.19621 9.44685C6.9773 9.46153 6.77123 9.4639 6.61628 9.64424C6.50651 9.77203 6.41279 9.96505 6.4283 10.1368C6.44503 10.3224 6.557 10.4939 6.70775 10.5997C7.13036 10.8963 10.7198 10.7318 11.4858 10.74ZM3.57333 11.101C4.10444 10.9448 4.4136 10.3929 4.26939 9.85831C4.12517 9.32369 3.58043 9.00225 3.04284 9.13451C2.6843 9.22274 2.40154 9.4982 2.30392 9.85441C2.2063 10.2106 2.30913 10.5918 2.57263 10.8506C2.83614 11.1093 3.21909 11.2052 3.57333 11.101Z" fill="#FEFEFE"/>
+                    <path d="M1.64841 14.1267L7.32102 14.1166C8.29052 14.1166 9.69831 14.0861 10.624 14.1653C10.4715 15.1425 10.4226 15.5425 10.444 16.5252C9.69011 16.5276 7.12489 16.3283 6.62449 16.7431C6.5103 16.8378 6.43993 16.9629 6.43241 17.1122C6.42336 17.2917 6.50068 17.4878 6.62917 17.6133C6.70464 17.6875 6.79995 17.7382 6.90361 17.7595C7.23834 17.8303 7.99714 17.8045 8.36137 17.8018C9.12323 17.7909 9.88519 17.791 10.647 17.8021L10.8191 18.385C11.0273 18.9349 11.4177 19.7086 11.7602 20.1895C11.0793 20.237 10.1756 20.2167 9.4813 20.2174L5.69974 20.2194L2.9671 20.2201C1.76213 20.2211 0.326197 20.3908 0.0564836 18.8212C-0.0187816 18.3833 0.03818 17.773 0.0390216 17.3173C0.0417566 15.852 -0.275451 14.3459 1.64841 14.1267ZM3.57201 18.1465C4.11391 17.9859 4.42281 17.4162 4.26176 16.8743C4.10076 16.3324 3.53083 16.0239 2.98925 16.1856C2.44835 16.3469 2.14045 16.916 2.30129 17.4572C2.46213 17.9984 3.03085 18.3069 3.57201 18.1465Z" fill="#FEFEFE"/>
+                  </svg>
+                </span>
+                <h3 class="result__card-title">Аудит инфраструктуры</h3>
+                <div class="result__card-text">Анализ производительности, защищённости и соответствия уровню сервиса. Выявление узких мест и формирование плана развития.</div>
+              </div>
+              <div class="result__card">
+                <span class="result__icon">
+                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.193 0.00826433C14.1102 -0.0894833 15.8753 0.681345 17.0156 2.24189C17.489 2.88971 17.6725 3.45705 17.926 4.19921C18.2179 4.18879 18.5309 4.17032 18.8223 4.18632C21.3195 4.32352 23.2041 6.25612 23.263 8.75741C23.2908 9.9841 22.8306 11.1715 21.9828 12.0584C21.4205 12.6536 20.7089 13.0874 19.9221 13.3147C18.8107 13.6283 15.0801 13.4884 13.6557 13.521L13.65 16.0323C15.2541 16.0777 16.8967 16.0023 18.4888 16.0398C19.8947 16.0728 21.4347 15.7386 22.5093 16.8091C23.4102 17.7063 23.2756 18.9254 23.2693 20.0779C24.6604 20.07 25.7513 20.1804 25.6498 21.9415C25.5262 24.0734 26.4051 26.1902 23.254 25.9639C22.2105 25.889 20.6368 26.2111 19.7185 25.5543C19.0395 24.8034 19.384 22.3547 19.3598 21.336C19.3577 21.1176 19.5981 20.5992 19.7459 20.4574C20.2145 20.0074 21.0471 20.0894 21.6409 20.0901C21.6798 19.0622 21.9449 17.714 20.5274 17.6904C18.777 17.6613 17.0277 17.6885 15.2768 17.6735C14.7482 17.669 14.1775 17.6538 13.6536 17.7128L13.6426 20.0807C15.6607 20.0801 16.1215 20.3947 16.0431 22.5488C15.9731 24.469 16.4959 26.0885 13.8619 25.9435C12.8389 25.9187 11.0417 26.168 10.1812 25.6459C9.60321 25.1698 9.6253 24.0553 9.66422 23.42C9.71892 22.5312 9.52011 21.433 9.95455 20.6701C10.3338 20.0041 11.3789 20.0839 12.0289 20.0818C12.0279 19.2835 12.0221 18.4852 12.0116 17.687C11.9516 17.6839 11.8917 17.6815 11.8322 17.6799C9.60531 17.6239 7.32317 17.7063 5.09256 17.6902C3.76083 17.6806 4.01171 19.1405 4.03643 20.0821C4.94266 20.0793 6.22338 20.0623 6.31647 21.3482C6.35118 22.4616 6.35276 23.6205 6.31647 24.7316C6.2928 25.4729 5.44337 26.0117 4.74595 25.965C3.491 25.8812 1.55652 26.266 0.481452 25.5933C0.068046 25.3349 -0.0308362 24.134 0.0133447 23.7064C0.0854014 22.7318 -0.250686 21.174 0.515641 20.4224C0.947982 19.9985 1.83791 20.0778 2.39648 20.08C2.41331 18.9448 2.29286 17.7341 3.13651 16.8379C4.1595 15.752 5.94619 16.0394 7.35525 16.0445C8.91367 16.0563 10.4726 16.0514 12.0316 16.0297C12.0037 15.2362 12.0226 14.3219 12.0205 13.5195C10.8124 13.4774 9.5827 13.5233 8.37299 13.5141C7.60245 13.5083 6.65992 13.564 5.91569 13.398C5.26613 13.2499 4.66022 12.9514 4.14688 12.5264C3.33637 11.8447 2.84039 10.8282 2.75308 9.77655C2.6563 8.65488 3.02027 7.54204 3.76082 6.69435C4.66443 5.65611 5.72582 5.33388 7.03652 5.25302C7.45203 2.28176 9.15772 0.356431 12.193 0.00826433Z" fill="#FEFEFE"/>
+                  </svg>
+                </span>
+                <h3 class="result__card-title">Проектирование облачной архитектуры</h3>
+                <div class="result__card-text">Разработка архитектуры под задачи клиента: выбор модели — публичное, приватное или гибридное облако — и схемы отказоустойчивости.</div>
+              </div>
+              <div class="result__card">
+                <span class="result__icon">
+                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4596 5.21369C13.1117 5.17205 13.3513 5.4106 13.869 5.76676C15.2848 6.7407 16.8878 7.26845 18.4569 7.91625C18.637 7.99059 18.815 8.29102 18.9224 8.45512C19.0502 10.5325 19.0653 13.2844 18.2837 15.2129C17.434 17.3094 15.0368 19.5966 12.9735 20.44C12.174 20.5121 11.4966 19.9616 10.8661 19.5385C9.3016 18.4871 8.0771 17.1999 7.25544 15.503C6.38931 13.7993 6.42133 12.0051 6.46648 10.147C6.48374 9.43538 6.20837 8.19902 7.02947 7.86483C8.00619 7.46737 8.9681 7.11239 9.93466 6.67681C10.8088 6.28282 11.6157 5.57784 12.4596 5.21369ZM11.7618 13.7307C11.3528 13.3454 10.385 12.2287 9.91175 12.3285C8.21496 12.6863 9.7659 13.8997 10.0449 14.2543C10.2586 14.4538 10.5601 14.7132 10.7368 14.9384C11.0031 15.2783 11.7776 15.9076 12.2076 15.4907C13.4957 14.2409 14.7388 12.894 15.9895 11.6037C16.7013 10.8726 16.5797 10.0375 15.4542 10.077C15.0363 10.3242 14.6324 10.8222 14.2775 11.1637C13.4674 11.9432 12.5992 13.0005 11.7618 13.7307Z" fill="#FEFEFE"/>
+                    <path d="M11.882 0.0368832C12.0576 0.00519158 12.6416 0.00083208 12.8399 4.95712e-05C14.7404 -0.00542799 16.6147 0.443117 18.3069 1.30829C19.0856 1.69994 19.6098 2.09119 20.3388 2.51537C20.8803 2.09969 21.0804 1.21311 21.9026 1.3164C22.0495 1.32338 22.4884 1.53136 22.5346 1.68915C22.9029 2.94703 22.9715 4.5552 23.156 5.84164C23.4323 6.63868 22.6701 7.52035 21.7487 7.08035C20.8927 6.6716 17.3173 6.5042 17.4875 5.09826C17.5389 4.67369 18.4406 4.24052 18.8414 4.01259C14.9997 1.40068 10.1359 1.37201 6.3961 4.20877C3.68252 6.27677 2.08168 9.48696 2.06229 12.8992C2.06072 13.3817 2.13633 14.304 2.27424 14.8484C2.55258 15.9472 1.70952 16.8337 0.696641 16.2183C0.205066 15.9199 0.0890026 14.4996 0.0370343 13.8712C-0.220516 10.4797 0.872884 7.12389 3.07885 4.53547C5.28583 1.90881 8.4608 0.286336 11.882 0.0368832Z" fill="#FEFEFE"/>
+                    <path d="M23.7726 9.17832C24.4826 9.14607 24.8941 9.4954 25.0297 10.193C25.6744 13.5092 25.0015 16.7977 23.1531 19.6225C20.032 24.431 14.0415 26.4996 8.61942 24.6423C7.99966 24.4327 7.39727 24.1745 6.81785 23.8704C6.21407 23.549 5.66964 23.1108 5.06278 22.8028C4.86921 22.7045 4.51108 23.2578 4.4224 23.3886C4.12624 23.9023 3.47954 24.236 2.97757 23.7676C2.53847 23.3584 2.46241 21.8767 2.37999 21.2988C2.28114 20.5079 2.15413 19.7259 2.07422 18.9322C2.34283 18.3643 2.57546 18.0799 3.27211 18.2062C4.01403 18.3739 4.53997 18.5695 5.28703 18.8109C5.97334 19.0328 7.79407 19.2201 7.65667 20.2636C7.59855 20.7046 6.93431 21.0618 6.56126 21.2742C7.0853 21.6554 7.51753 21.9209 8.10404 22.2053C10.6424 23.4384 13.5708 23.5954 16.2263 22.6402C20.8222 21.0266 23.8495 16.004 23.0994 11.1802C22.9664 10.325 22.5888 9.57069 23.7726 9.17832Z" fill="#FEFEFE"/>
+                  </svg>
+                </span>
+                <h3 class="result__card-title">Планирование непрерывности</h3>
+                <div class="result__card-text">Разработка стратегии восстановления после сбоев: целевые показатели по времени и объёму потерь, схема резервирования, документирование и тестирование сценариев.</div>
+              </div>
+              <div class="result__card">
+                <span class="result__icon">
+                  <svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.5098 0.0231196C21.6513 -0.229966 24.1469 1.61211 24.8488 4.69872C26.1994 4.88266 27.1594 5.1168 28.1792 6.15105C29.0247 7.00812 29.4935 8.16691 29.4818 9.37074C29.4549 11.2209 28.1647 13.1846 26.3978 13.673C24.7521 14.1278 22.138 13.9648 20.3957 13.932C19.6799 15.1037 19.1289 15.7783 18.0661 16.6637C18.175 17.3154 18.0884 17.8928 17.6179 18.3919C17.3067 18.7222 16.8736 18.9111 16.4199 18.9145C15.7621 18.9223 15.3822 18.6216 14.9474 18.1868C13.8589 18.5652 12.4507 18.8206 11.3124 18.9721C11.1532 19.3689 11.0034 19.65 10.6553 19.9167C10.306 20.1861 9.86236 20.3023 9.42594 20.2397C8.94929 20.1738 8.51901 19.9183 8.23402 19.5304C7.97194 19.1772 7.86633 18.7317 7.94177 18.2985C8.13791 17.1304 9.34994 16.4686 10.424 17.0342C10.776 17.2198 10.9788 17.511 11.2029 17.8313C12.4479 17.6927 13.4599 17.4518 14.6535 17.0834C14.796 16.4887 14.8675 16.302 15.2872 15.8683C16.0214 15.3513 16.5774 15.3759 17.372 15.7576C19.4195 14.0679 20.0979 12.1897 20.5371 9.67894C21.2076 9.61584 23.0343 9.92152 23.2808 9.2442C23.273 9.1641 23.2534 9.02923 23.2025 8.97116C22.6952 8.39143 20.5471 5.88785 20.0001 5.75544C19.8201 5.78294 19.4949 5.93402 19.3804 6.06627C18.93 6.5868 16.6311 8.69784 16.5674 9.21648C16.7641 9.87244 18.0879 9.65273 18.6981 9.67039C18.6774 9.8768 18.6534 10.0789 18.6081 10.2817C18.2706 11.7869 17.3475 13.0958 16.0432 13.9191C14.1785 13.9727 12.1819 14.2172 10.6575 13.0058C9.75563 12.2931 9.18118 11.2447 9.06663 10.1007C8.78556 7.44801 10.714 5.52918 13.2794 5.29041C13.7963 2.3693 15.523 0.461771 18.5098 0.0231196Z" fill="#FEFEFE"/>
+                    <path d="M5.3619 17.9064C6.07381 17.85 6.44709 17.9232 7.11262 18.1982C7.25791 20.1623 8.13298 21.2874 10.2441 20.9599C12.0211 21.753 12.5514 23.5455 11.2589 25.1077C10.3346 26.2245 8.01396 25.8735 6.6002 25.8992C5.17024 25.8858 3.55531 25.9679 2.1354 25.8461C1.89232 25.8254 1.42852 25.6152 1.21562 25.4828C0.617149 25.1094 0.19693 24.5074 0.0533193 23.8166C-0.214904 22.5808 0.556238 21.2617 1.75095 20.866C1.94597 20.8017 2.1544 20.7648 2.35445 20.7223C2.86017 19.1361 3.63242 18.1585 5.3619 17.9064Z" fill="#FEFEFE"/>
+                  </svg>
+                </span>
+                <h3 class="result__card-title">Стратегия перехода в облако</h3>
+                <div class="result__card-text">Поэтапный план переноса с оценкой рисков, выбором приоритетных систем и расчётом общей стоимости владения до и после перехода.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cta section-pad-bottom">
+        <div class="container">
+          <div class="cta__container">
+            <div class="cta__body">
+              <h2 class="cta__title">Разберём вашу инфраструктуру и подготовим план действий</h2>
+              <div class="cta__text">Обсудим текущие задачи, определим необходимый объём обследования и предложим подходящий формат консалтинга.</div>
+              <div class="cta__buttons">
+                <a href="" class="button button-primary modal-btn" data-type="feedback">Запросить консультацию</a>
+              </div>
+              <ul class="cta__list">
+                <li>Отвечаем в течение рабочего дня</li>
+                <li>Говорим с инженерами на одном языке</li>
+                <li>Без навязчивых звонков</li>
+                <li>Техническая поддержка 24/7</li>
+              </ul>
+            </div>
+            <div class="cta__img">
+              <img src="img/feedback-img.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="clients section-pad-bottom section-hidden">
+        <!-- <div class="container">
+          <div class="clients__title">Наши клиенты</div>
+        </div> -->
+        <div class="clients__marquee">
+          <ul class="clients__list">
+            <li><img src="img/partner-1.png" alt="Bolashak" /></li>
+            <li><img src="img/partner-2.png" alt="Qitas" /></li>
+            <li><img src="img/partner-3.png" alt="Kazakh Tourism Development" /></li>
+            <li><img src="img/partner-4.png" alt="cb-xp" /></li>
+            <li><img src="img/partner-5.png" alt="" /></li>
+            <li><img src="img/partner-6.png" alt="" /></li>
+            <li><img src="img/partner-7.png" alt="" /></li>
+            <li><img src="img/partner-8.png" alt="" /></li>
+            <li><img src="img/partner-9.png" alt="" /></li>
+            <li><img src="img/partner-10.png" alt="" /></li>
+            <li><img src="img/partner-11.png" alt="" /></li>
+            <li><img src="img/partner-12.png" alt="" /></li>
+            <li><img src="img/partner-13.png" alt="" /></li>
+            <li><img src="img/partner-14.png" alt="" /></li>
+            <li><img src="img/partner-15.png" alt="" /></li>
+          </ul>
+          <ul class="clients__list" aria-hidden="true">
+            <li><img src="img/partner-1.png" alt="" /></li>
+            <li><img src="img/partner-2.png" alt="" /></li>
+            <li><img src="img/partner-3.png" alt="" /></li>
+            <li><img src="img/partner-4.png" alt="" /></li>
+            <li><img src="img/partner-5.png" alt="" /></li>
+            <li><img src="img/partner-6.png" alt="" /></li>
+            <li><img src="img/partner-7.png" alt="" /></li>
+            <li><img src="img/partner-8.png" alt="" /></li>
+            <li><img src="img/partner-9.png" alt="" /></li>
+            <li><img src="img/partner-10.png" alt="" /></li>
+            <li><img src="img/partner-11.png" alt="" /></li>
+            <li><img src="img/partner-12.png" alt="" /></li>
+            <li><img src="img/partner-13.png" alt="" /></li>
+            <li><img src="img/partner-14.png" alt="" /></li>
+            <li><img src="img/partner-15.png" alt="" /></li>
+          </ul>
+        </div>
+      </section>
+      <section class="services section-pad-bottom section-hidden">
+        <div class="container">
+          <div class="services__container">
+            <div class="services__head">
+              <div class="services__head-body">
+                <h2 class="services__title">Другие услуги</h2>
+              </div>
+            </div>
+            <div class="swiper services__swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a class="services__card" href="migration.html" aria-label="Подробнее о переносе">
+                    <div class="services__card-img">
+                      <img src="img/migration.png" alt="Миграция" />
+                      <div class="services__card-arrow">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="services__card-content">
+                      <h3 class="services__card-title">Миграция</h3>
+                      <div class="services__card-text">Переносим серверы, базы данных и корпоративные приложения в облако поэтапно — с проверкой данных на каждом шаге и сопровождением после завершения работ.</div>
+                      <ul class="services__card-list">
+                        <li>Перенос виртуальных машин</li>
+                        <li>Перенос баз данных</li>
+                        <li>Корпоративные приложения</li>
+                      </ul>
+                      <div class="services__card-link">
+                        Подробнее о переносе
+                        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8 1L13 6L8 11M13 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a class="services__card" href="support.html" aria-label="Подробнее о поддержке">
+                    <div class="services__card-img">
+                      <img src="img/support.png" alt="Поддержка" />
+                      <div class="services__card-arrow" >
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="services__card-content">
+                      <h3 class="services__card-title">Поддержка</h3>
+                      <div class="services__card-text">Поддерживаем инфраструктуру в режиме 24/7: мониторинг, устранение сбоев, плановые работы. Три тарифа — под задачи любого масштаба.</div>
+                      <ul class="services__card-list">
+                        <li>Мониторинг доступности</li>
+                        <li>Сопровождение</li>
+                        <li>Ежемесячный отчёт</li>
+                      </ul>
+                      <div class="services__card-link">
+                        Подробнее о поддержке
+                        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8 1L13 6L8 11M13 6H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="counter services__pagination"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modals">
+  <div class="modal modal-feedback" data-type="feedback" data-lenis-prevent>
+    <button class="modal__close" type="button">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.68 24.216L11.816 23.352L17.064 18.072L11.816 12.792L12.68 11.928L17.928 17.208L23.144 11.928L24.008 12.792L18.76 18.072L24.008 23.352L23.144 24.216L17.928 18.968L12.68 24.216Z" fill="#B8B8B8"/>
+      </svg>
+    </button>
+
+    <div class="modal__head">
+      <h2 class="modal__title">Оставьте заявку</h2>
+    </div>
+
+    <form class="form" action="#" method="POST">
+      <input type="hidden" name="topic" data-modal-topic />
+      <label class="form__field">
+        <span class="form__label">Имя<i>*</i></span>
+        <input class="form__input" type="text" name="name" placeholder="Введите ваше имя" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">Номер телефона<i>*</i></span>
+        <input class="form__input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" data-mask="+7 (___) ___-__-__" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">E-mail<i>*</i></span>
+        <input class="form__input" type="email" name="email" placeholder="mail@example.com" required />
+      </label>
+      <label class="form__field">
+        <span class="form__label">Сообщение</span>
+        <textarea class="form__input form__input--area" name="message" placeholder="Опишите вашу задачу или задайте вопрос"></textarea>
+      </label>
+      <div class="form__bottom">
+        <label class="form__check">
+          <input type="checkbox" name="agree" checked required />
+          <span class="form__check-box">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="form__check-text">Я согласен на обработку персональных данных</span>
+        </label>
+        <button class="button button-primary form__submit" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal modal-success" data-type="success" data-lenis-prevent>
+    <button class="modal__close" type="button">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.68 24.216L11.816 23.352L17.064 18.072L11.816 12.792L12.68 11.928L17.928 17.208L23.144 11.928L24.008 12.792L18.76 18.072L24.008 23.352L23.144 24.216L17.928 18.968L12.68 24.216Z" fill="#B8B8B8"/>
+      </svg>
+    </button>
+
+    <div class="modal__img">
+      <img src="img/modal-success.png" alt="" />
+    </div>
+    <h2 class="modal__title">Заявка отправлена</h2>
+    <div class="modal__text">Спасибо! Мы получили вашу заявку и свяжемся с вами в ближайшее рабочее время.</div>
+    <button class="button button-border modal__button" type="button" data-modal-close>Закрыть</button>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <div class="footer__top">
+        <a href="/" class="footer__logo">
+          <img src="img/footer-logo.svg" alt="CloudApps" />
+        </a>
+        <div class="footer__cols">
+          <div class="footer__col is-open">
+            <button class="footer__col-title" type="button">
+              Платформа
+              <svg class="footer__col-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="footer__col-list">
+              <li><a href="">Инфраструктура</a></li>
+              <li><a href="">Решения</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <button class="footer__col-title" type="button">
+              Услуги
+              <svg class="footer__col-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="footer__col-list">
+              <li><a href="">Поддержка</a></li>
+              <li><a href="">Консалтинг</a></li>
+              <li><a href="">Миграция</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <button class="footer__col-title" type="button">
+              Ресурсы
+              <svg class="footer__col-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="footer__col-list">
+              <li><a href="">Документация</a></li>
+              <li><a href="">Кейсы</a></li>
+              <li><a href="">Блог</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <button class="footer__col-title" type="button">
+              Компания
+              <svg class="footer__col-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="footer__col-list">
+              <li><a href="">О компании</a></li>
+              <li><a href="">Контакты</a></li>
+              <li><a href="">Вакансии</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <div class="footer__col-title">Контакты</div>
+            <ul class="footer__col-list">
+              <li><a href="tel:+77077777777">+7 (707) 777 77 77</a></li>
+              <li><a href="mailto:cloudapps@testmail.com">cloudapps@testmail.com</a></li>
+              <li><address class="footer__address">г. Алматы, ЖК Солнечный квартал, ул. Бальзака 8Д, НП: 394</address></li>
+              <li><a href="" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="" target="_blank" rel="noopener">Youtube</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copy">© 2026 CloudApps. Все права защищены.</div>
+        <a href="legal.html" class="footer__bottom-link">Политика конфиденциальности</a>
+        <a href="terms.html" class="footer__bottom-link">Пользовательское соглашение</a>
+        <a href="https://factum.agency/" target="_blank" rel="noopener" class="footer__made">Сделано в <strong>factum.</strong></a>
+      </div>
+    </div>
+  </div>
+</footer>
+ 
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260826132609"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260826132609"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260826132609"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260826132609"></script>
+<script src="js/app.min.js?_v=20260826132609"></script>
+  </body>
+</html>
