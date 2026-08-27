@@ -9,8 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="img/site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260827122912" />
-  <link rel="stylesheet" href="css/style.css?_v=20260827122912" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260827123844" />
+  <link rel="stylesheet" href="css/style.css?_v=20260827123844" />
   <script>document.documentElement.classList.add("is-loading");</script>
 </head>
 
@@ -585,44 +585,54 @@
                         <option value="PWQ" data-k="1">PWQ — Павлодар</option>
                       </select>
                     </label>
-                    <label class="calc__field">
-                      <span class="calc__label">vCPU</span>
-                      <select class="calc__select" name="vcpu" data-calc-input="vcpu">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="4" selected>4</option>
-                        <option value="8">8</option>
-                        <option value="16">16</option>
-                        <option value="32">32</option>
-                      </select>
-                    </label>
-                    <label class="calc__field">
-                      <span class="calc__label">vRAM, GB</span>
-                      <select class="calc__select" name="vram" data-calc-input="vram">
-                        <option value="2">2</option>
-                        <option value="4" selected>4</option>
-                        <option value="8">8</option>
-                        <option value="16">16</option>
-                        <option value="32">32</option>
-                        <option value="64">64</option>
-                      </select>
-                    </label>
-                    <label class="calc__field">
-                      <span class="calc__label">SSD, GB</span>
-                      <input class="calc__input" type="number" name="ssd" min="0" step="10" value="50" data-calc-input="ssd" />
-                    </label>
-                    <label class="calc__field">
-                      <span class="calc__label">HDD, GB</span>
-                      <input class="calc__input" type="number" name="hdd" min="0" step="10" value="0" data-calc-input="hdd" />
-                    </label>
-                    <label class="calc__field calc__field--wide">
-                      <span class="calc__label">NVMe, GB</span>
-                      <input class="calc__input" type="number" name="nvme" min="0" step="10" value="0" data-calc-input="nvme" />
-                    </label>
-                    <label class="calc__field calc__field--wide">
-                      <span class="calc__label">Кол-во ВМ</span>
-                      <input class="calc__input" type="number" name="vm" min="1" step="1" value="1" data-calc-input="vm" />
-                    </label>
+                    <div class="calc__field">
+                      <label class="calc__label" for="calc-vcpu">vCPU</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-vcpu" type="number" name="vcpu" min="1" max="64" step="1" value="4" data-calc-input="vcpu" />
+                        <button class="calc__stepper-btn" type="button" data-step="-1" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="1" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field">
+                      <label class="calc__label" for="calc-vram">vRAM, GB</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-vram" type="number" name="vram" min="2" max="256" step="2" value="4" data-calc-input="vram" />
+                        <button class="calc__stepper-btn" type="button" data-step="-2" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="2" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field">
+                      <label class="calc__label" for="calc-ssd">SSD, GB</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-ssd" type="number" name="ssd" min="0" max="10000" step="10" value="50" data-calc-input="ssd" />
+                        <button class="calc__stepper-btn" type="button" data-step="-10" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="10" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field">
+                      <label class="calc__label" for="calc-hdd">HDD, GB</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-hdd" type="number" name="hdd" min="0" max="20000" step="10" value="0" data-calc-input="hdd" />
+                        <button class="calc__stepper-btn" type="button" data-step="-10" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="10" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field calc__field--wide">
+                      <label class="calc__label" for="calc-nvme">NVMe, GB</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-nvme" type="number" name="nvme" min="0" max="10000" step="10" value="0" data-calc-input="nvme" />
+                        <button class="calc__stepper-btn" type="button" data-step="-10" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="10" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
+                    <div class="calc__field calc__field--wide">
+                      <label class="calc__label" for="calc-vm">Кол-во ВМ</label>
+                      <span class="calc__stepper">
+                        <input class="calc__input" id="calc-vm" type="number" name="vm" min="1" max="100" step="1" value="1" data-calc-input="vm" />
+                        <button class="calc__stepper-btn" type="button" data-step="-1" aria-label="Уменьшить">−</button>
+                        <button class="calc__stepper-btn" type="button" data-step="1" aria-label="Увеличить">+</button>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="calc__card">
@@ -1013,10 +1023,10 @@
   </div>
 </footer>
  
-    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260827122912"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260827122912"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260827122912"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260827122912"></script>
-<script src="js/app.min.js?_v=20260827122912"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260827123844"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260827123844"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260827123844"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260827123844"></script>
+<script src="js/app.min.js?_v=20260827123844"></script>
   </body>
 </html>

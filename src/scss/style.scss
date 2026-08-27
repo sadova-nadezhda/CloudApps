@@ -3710,6 +3710,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         border-color: var(--primary, $primary);
         color: var(--txt-white, $txt-white);
       }
+      &:disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
       &[data-step^="-"] {
         right: calc(42 * var(--width-multiplier));
       }

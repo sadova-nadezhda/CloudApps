@@ -817,6 +817,26 @@
     const monthsLabel = (months) => (months === 1 ? "месяц" : months < 5 ? "месяца" : "месяцев");
     const getMonths = () => Number($(".calc__period.is-active", root)?.dataset.months) || 1;
 
+    // ограничение значения числового поля его min/max
+    const clamp = (input, value) => {
+      const min = input.min === "" ? -Infinity : Number(input.min);
+      const max = input.max === "" ? Infinity : Number(input.max);
+      return Math.min(max, Math.max(min, value));
+    };
+    const normalize = (input) => {
+      if (input?.type !== "number") return;
+      const value = Number.parseFloat(input.value);
+      input.value = clamp(input, Number.isFinite(value) ? value : Number(input.min) || 0);
+    };
+    const syncSteppers = () => {
+      $$("[data-step]", root).forEach((btn) => {
+        const input = $(".calc__input", btn.closest(".calc__stepper"));
+        if (!input) return;
+        const value = Number(input.value) || 0;
+        btn.disabled = clamp(input, value + (Number(btn.dataset.step) || 0)) === value;
+      });
+    };
+
     const render = () => {
       const tariff = optionOf(fields.tariff)?.dataset ?? {};
       const vm = Math.max(1, num(fields.vm));
@@ -876,10 +896,15 @@
           money(total),
         ].join(", ");
       }
+
+      syncSteppers();
     };
 
-    root.addEventListener("change", render);
     root.addEventListener("input", render);
+    root.addEventListener("change", (event) => {
+      normalize(event.target);
+      render();
+    });
 
     $$(".calc__period", root).forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -892,8 +917,7 @@
       btn.addEventListener("click", () => {
         const input = $(".calc__input", btn.closest(".calc__stepper"));
         if (!input) return;
-        const min = Number(input.min) || 0;
-        input.value = Math.max(min, (Number(input.value) || 0) + (Number(btn.dataset.step) || 0));
+        input.value = clamp(input, (Number(input.value) || 0) + (Number(btn.dataset.step) || 0));
         render();
       });
     });

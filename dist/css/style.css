@@ -4169,6 +4169,11 @@ html.is-loading body {
   color: var(--txt-white, #FFFFFF);
 }
 
+.calc__stepper-btn:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
 .calc__stepper-btn[data-step^="-"] {
   right: calc(42 * var(--width-multiplier));
 }
