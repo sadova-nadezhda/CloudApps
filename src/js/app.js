@@ -978,15 +978,10 @@
   // ======================
   // История: горизонтальная лента на скролле
   // ======================
-  // Зазор между шапкой и заголовком секции в момент пина
   const HISTORY_TOP_GAP = 24;
 
-  // Ручная поправка положения пина в px: минус — выше, плюс — ниже
   const HISTORY_TOP_SHIFT = -60;
 
-  // Отступ от верха экрана до верха секции, когда она зафиксирована: ставим её
-  // под шапку и центрируем в оставшемся пространстве. Нижний паддинг секции в
-  // центровке не участвует — иначе блок уезжает под шапку
   const historyStartOffset = (section) => {
     const header = $(".header");
     const top = (header ? header.offsetHeight : 0) + s(HISTORY_TOP_GAP);
@@ -1182,15 +1177,6 @@
       return;
     }
 
-    const level = $("[data-preloader-level]", root);
-    const trace = $("[data-preloader-trace]", root);
-    const bar = $("[data-preloader-bar]", root);
-
-    if (trace?.getTotalLength) {
-      const length = Math.round(trace.getTotalLength());
-      if (length) root.style.setProperty("--trace-len", length);
-    }
-
     const images = $$("img");
     const total = images.length;
     let loaded = 0;
@@ -1206,7 +1192,7 @@
       img.addEventListener("error", countImage, { once: true });
     });
 
-    const MIN_DURATION = 3000;
+    const MIN_DURATION = 7700;
     const started = performance.now();
 
     let shown = 0;
@@ -1222,9 +1208,7 @@
     };
 
     const render = (value) => {
-      const p = Math.min(100, Math.max(0, value));
-      if (bar) bar.style.width = `${p}%`;
-      if (level) level.setAttribute("transform", `translate(0 ${512 - 5.36 * p})`);
+      root.style.setProperty("--progress", Math.min(100, Math.max(0, value)).toFixed(2));
     };
 
     const finish = () => {
@@ -1257,7 +1241,7 @@
     if (document.readyState === "complete") markReady();
     else window.addEventListener("load", markReady, { once: true });
 
-    setTimeout(markReady, 8000);
+    setTimeout(markReady, 12000);
 
     render(0);
     raf = requestAnimationFrame(tick);
