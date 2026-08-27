@@ -9,8 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="img/site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260826142324" />
-  <link rel="stylesheet" href="css/style.css?_v=20260826142324" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260827122912" />
+  <link rel="stylesheet" href="css/style.css?_v=20260827122912" />
   <script>document.documentElement.classList.add("is-loading");</script>
 </head>
 
@@ -1098,21 +1098,25 @@
                 <img src="img/teams.png" alt="Команда CloudApps" />
               </div>
             </div>
-            <div class="teams__nav">
-              <div class="counter teams__counter"></div>
-              <div class="teams__arrows">
-                <button class="teams__arrow teams__arrow--prev" type="button" aria-label="Назад">
-                  <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 1L1 7.5L7.5 14M1 7.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-                <button class="teams__arrow teams__arrow--next" type="button" aria-label="Вперёд">
-                  <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.5 1L17 7.5L10.5 14M17 7.5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
+            <div class="teams__top">
+              <h2 class="teams__title">Руководство компании</h2>
+              <div class="teams__nav">
+                <div class="counter teams__counter"></div>
+                <div class="teams__arrows">
+                  <button class="teams__arrow teams__arrow--prev" type="button" aria-label="Назад">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.5 1L1 7.5L7.5 14M1 7.5H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button class="teams__arrow teams__arrow--next" type="button" aria-label="Вперёд">
+                    <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.5 1L17 7.5L10.5 14M17 7.5H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
+            
             <div class="swiper teams__swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -1324,11 +1328,23 @@
               <ul class="contacts__list">
                 <li class="contacts__item contacts__item--wide">
                   <div class="contacts__label">Адрес офиса</div>
-                  <div class="contacts__value">Республика Казахстан, г. Алматы, ЖК Солнечный квартал, ул. Бальзака 8Д, НП 394</div>
+                  <div class="contacts__value">Республика Казахстан, г. Астана, ул. Айтматова 29, НП-1, 010000</div>
+                </li>
+                <li class="contacts__item contacts__item--wide">
+                  <div class="contacts__label">Адрес офиса</div>
+                  <div class="contacts__value">Республика Казахстан, г. Алматы, ул. Бальзака 8, лит Д, 050040</div>
+                </li>
+                <li class="contacts__item">
+                  <div class="contacts__label">Телефон Астана</div>
+                  <a class="contacts__value contacts__link" href="tel:+77172642642">+7 (7172) 642-642</a>
+                </li>
+                <li class="contacts__item">
+                  <div class="contacts__label">Телефон Алматы</div>
+                  <a class="contacts__value contacts__link" href="tel:+77273573656">+7 (727) 357-36-56</a>
                 </li>
                 <li class="contacts__item">
                   <div class="contacts__label">Телефон</div>
-                  <a class="contacts__value contacts__link" href="tel:+77273573656">+7 (727) 357-36-56</a>
+                  <a class="contacts__value contacts__link" href="tel:+77788701642">+7 (778) 870-16-42</a>
                 </li>
                 <li class="contacts__item">
                   <div class="contacts__label">E-mail</div>
@@ -1683,9 +1699,12 @@
           <div class="footer__col footer__col--contacts">
             <div class="footer__col-title">Контакты</div>
             <ul class="footer__col-list">
-              <li><a href="tel:+77077777777">+7 (707) 777 77 77</a></li>
+              <li><a href="tel:+77273573656">+7 (727) 357-36-56</a></li>
+              <li><a href="tel:+77172642642">+7 (7172) 642-642</a></li>
+              <li><a href="tel:+77788701642">+7 (778) 870-16-42</a></li>
               <li><a href="mailto:cloudapps@testmail.com">cloudapps@testmail.com</a></li>
-              <li><address class="footer__address">г. Алматы, ЖК Солнечный квартал, ул. Бальзака 8Д, НП: 394</address></li>
+              <li><address class="footer__address">Республика Казахстан, г. Астана, ул. Айтматова 29, НП-1, 010000</address></li>
+              <li><address class="footer__address">Республика Казахстан, г. Алматы, ул. Бальзака 8, лит Д, 050040</address></li>
               <li><a href="" target="_blank" rel="noopener">Instagram</a></li>
               <li><a href="" target="_blank" rel="noopener">Youtube</a></li>
             </ul>
@@ -1702,10 +1721,10 @@
   </div>
 </footer>
  
-    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260826142324"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260826142324"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260826142324"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260826142324"></script>
-<script src="js/app.min.js?_v=20260826142324"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260827122912"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260827122912"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260827122912"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260827122912"></script>
+<script src="js/app.min.js?_v=20260827122912"></script>
   </body>
 </html>

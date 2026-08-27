@@ -2523,7 +2523,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__toc {
     position: sticky;
     top: calc(100 * var(--width-multiplier));
-    max-height: calc(100vh - (160 * var(--width-multiplier)));
+    // max-height: calc(100vh - (140 * var(--width-multiplier)));
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
@@ -2534,7 +2534,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     @media(max-width: 1024px) {
       position: static;
-      max-height: none;
+      // max-height: none;
     }
     @media(max-width: 767px) {
       padding: var(--pad-16);
@@ -2915,12 +2915,21 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       aspect-ratio: 3 / 2;
     }
   }
+  &__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--gap);
+    margin-top: calc(130 * var(--width-multiplier));
+    @media(max-width: 767px) {
+      display: contents;
+    }
+  }
   &__nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: var(--gap);
-    margin-top: var(--pad-40);
     @media(max-width: 767px) {
       order: 1;
       justify-content: space-between;
@@ -3131,6 +3140,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__form {
     grid-column: 2;
     grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
@@ -3148,11 +3159,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         margin-bottom: var(--pad-16);
       }
     }
+    .form {
+      flex-grow: 1;
+    }
     .form__bottom {
+      margin-top: auto;
       @media(max-width: 767px) {
         flex-direction: column;
         align-items: stretch;
         gap: var(--pad-16);
+        margin-top: calc(8 * var(--width-multiplier));
       }
     }
   }
@@ -3905,6 +3921,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         font-size: calc(12 * var(--width-multiplier));
       }
     }
+    &_s {
+      margin-top: var(--pad-16);
+      color: var(--secondary, $secondary);
+      font-size: calc(14 * var(--width-multiplier));
+      font-weight: 500;
+      line-height: 1;
+      @media(max-width: 767px) {
+        font-size: calc(12 * var(--width-multiplier));
+      }
+    }
   }
 }
 
@@ -4071,6 +4097,30 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     &--no {
       color: var(--txt-gray, $txt-gray);
+    }
+  }
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--pad-24);
+    margin-top: var(--pad-40);
+    padding: var(--pad-24);
+    border-radius: var(--br-16);
+    background-color: var(--card-bg, $card-bg);
+    @media(max-width: 767px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--pad-16);
+      margin-top: var(--pad-24);
+      padding: var(--pad-16);
+    }
+    &-text {
+      color: var(--txt-gray, $txt-gray);
+      font-weight: 500;
+    }
+    &-button {
+      flex-shrink: 0;
     }
   }
   // ====== мобильный вид: таблица превращается в карточку одного тарифа ======

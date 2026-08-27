@@ -3136,7 +3136,6 @@ html.is-loading body {
 .legal__toc {
   position: sticky;
   top: calc(100 * var(--width-multiplier));
-  max-height: calc(100vh - 160 * var(--width-multiplier));
   padding: var(--pad-24);
   border-radius: var(--br-16);
   background-color: var(--card-bg, #1F2227);
@@ -3471,12 +3470,19 @@ html.is-loading body {
      object-fit: cover;
 }
 
+.teams__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-top: calc(130 * var(--width-multiplier));
+}
+
 .teams__nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: var(--gap);
-  margin-top: var(--pad-40);
 }
 
 .teams__counter {
@@ -3688,6 +3694,8 @@ html.is-loading body {
 .contacts__form {
   grid-column: 2;
   grid-row: 1/-1;
+  display: flex;
+  flex-direction: column;
   padding: var(--pad-40);
   border-radius: var(--br-16);
   background-color: var(--card-bg, #1F2227);
@@ -3695,6 +3703,14 @@ html.is-loading body {
 
 .contacts__form-title {
   margin-bottom: var(--pad-24);
+}
+
+.contacts__form .form {
+  flex-grow: 1;
+}
+
+.contacts__form .form__bottom {
+  margin-top: auto;
 }
 
 .vacancies__head {
@@ -4369,6 +4385,14 @@ html.is-loading body {
   font-size: calc(14 * var(--width-multiplier));
 }
 
+.calc__note_s {
+  margin-top: var(--pad-16);
+  color: var(--secondary, #9FF549);
+  font-size: calc(14 * var(--width-multiplier));
+  font-weight: 500;
+  line-height: 1;
+}
+
 .scope__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4504,6 +4528,26 @@ html.is-loading body {
 
 .plans__mark--no {
   color: var(--txt-gray, #B8B8B8);
+}
+
+.plans__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pad-24);
+  margin-top: var(--pad-40);
+  padding: var(--pad-24);
+  border-radius: var(--br-16);
+  background-color: var(--card-bg, #1F2227);
+}
+
+.plans__cta-text {
+  color: var(--txt-gray, #B8B8B8);
+  font-weight: 500;
+}
+
+.plans__cta-button {
+  flex-shrink: 0;
 }
 
 .models__head {
@@ -5355,7 +5399,6 @@ input:focus-visible + .form__check-box {
 
   .legal__toc {
     position: static;
-    max-height: none;
   }
 
   .news-inner__img {
@@ -6334,6 +6377,10 @@ input:focus-visible + .form__check-box {
     aspect-ratio: 3/2;
   }
 
+  .teams__top {
+    display: contents;
+  }
+
   .teams__nav {
     order: 1;
     justify-content: space-between;
@@ -6374,6 +6421,7 @@ input:focus-visible + .form__check-box {
     flex-direction: column;
     align-items: stretch;
     gap: var(--pad-16);
+    margin-top: calc(8 * var(--width-multiplier));
   }
 
   .vacancies__container {
@@ -6549,6 +6597,10 @@ input:focus-visible + .form__check-box {
     font-size: calc(12 * var(--width-multiplier));
   }
 
+  .calc__note_s {
+    font-size: calc(12 * var(--width-multiplier));
+  }
+
   .scope__list {
     grid-template-columns: minmax(0, 1fr);
     gap: calc(12 * var(--width-multiplier));
@@ -6589,6 +6641,14 @@ input:focus-visible + .form__check-box {
     border-radius: 0;
     background-color: transparent;
     overflow: visible;
+  }
+
+  .plans__cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--pad-16);
+    margin-top: var(--pad-24);
+    padding: var(--pad-16);
   }
 
   .plans__table {
