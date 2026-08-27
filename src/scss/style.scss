@@ -1567,7 +1567,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__item {
     position: relative;
-    padding: var(--pad-24);
+    padding: var(--pad-20);
     border-radius: var(--br-16);
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: var(--card-bg, $card-bg);

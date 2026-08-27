@@ -2318,7 +2318,7 @@ html.is-loading body {
 
 .how__item {
   position: relative;
-  padding: var(--pad-24);
+  padding: var(--pad-20);
   border-radius: var(--br-16);
   border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: var(--card-bg, #1F2227);
