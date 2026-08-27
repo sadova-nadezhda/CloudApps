@@ -1137,6 +1137,33 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       }
     }
   }
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    grid-column: 4;
+    grid-row: 2 / 4;
+    padding: var(--pad-24) var(--pad-20);
+    border-radius: var(--br-16);
+    background: var(--card-bg, $card-bg);
+    @media(max-width: 1024px) {
+      grid-column: span 2;
+      grid-row: auto;
+    }
+    @media(max-width: 767px) {
+      grid-column: auto;
+      margin-top: calc(8 * var(--width-multiplier));
+    }
+    &-text {
+      margin-top: calc(12 * var(--width-multiplier));
+      margin-bottom: calc(32 * var(--width-multiplier));
+      color: var(--txt-gray, $txt-gray);
+      font-size: calc(14 * var(--width-multiplier));
+    }
+    .button {
+      width: 100%;
+      margin-top: auto;
+    }
+  }
 }
 
 .services {

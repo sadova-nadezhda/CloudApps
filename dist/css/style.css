@@ -1954,6 +1954,28 @@ html.is-loading body {
      object-fit: contain;
 }
 
+.platform__cta {
+  display: flex;
+  flex-direction: column;
+  grid-column: 4;
+  grid-row: 2/4;
+  padding: var(--pad-24) var(--pad-20);
+  border-radius: var(--br-16);
+  background: var(--card-bg, #1F2227);
+}
+
+.platform__cta-text {
+  margin-top: calc(12 * var(--width-multiplier));
+  margin-bottom: calc(32 * var(--width-multiplier));
+  color: var(--txt-gray, #B8B8B8);
+  font-size: calc(14 * var(--width-multiplier));
+}
+
+.platform__cta .button {
+  width: 100%;
+  margin-top: auto;
+}
+
 .services__container {
   display: flex;
   flex-direction: column;
@@ -5386,6 +5408,11 @@ input:focus-visible + .form__check-box {
     grid-row: auto;
   }
 
+  .platform__cta {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+
   .cta__container {
     padding: var(--pad-24);
   }
@@ -6050,6 +6077,11 @@ input:focus-visible + .form__check-box {
 
   .platform__card-img {
     display: none;
+  }
+
+  .platform__cta {
+    grid-column: auto;
+    margin-top: calc(8 * var(--width-multiplier));
   }
 
   .services__head {
