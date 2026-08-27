@@ -12,6 +12,10 @@
 .container {
   width: 100%;
   padding: 0 calc(40 * var(--width-multiplier));
+  @media(min-width: 1921px) {
+    max-width: calc(1440 * var(--width-multiplier));
+    margin: 0 auto;
+  }
   @media(max-width: 1024px) {
     padding: 0 calc(16 * var(--width-multiplier));
   }
@@ -476,6 +480,7 @@
     height: calc(620 * var(--width-multiplier));
     img {
       width: auto;
+      max-width: 1400px;
       height: 100%;
       object-fit: contain;
     }

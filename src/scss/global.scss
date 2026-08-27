@@ -22,6 +22,13 @@
   --width-multiplier: calc(var(--width-current) / var(--width-base));
 }
 
+@media(min-width: 1921px) {
+    :root {
+      --width-base: 1920;
+      --width-current: 100vw;
+    }
+}
+
 @media(max-width: 1024px) {
     :root {
       --width-base: 768;

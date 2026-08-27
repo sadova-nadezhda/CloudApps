@@ -1665,6 +1665,7 @@ html.is-loading body {
 
 .hero__img img {
   width: auto;
+  max-width: 1400px;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -5377,6 +5378,18 @@ input:focus-visible + .form__check-box {
   .history__swiper .swiper-slide:nth-child(12) {
     grid-column: 17/span 2;
     grid-row: 2;
+  }
+}
+
+@media (min-width: 1921px) {
+  :root {
+    --width-base: 1920;
+    --width-current: 100vw;
+  }
+
+  .container {
+    max-width: calc(1440 * var(--width-multiplier));
+    margin: 0 auto;
   }
 }
 
