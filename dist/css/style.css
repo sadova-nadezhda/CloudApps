@@ -3287,33 +3287,12 @@ html.is-loading body {
 
 .history__swiper .swiper-wrapper {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--gap);
   align-items: start;
 }
 
 .history__swiper .swiper-slide {
   height: auto;
-}
-
-.history__swiper .swiper-slide:nth-child(1) {
-  grid-column: 1/span 2;
-  grid-row: 1;
-}
-
-.history__swiper .swiper-slide:nth-child(2) {
-  grid-column: 2/span 2;
-  grid-row: 2;
-}
-
-.history__swiper .swiper-slide:nth-child(3) {
-  grid-column: 4/span 2;
-  grid-row: 1;
-}
-
-.history__swiper .swiper-slide:nth-child(4) {
-  grid-column: 5/span 2;
-  grid-row: 2;
 }
 
 .history__item {
@@ -5136,6 +5115,73 @@ input:focus-visible + .form__check-box {
     top: 71%;
     left: 98%;
   }
+
+  .history__swiper .swiper-wrapper {
+    --col: calc((100% - 5 * var(--gap)) / 6);
+    grid-auto-columns: var(--col);
+    grid-template-rows: auto auto;
+    will-change: transform;
+  }
+
+  .history__swiper .swiper-slide:nth-child(1) {
+    grid-column: 1/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(2) {
+    grid-column: 2/span 2;
+    grid-row: 2;
+  }
+
+  .history__swiper .swiper-slide:nth-child(3) {
+    grid-column: 4/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(4) {
+    grid-column: 5/span 2;
+    grid-row: 2;
+  }
+
+  .history__swiper .swiper-slide:nth-child(5) {
+    grid-column: 7/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(6) {
+    grid-column: 8/span 2;
+    grid-row: 2;
+  }
+
+  .history__swiper .swiper-slide:nth-child(7) {
+    grid-column: 10/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(8) {
+    grid-column: 11/span 2;
+    grid-row: 2;
+  }
+
+  .history__swiper .swiper-slide:nth-child(9) {
+    grid-column: 13/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(10) {
+    grid-column: 14/span 2;
+    grid-row: 2;
+  }
+
+  .history__swiper .swiper-slide:nth-child(11) {
+    grid-column: 16/span 2;
+    grid-row: 1;
+  }
+
+  .history__swiper .swiper-slide:nth-child(12) {
+    grid-column: 17/span 2;
+    grid-row: 2;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -5476,11 +5522,6 @@ input:focus-visible + .form__check-box {
   .history__swiper .swiper-wrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
-  }
-
-  .history__swiper .swiper-slide:nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   .history__item-title {

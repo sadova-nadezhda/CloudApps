@@ -2753,9 +2753,18 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .swiper-wrapper {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: var(--gap);
       align-items: start;
+      // Десктоп: лента в шахматном порядке, шире экрана. Ширину колонки держим
+      // равной 1/6 контейнера, карточка занимает две колонки, соседний ряд
+      // смещён на одну — сдвигом ленты по горизонтали управляет ScrollTrigger
+      // (initHistoryScroll в app.js), секция на это время пинится.
+      @media(min-width: 1025px) {
+        --col: calc((100% - 5 * var(--gap)) / 6);
+        grid-auto-columns: var(--col);
+        grid-template-rows: auto auto;
+        will-change: transform;
+      }
       @media(max-width: 1024px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: stretch;
@@ -2767,26 +2776,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .swiper-slide {
       height: auto;
-      &:nth-child(1) {
-        grid-column: 1 / span 2;
-        grid-row: 1;
-      }
-      &:nth-child(2) {
-        grid-column: 2 / span 2;
-        grid-row: 2;
-      }
-      &:nth-child(3) {
-        grid-column: 4 / span 2;
-        grid-row: 1;
-      }
-      &:nth-child(4) {
-        grid-column: 5 / span 2;
-        grid-row: 2;
-      }
-      @media(max-width: 1024px) {
-        &:nth-child(n) {
-          grid-column: auto;
-          grid-row: auto;
+      @media(min-width: 1025px) {
+        @for $pair from 0 through 5 {
+          &:nth-child(#{2 * $pair + 1}) {
+            grid-column: #{3 * $pair + 1} / span 2;
+            grid-row: 1;
+          }
+          &:nth-child(#{2 * $pair + 2}) {
+            grid-column: #{3 * $pair + 2} / span 2;
+            grid-row: 2;
+          }
         }
       }
     }

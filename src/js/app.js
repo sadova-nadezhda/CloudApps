@@ -16,8 +16,6 @@
     if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
   };
 
-  // Интро стартует, когда прелоудер отработал. Очередь нужна потому,
-  // что прелоудер может закончиться раньше, чем подпишется анимация
   let introReady = false;
   const introQueue = [];
 
@@ -978,6 +976,74 @@
   };
 
   // ======================
+  // История: горизонтальная лента на скролле
+  // ======================
+  // Зазор между шапкой и заголовком секции в момент пина
+  const HISTORY_TOP_GAP = 24;
+
+  // Ручная поправка положения пина в px: минус — выше, плюс — ниже
+  const HISTORY_TOP_SHIFT = -60;
+
+  // Отступ от верха экрана до верха секции, когда она зафиксирована: ставим её
+  // под шапку и центрируем в оставшемся пространстве. Нижний паддинг секции в
+  // центровке не участвует — иначе блок уезжает под шапку
+  const historyStartOffset = (section) => {
+    const header = $(".header");
+    const top = (header ? header.offsetHeight : 0) + s(HISTORY_TOP_GAP);
+    const pad = parseFloat(window.getComputedStyle(section).paddingBottom) || 0;
+    const content = section.offsetHeight - pad;
+    const free = window.innerHeight - top;
+
+    return Math.round((content < free ? top + (free - content) / 2 : top) + HISTORY_TOP_SHIFT);
+  };
+
+  const initHistoryScroll = () => {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+    const section = $(".history");
+    if (!section) return;
+
+    const track = $(".history__swiper .swiper-wrapper", section);
+    if (!track) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.matchMedia().add("(min-width: 1025px)", () => {
+      const cards = $$(".swiper-slide", track);
+      if (!cards.length) return;
+
+      let distance = 0;
+
+      // Меряем на несдвинутой ленте, иначе в расчёт попадёт текущий transform
+      const measure = () => {
+        gsap.set(track, { x: 0 });
+        const box = track.getBoundingClientRect();
+        const right = cards.reduce((max, card) => Math.max(max, card.getBoundingClientRect().right), box.right);
+        distance = Math.max(0, Math.round(right - box.right));
+      };
+
+      measure();
+
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: () => `top top+=${historyStartOffset(section)}`,
+        end: () => `+=${distance}`,
+        pin: section,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onRefreshInit: measure,
+        onUpdate: (self) => gsap.set(track, { x: -distance * self.progress }),
+      });
+
+      return () => {
+        st.kill();
+        gsap.set(track, { clearProps: "x" });
+      };
+    });
+  };
+
+  // ======================
   // Reveal / intro
   // ======================
   const ANIM_CLASS = "anim";
@@ -1222,6 +1288,7 @@
     initRegionsMap();
     const modals = initModals({ scrollLock, closeMobileMenu: mobileMenu?.close });
     initForms({ modals });
+    initHistoryScroll();
     initReveal();
 
 
