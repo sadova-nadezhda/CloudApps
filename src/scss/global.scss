@@ -48,6 +48,33 @@ html {
   scroll-padding-top: calc(120 * var(--width-multiplier));
 }
 
+// ====== Lenis ======
+//
+// Обязательная база для lenis: в проекте подключён только его js, css от пакета нет.
+// Без неё нативный smooth-скролл браузера спорит со сглаживанием lenis и с тем,
+// как ScrollTrigger сам двигает страницу на refresh — скролл дёргается и «перематывает»,
+// а закреплённые (pin) секции вроде истории на about прыгают и встают не на своё место.
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 body {
   display: flex;
   flex-direction: column;
