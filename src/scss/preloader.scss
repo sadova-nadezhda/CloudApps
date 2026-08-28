@@ -114,9 +114,14 @@ html.is-loading body {
   transform-box: fill-box;
   // Слова выезжают слева направо и встают правым краем в общую линию
   transform-origin: 100% 50%;
-  // Один круг = $pl-tag-slot × $pl-tag-count; слова идут встык через --i
-  animation: pl-tag $pl-tag-cycle ease-in-out infinite backwards;
+  // Один проход: слова идут встык через --i и не зацикливаются
+  animation: pl-tag $pl-tag-cycle ease-in-out both;
   animation-delay: calc(#{$pl-tag-start} + var(--i) * #{$pl-tag-slot});
+
+  // «apps» замыкает очередь и остаётся на экране до конца прелоадера
+  &:last-child {
+    animation-name: pl-tag-hold;
+  }
 
   &--text {
     font-family: Nunito, sans-serif;
@@ -134,13 +139,9 @@ html.is-loading body {
   0%,
   50% {
     transform: translateX(35.2px);
-    animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
+    animation-timing-function: cubic-bezier(0.2, 0.4, 0.2, 1);
   }
-  62% {
-    transform: translateX(18px);
-    animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-  71%,
+  76%,
   100% {
     transform: translateX(0);
   }
@@ -150,13 +151,9 @@ html.is-loading body {
   0%,
   50% {
     transform: translateX(35.2px);
-    animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
+    animation-timing-function: cubic-bezier(0.2, 0.4, 0.2, 1);
   }
-  62% {
-    transform: translateX(52.4px);
-    animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-  71%,
+  76%,
   100% {
     transform: translateX(70.39px);
   }
@@ -186,25 +183,25 @@ html.is-loading body {
 
 @keyframes pl-clouds-out {
   0%,
-  71% { opacity: 1; }
-  85%,
+  76% { opacity: 1; }
+  88%,
   100% { opacity: 0; }
 }
 
 @keyframes pl-word-in {
   0%,
-  71% { opacity: 0; }
-  85%,
+  76% { opacity: 0; }
+  88%,
   100% { opacity: 1; }
 }
 
 @keyframes pl-ltr {
   0%,
-  72% {
+  77% {
     opacity: 0;
     transform: scale(0.12) translateY(1.5px);
   }
-  94%,
+  96%,
   100% {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -213,7 +210,7 @@ html.is-loading body {
 
 @keyframes pl-spread {
   0%,
-  71% { transform: scaleX(0.955); }
+  76% { transform: scaleX(0.955); }
   100% { transform: scaleX(1); }
 }
 
@@ -231,6 +228,18 @@ html.is-loading body {
   100% {
     opacity: 0;
     transform: translateX(5px) scale(0.94);
+  }
+}
+
+@keyframes pl-tag-hold {
+  0% {
+    opacity: 0;
+    transform: translateX(-9px) scale(0.94);
+  }
+  4%,
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
@@ -265,6 +274,7 @@ html.is-loading body {
     animation: none;
     opacity: 0;
 
-    &:first-child { opacity: 1; }
+    // «apps» теперь последний в очереди — его и показываем статикой
+    &:last-child { opacity: 1; }
   }
 }

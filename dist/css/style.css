@@ -996,8 +996,12 @@ html.is-loading body {
 .pl__tag {
   transform-box: fill-box;
   transform-origin: 100% 50%;
-  animation: pl-tag 4.6s ease-in-out infinite backwards;
+  animation: pl-tag 4.6s ease-in-out both;
   animation-delay: calc(4s + var(--i) * 0.92s);
+}
+
+.pl__tag:last-child {
+  animation-name: pl-tag-hold;
 }
 
 .pl__tag--text {
@@ -1011,15 +1015,10 @@ html.is-loading body {
 @keyframes pl-cloud-l {
   0%, 50% {
     transform: translateX(35.2px);
-    animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
+    animation-timing-function: cubic-bezier(0.2, 0.4, 0.2, 1);
   }
 
-  62% {
-    transform: translateX(18px);
-    animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-
-  71%, 100% {
+  76%, 100% {
     transform: translateX(0);
   }
 }
@@ -1027,15 +1026,10 @@ html.is-loading body {
 @keyframes pl-cloud-r {
   0%, 50% {
     transform: translateX(35.2px);
-    animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
+    animation-timing-function: cubic-bezier(0.2, 0.4, 0.2, 1);
   }
 
-  62% {
-    transform: translateX(52.4px);
-    animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1);
-  }
-
-  71%, 100% {
+  76%, 100% {
     transform: translateX(70.39px);
   }
 }
@@ -1071,39 +1065,39 @@ html.is-loading body {
 }
 
 @keyframes pl-clouds-out {
-  0%, 71% {
+  0%, 76% {
     opacity: 1;
   }
 
-  85%, 100% {
+  88%, 100% {
     opacity: 0;
   }
 }
 
 @keyframes pl-word-in {
-  0%, 71% {
+  0%, 76% {
     opacity: 0;
   }
 
-  85%, 100% {
+  88%, 100% {
     opacity: 1;
   }
 }
 
 @keyframes pl-ltr {
-  0%, 72% {
+  0%, 77% {
     opacity: 0;
     transform: scale(0.12) translateY(1.5px);
   }
 
-  94%, 100% {
+  96%, 100% {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
 }
 
 @keyframes pl-spread {
-  0%, 71% {
+  0%, 76% {
     transform: scaleX(0.955);
   }
 
@@ -1126,6 +1120,18 @@ html.is-loading body {
   20%, 100% {
     opacity: 0;
     transform: translateX(5px) scale(0.94);
+  }
+}
+
+@keyframes pl-tag-hold {
+  0% {
+    opacity: 0;
+    transform: translateX(-9px) scale(0.94);
+  }
+
+  4%, 100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 
@@ -7141,7 +7147,7 @@ input:focus-visible + .form__check-box {
     opacity: 0;
   }
 
-  .pl__tag:first-child {
+  .pl__tag:last-child {
     opacity: 1;
   }
 
