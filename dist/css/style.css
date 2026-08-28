@@ -997,7 +997,7 @@ html.is-loading body {
   transform-box: fill-box;
   transform-origin: 100% 50%;
   animation: pl-tag 4.6s ease-in-out both;
-  animation-delay: calc(3.9s + var(--i) * 0.92s);
+  animation-delay: calc(3.5s + var(--i) * 0.92s);
 }
 
 .pl__tag:last-child {
@@ -1090,7 +1090,7 @@ html.is-loading body {
     transform: scale(0.12) translateY(1.5px);
   }
 
-  92%, 100% {
+  86%, 100% {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
@@ -1112,7 +1112,7 @@ html.is-loading body {
     transform: translateX(-9px) scale(0.94);
   }
 
-  4%, 16% {
+  3%, 16% {
     opacity: 1;
     transform: translateX(0) scale(1);
   }
@@ -1129,7 +1129,7 @@ html.is-loading body {
     transform: translateX(-9px) scale(0.94);
   }
 
-  4%, 100% {
+  3%, 100% {
     opacity: 1;
     transform: translateX(0) scale(1);
   }

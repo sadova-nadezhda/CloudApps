@@ -1244,7 +1244,7 @@
       img.addEventListener("error", countImage, { once: true });
     });
 
-    const MIN_DURATION = 8400;
+    const MIN_DURATION = 8000;
     const started = performance.now();
 
     let shown = 0;
