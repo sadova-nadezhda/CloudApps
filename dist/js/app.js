@@ -11,9 +11,6 @@
     if (window.lenis && typeof window.lenis.resize === "function") window.lenis.resize();
   };
 
-  // Пока висит прелоадер или заблокирован скролл (модалка, меню), у html/body
-  // стоит overflow: hidden — высота прокрутки равна нулю, и ScrollTrigger посчитал
-  // бы все start/end по пустой странице. Такой refresh потом отдаётся прыжком пинов.
   const layoutFrozen = () =>
     document.documentElement.classList.contains("is-loading") ||
     document.body.classList.contains("no-scroll");
@@ -27,8 +24,6 @@
     if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
   };
 
-  // Замер, отложенный на время блокировки (шрифты, load, ресайз при открытой
-  // модалке), доигрываем один раз — когда скролл снова доступен
   const flushLayout = () => {
     if (layoutPending) requestAnimationFrame(refreshLayout);
   };
@@ -58,11 +53,6 @@
     let last = document.body.offsetHeight;
     let busy = false;
 
-    // ScrollTrigger сам меняет высоту body: под каждый pin он вставляет спейсер,
-    // а на время refresh его убирает. Если считать это «страница изменилась» и
-    // звать refresh ещё раз — получается бесконечный цикл, который и даёт лаги,
-    // рывки и перемотку. Поэтому правки самого ScrollTrigger пропускаем и после
-    // refresh заново запоминаем высоту.
     if (typeof ScrollTrigger !== "undefined") {
       ScrollTrigger.addEventListener("refreshInit", () => { busy = true; });
       ScrollTrigger.addEventListener("refresh", () => {
@@ -127,18 +117,12 @@
   const initLenis = () => {
     if (typeof Lenis === "undefined") return null;
     const useGsapTicker = typeof gsap !== "undefined";
-    // Нативный scroll-behavior: smooth отключён (см. global.scss, блок Lenis),
-    // поэтому переходы по якорям берёт на себя lenis. Отступ — тот же, что
-    // у scroll-padding-top, чтобы цель не уезжала под фиксированную шапку.
     const lenis = new Lenis({
       autoRaf: !useGsapTicker,
       anchors: { offset: -Math.round(s(120)) },
     });
     window.lenis = lenis;
 
-    // Дубль css-правила html.lenis: имя класса зависит от версии lenis, а
-    // нативный smooth-скролл обязан быть выключен — иначе он спорит и со
-    // сглаживанием, и с тем, как ScrollTrigger сам двигает страницу на refresh
     document.documentElement.style.scrollBehavior = "auto";
 
     if (useGsapTicker) {
@@ -1055,7 +1039,6 @@
       const setX = gsap.quickSetter(track, "x", "px");
       let distance = 0;
 
-      // Меряем на несдвинутой ленте, иначе в расчёт попадёт текущий transform
       const measure = () => {
         setX(0);
         const box = track.getBoundingClientRect();
@@ -1067,25 +1050,17 @@
 
       measure();
 
-      // Пока секция закреплена, ревилы внутри неё должны знать про pin, иначе
-      // ScrollTrigger посчитает их старт по неправильной позиции (см. initReveal)
       section.dataset.pinned = "";
 
       const st = ScrollTrigger.create({
         trigger: section,
         start: () => `top top+=${historyStartOffset(section)}`,
-        // distance пересчитывается в measure(); на первом проходе (шрифты ещё
-        // не подгрузились) он может выйти нулевым — тогда держим минимальную
-        // длину, чтобы pin не создавал спейсер нулевой высоты и не мигал
         end: () => `+=${Math.max(1, distance)}`,
         pin: section,
         pinSpacing: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onRefreshInit: measure,
-        // measure() обнулил x, а onUpdate после refresh не сработает, если
-        // прогресс не изменился. Без этой строки лента на каждом refresh
-        // прыгает в начало — самый заметный из «прыжков» блока.
         onRefresh: (self) => draw(self.progress),
         onUpdate: (self) => draw(self.progress),
       });
@@ -1209,9 +1184,6 @@
     if (header) animHide(header, -1);
 
     const startScrollReveal = () => {
-      // Элементы внутри закреплённой (pin) секции живут в своей системе координат:
-      // без pinnedContainer ScrollTrigger считает их старт по документу и блок
-      // может остаться непроявленным — визуально это «пустой блок».
       const groups = new Map();
 
       onScroll.forEach((el) => {
@@ -1250,10 +1222,6 @@
       return;
     }
 
-    // Браузер восстанавливает позицию скролла при F5, но прелоадер держит
-    // overflow: hidden и всё равно сбрасывает страницу наверх. В итоге
-    // ScrollTrigger просыпался с координатами от одной позиции, а страница —
-    // от другой: секция истории оказывалась не на месте, с пустотой вместо неё.
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     try {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -1301,8 +1269,6 @@
       root.classList.add("is-hidden");
       document.documentElement.classList.remove("is-loading");
       markIntroReady();
-      // Скролл только что разблокировали — пересчитываем сразу, не дожидаясь
-      // удаления прелоадера, иначе первые 600 мс пины стоят по старым замерам
       requestAnimationFrame(refreshLayout);
       setTimeout(() => {
         root.remove();
