@@ -9,9 +9,41 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="img/site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260828180601" />
-  <link rel="stylesheet" href="css/style.css?_v=20260828180601" />
-  <script>document.documentElement.classList.add("is-loading");</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260901115310" />
+  <link rel="stylesheet" href="css/style.css?_v=20260901115310" />
+  <script>
+    window.__preloader = (function () {
+      // Прелоудер показывается один раз за сутки.
+      // Чтобы показывать один раз за сессию (до закрытия вкладки) — поставить TTL = 0.
+      var KEY = "cloudapps:preloader-seen";
+      var TTL = 24 * 60 * 60 * 1000;
+
+      var store = function () {
+        try { return TTL ? window.localStorage : window.sessionStorage; } catch (e) { return null; }
+      };
+
+      var seen = false;
+
+      try {
+        var box = store();
+        var last = box && box.getItem(KEY);
+        seen = !!last && (!TTL || Date.now() - Number(last) < TTL);
+      } catch (e) { seen = false; }
+
+      if (seen) document.documentElement.classList.add("preloader-off");
+      else document.documentElement.classList.add("is-loading");
+
+      return {
+        skip: seen,
+        mark: function () {
+          try {
+            var box = store();
+            if (box) box.setItem(KEY, String(Date.now()));
+          } catch (e) {}
+        }
+      };
+    })();
+  </script>
 </head>
 
   <body>
@@ -1009,7 +1041,7 @@
               <li><a href="tel:+77273573656">+7 (727) 357-36-56</a></li>
               <li><a href="tel:+77172642642">+7 (7172) 642-642</a></li>
               <li><a href="tel:+77788701642">+7 (778) 870-16-42</a></li>
-              <li><a href="mailto:cloudapps@testmail.com">cloudapps@testmail.com</a></li>
+              <li><a href="mailto:info@cloudapps.kz">info@cloudapps.kz</a></li>
               <li><address class="footer__address">Республика Казахстан, г. Астана, ул. Айтматова 29, НП-1, 010000</address></li>
               <li><address class="footer__address">Республика Казахстан, г. Алматы, ул. Бальзака 8, лит Д, 050040</address></li>
               <li><a href="" target="_blank" rel="noopener">Instagram</a></li>
@@ -1028,10 +1060,10 @@
   </div>
 </footer>
  
-    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260828180601"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260828180601"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260828180601"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260828180601"></script>
-<script src="js/app.min.js?_v=20260828180601"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260901115310"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260901115310"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260901115310"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260901115310"></script>
+<script src="js/app.min.js?_v=20260901115310"></script>
   </body>
 </html>

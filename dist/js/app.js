@@ -1215,12 +1215,16 @@
 
   const initPreloader = () => {
     const root = $("[data-preloader]");
+    const state = window.__preloader || {};
 
-    if (!root) {
-      document.documentElement.classList.remove("is-loading");
+    if (!root || state.skip) {
+      if (root) root.remove();
+      document.documentElement.classList.remove("is-loading", "preloader-off");
       markIntroReady();
       return;
     }
+
+    if (typeof state.mark === "function") state.mark();
 
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     try {

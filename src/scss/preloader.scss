@@ -13,6 +13,10 @@ html.is-loading body {
   overflow: hidden;
 }
 
+html.preloader-off .preloader {
+  display: none;
+}
+
 .preloader {
   position: fixed;
   inset: 0;
