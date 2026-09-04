@@ -1,42 +1,42 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: Nunito;
+  font-family: IBMPlexMono;
   font-display: swap;
-  src: url("../fonts/Nunito-Bold.woff2") format("woff2"), url("../fonts/Nunito-Bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/IBMPlexMono-Light.woff2") format("woff2"), url("../fonts/IBMPlexMono-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Nunito;
+  font-family: IBMPlexMono;
   font-display: swap;
-  src: url("../fonts/Nunito-Black.woff2") format("woff2"), url("../fonts/Nunito-Black.woff") format("woff");
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Nunito;
-  font-display: swap;
-  src: url("../fonts/Nunito-Medium.woff2") format("woff2"), url("../fonts/Nunito-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Nunito;
-  font-display: swap;
-  src: url("../fonts/Nunito-Regular.woff2") format("woff2"), url("../fonts/Nunito-Regular.woff") format("woff");
+  src: url("../fonts/IBMPlexMono-Regular.woff2") format("woff2"), url("../fonts/IBMPlexMono-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: Nunito;
+  font-family: IBMPlexMono;
   font-display: swap;
-  src: url("../fonts/Nunito-ExtraBold.woff2") format("woff2"), url("../fonts/Nunito-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/IBMPlexMono-Medium.woff2") format("woff2"), url("../fonts/IBMPlexMono-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: IBMPlexMono;
+  font-display: swap;
+  src: url("../fonts/IBMPlexMono-SemiBold.woff2") format("woff2"), url("../fonts/IBMPlexMono-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: IBMPlexMono;
+  font-display: swap;
+  src: url("../fonts/IBMPlexMono-Bold.woff2") format("woff2"), url("../fonts/IBMPlexMono-Bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -51,8 +51,48 @@
 @font-face {
   font-family: Nunito;
   font-display: swap;
+  src: url("../fonts/Nunito-Regular.woff2") format("woff2"), url("../fonts/Nunito-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito;
+  font-display: swap;
+  src: url("../fonts/Nunito-Medium.woff2") format("woff2"), url("../fonts/Nunito-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito;
+  font-display: swap;
   src: url("../fonts/Nunito-SemiBold.woff2") format("woff2"), url("../fonts/Nunito-SemiBold.woff") format("woff");
   font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito;
+  font-display: swap;
+  src: url("../fonts/Nunito-Bold.woff2") format("woff2"), url("../fonts/Nunito-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito;
+  font-display: swap;
+  src: url("../fonts/Nunito-ExtraBold.woff2") format("woff2"), url("../fonts/Nunito-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Nunito;
+  font-display: swap;
+  src: url("../fonts/Nunito-Black.woff2") format("woff2"), url("../fonts/Nunito-Black.woff") format("woff");
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -2099,8 +2139,120 @@ html.preloader-off .preloader {
   transition: transform 0.3s ease-out;
 }
 
+.services__card-img--terminal {
+  aspect-ratio: auto;
+}
+
 .services__card:hover .services__card-img img {
   transform: scale(1.04);
+}
+
+.services__card-terminal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: calc(270 * var(--width-multiplier));
+  padding: var(--pad-24);
+  border: 1px solid rgba(138, 56, 245, 0.35);
+  border-radius: var(--br-16);
+  background-color: #0A0A0C;
+  font-family: IBMPlexMono, monospace;
+}
+
+.services__card-terminal-title {
+  color: var(--primary, #8A38F5);
+  font: 700 calc(30 * var(--width-multiplier))/1.1 IBMPlexMono;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.services__card-terminal-subtitle {
+  margin-top: calc(6 * var(--width-multiplier));
+  color: var(--txt-gray, #B8B8B8);
+  font-size: calc(12 * var(--width-multiplier));
+}
+
+.services__card-terminal-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--width-multiplier));
+  margin: calc(16 * var(--width-multiplier)) 0;
+}
+
+.services__card-terminal-divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: rgba(138, 56, 245, 0.3);
+}
+
+.services__card-terminal-divider-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: calc(9 * var(--width-multiplier));
+  background-image: repeating-linear-gradient(115deg, var(--primary, #8A38F5) 0 4px, transparent 4px 11px);
+  transform: translateY(-50%);
+  transition: width linear;
+}
+
+.services__card-terminal-log {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--width-multiplier));
+}
+
+.services__card-terminal-row {
+  display: grid;
+  grid-template-columns: 0.2fr 0.25fr 1fr;
+  -moz-column-gap: calc(10 * var(--width-multiplier));
+       column-gap: calc(10 * var(--width-multiplier));
+  font-size: calc(10 * var(--width-multiplier));
+  line-height: 1.2;
+}
+
+.services__card-terminal-time {
+  color: #96A0B2;
+  opacity: 0.6;
+}
+
+.services__card-terminal-tag {
+  color: var(--primary, #8A38F5);
+  font-weight: 500;
+}
+
+.services__card-terminal-tag--result {
+  color: var(--secondary, #9FF549);
+  font-weight: 600;
+  font-size: calc(10 * var(--width-multiplier));
+}
+
+.services__card-terminal-msg {
+  color: #96A0B2;
+}
+
+.services__card-terminal-msg--result {
+  color: var(--secondary, #9FF549);
+  font-weight: 700;
+  font-size: calc(14 * var(--width-multiplier));
+}
+
+.services__card-terminal-result {
+  display: grid;
+  grid-template-columns: 0.2fr 0.25fr 1fr;
+  -moz-column-gap: calc(10 * var(--width-multiplier));
+       column-gap: calc(10 * var(--width-multiplier));
+  align-items: center;
+  margin-top: auto;
+  padding-top: calc(14 * var(--width-multiplier));
+}
+
+.services__card-terminal-result .services__card-terminal-time {
+  color: var(--secondary, #9FF549);
+  font-size: calc(10 * var(--width-multiplier));
+  font-weight: 600;
+  opacity: 1;
 }
 
 .services__card-arrow {
@@ -5490,6 +5642,10 @@ input:focus-visible + .form__check-box {
     grid-row: auto;
   }
 
+  .services__card-terminal {
+    padding: var(--pad-20);
+  }
+
   .cta__container {
     padding: var(--pad-24);
   }
@@ -6169,11 +6325,32 @@ input:focus-visible + .form__check-box {
 
   .services__swiper {
     margin-top: calc(24 * var(--width-multiplier));
+    overflow: visible;
   }
 
   .services__swiper .swiper-wrapper {
     display: flex;
     gap: 0;
+  }
+
+  .services__card-terminal {
+    padding: var(--pad-16);
+  }
+
+  .services__card-terminal-row {
+    grid-template-columns: 0.2fr 0.35fr 1fr;
+    -moz-column-gap: calc(4 * var(--width-multiplier));
+         column-gap: calc(4 * var(--width-multiplier));
+  }
+
+  .services__card-terminal-msg--result {
+    font-size: calc(12 * var(--width-multiplier));
+  }
+
+  .services__card-terminal-result {
+    grid-template-columns: 0.2fr 0.35fr 1fr;
+    -moz-column-gap: calc(4 * var(--width-multiplier));
+         column-gap: calc(4 * var(--width-multiplier));
   }
 
   .services__pagination {

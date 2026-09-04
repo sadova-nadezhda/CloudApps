@@ -537,6 +537,115 @@
   };
 
   // ======================
+  // Терминалы в карточках услуг: печать построчно
+  // ======================
+  const initServiceTerminals = () => {
+    const terminals = $$(".services__card-terminal");
+    if (!terminals.length) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const CHAR_DELAY = 16;
+    const LINE_PAUSE = 260;
+
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const typeInto = (el, text) => new Promise((resolve) => {
+      if (!el) { resolve(); return; }
+      if (reduceMotion || !text) {
+        el.textContent = text || "";
+        resolve();
+        return;
+      }
+      let i = 0;
+      el.textContent = "";
+      const step = () => {
+        i += 1;
+        el.textContent = text.slice(0, i);
+        if (i < text.length) setTimeout(step, CHAR_DELAY);
+        else resolve();
+      };
+      step();
+    });
+
+    const starters = [];
+
+    terminals.forEach((terminal) => {
+      const rows = [
+        ...$$(".services__card-terminal-row", terminal),
+        $(".services__card-terminal-result", terminal),
+      ].filter(Boolean);
+
+      const lines = rows.map((row) => ({
+        time: $(".services__card-terminal-time", row),
+        tag: $(".services__card-terminal-tag", row),
+        msg: $(".services__card-terminal-msg", row),
+      }));
+
+      const texts = lines.map((line) => ({
+        time: line.time?.textContent ?? "",
+        tag: line.tag?.textContent ?? "",
+        msg: line.msg?.textContent ?? "",
+      }));
+
+      const clear = () => {
+        lines.forEach((line) => {
+          if (line.time) line.time.textContent = "";
+          if (line.tag) line.tag.textContent = "";
+          if (line.msg) line.msg.textContent = "";
+        });
+      };
+
+      clear();
+
+      const bar = $(".services__card-terminal-divider-arrows", terminal);
+
+      if (reduceMotion) {
+        lines.forEach((line, i) => {
+          if (line.time) line.time.textContent = texts[i].time;
+          if (line.tag) line.tag.textContent = texts[i].tag;
+          if (line.msg) line.msg.textContent = texts[i].msg;
+        });
+        if (bar) bar.style.width = "100%";
+        return;
+      }
+
+      const totalChars = texts.reduce((sum, t) => sum + t.time.length + t.tag.length + t.msg.length, 0);
+      const totalDuration = totalChars * CHAR_DELAY + Math.max(0, lines.length - 1) * LINE_PAUSE;
+
+      const playOnce = async () => {
+        clear();
+        if (bar) {
+          bar.style.transitionDuration = `${totalDuration}ms`;
+          requestAnimationFrame(() => { bar.style.width = "100%"; });
+        }
+        for (let i = 0; i < lines.length; i += 1) {
+          await typeInto(lines[i].time, texts[i].time);
+          await typeInto(lines[i].tag, texts[i].tag);
+          await typeInto(lines[i].msg, texts[i].msg);
+          if (i < lines.length - 1) await wait(LINE_PAUSE);
+        }
+      };
+
+      starters.push(playOnce);
+    });
+
+    if (!starters.length) return;
+
+    const root = $(".services__swiper") || terminals[0].closest("section") || terminals[0];
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        starters.forEach((start) => start());
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(root);
+  };
+
+  // ======================
   // Сетки с фильтром и «показать ещё» (кейсы, новости)
   // ======================
   const initFilterGrid = () => {
@@ -1322,6 +1431,7 @@
     initFilterGrid();
     initFooter();
     initSwipers();
+    initServiceTerminals();
     initPhoneMask();
     initFileInputs();
     initCalc();

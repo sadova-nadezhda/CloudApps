@@ -9,8 +9,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
   <link rel="manifest" href="img/site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260901115310" />
-  <link rel="stylesheet" href="css/style.css?_v=20260901115310" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css?_v=20260904165636" />
+  <link rel="stylesheet" href="css/style.css?_v=20260904165636" />
   <script>
     window.__preloader = (function () {
       // Прелоудер показывается один раз за сутки.
@@ -437,7 +437,8 @@
             </a>
             <div class="header__dropdown">
               <ul class="header__drop-list">
-                <li><a href="about.html#contacts">Контакты</a></li>
+                <li><a href="about.html#history">История</a></li>
+                <li><a href="about.html#teams">Команда</a></li>
                 <li><a href="about.html#vacancies">Вакансии</a></li>
               </ul>
             </div>
@@ -455,6 +456,9 @@
                 <li><a href="ts.html">Техническая поддержка</a></li>
               </ul>
             </div>
+          </li>
+          <li class="header__menu-item">
+            <a href="about.html#contacts" class="header__menu-link">Контакты</a>
           </li>
         </ul>
       </nav>
@@ -620,8 +624,8 @@
           <div class="header__mobile-drop">
             <div class="header__mobile-drop-inner">
               <ul class="header__mobile-drop-list">
-                <li><a href="about.html">О компании</a></li>
-                <li><a href="about.html#contacts">Контакты</a></li>
+                <li><a href="about.html#history">История</a></li>
+                <li><a href="about.html#teams">Команда</a></li>
                 <li><a href="about.html#vacancies">Вакансии</a></li>
               </ul>
             </div>
@@ -642,6 +646,9 @@
               </ul>
             </div>
           </div>
+        </li>
+        <li class="header__mobile-item">
+          <a href="about.html#contacts" class="header__mobile-link">Контакты</a>
         </li>
       </ul>
     </nav>
@@ -1031,8 +1038,47 @@
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <a class="services__card" href="consalting.html" aria-label="Подробнее о консалтинге">
-        <div class="services__card-img">
-          <img src="img/consulting.png" alt="Консалтинг" />
+        <div class="services__card-img services__card-img--terminal">
+          <div class="services__card-terminal" aria-hidden="true">
+            <div class="services__card-terminal-title">Консалтинг</div>
+            <div class="services__card-terminal-subtitle">cloud infrastructure advisory</div>
+            <div class="services__card-terminal-divider">
+              <span class="services__card-terminal-divider-line"></span>
+              <span class="services__card-terminal-divider-arrows"></span>
+            </div>
+            <div class="services__card-terminal-log">
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:14:02</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">gathering requirements</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:15:30</span>
+                <span class="services__card-terminal-tag">[SCAN]</span>
+                <span class="services__card-terminal-msg">analyzing current environment</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:16:45</span>
+                <span class="services__card-terminal-tag">[SCAN]</span>
+                <span class="services__card-terminal-msg">reviewing network topology</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:18:10</span>
+                <span class="services__card-terminal-tag">[CHECK]</span>
+                <span class="services__card-terminal-msg">validating security policies</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:19:55</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">comparing architecture scenarios for target infrastructure</span>
+              </div>
+            </div>
+            <div class="services__card-terminal-result">
+              <span class="services__card-terminal-time">10:14:13</span>
+              <span class="services__card-terminal-tag services__card-terminal-tag--result">[RESULT]</span>
+              <span class="services__card-terminal-msg services__card-terminal-msg--result">optimal architecture selected</span>
+            </div>
+          </div>
           <div class="services__card-arrow" >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
@@ -1040,7 +1086,7 @@
           </div>
         </div>
         <div class="services__card-content">
-          <h3 class="services__card-title">Консалтинг</h3>
+          <!-- <h3 class="services__card-title">Консалтинг</h3> -->
           <div class="services__card-text">Помогаем спроектировать инфраструктуру, провести обследование существующих систем и подготовить проект к запуску. Результат — конкретный документ с планом и обоснованием решений.</div>
           <ul class="services__card-list">
             <li>Обследование инфраструктуры</li>
@@ -1058,8 +1104,47 @@
     </div>
     <div class="swiper-slide">
       <a class="services__card" href="migration.html" aria-label="Подробнее о переносе">
-        <div class="services__card-img">
-          <img src="img/migration.png" alt="Миграция" />
+        <div class="services__card-img services__card-img--terminal">
+          <div class="services__card-terminal" aria-hidden="true">
+            <div class="services__card-terminal-title">Миграция</div>
+            <div class="services__card-terminal-subtitle">cloud migration services</div>
+            <div class="services__card-terminal-divider">
+              <span class="services__card-terminal-divider-line"></span>
+              <span class="services__card-terminal-divider-arrows"></span>
+            </div>
+            <div class="services__card-terminal-log">
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:21:03</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">preparing source environment</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:22:15</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">exporting workloads</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:23:40</span>
+                <span class="services__card-terminal-tag">[TRANSFER]</span>
+                <span class="services__card-terminal-msg">transferring data</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:25:10</span>
+                <span class="services__card-terminal-tag">[CHECK]</span>
+                <span class="services__card-terminal-msg">validating integrity</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:26:35</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">deploying services to target cloud environment</span>
+              </div>
+            </div>
+            <div class="services__card-terminal-result">
+              <span class="services__card-terminal-time">10:27:02</span>
+              <span class="services__card-terminal-tag services__card-terminal-tag--result">[RESULT]</span>
+              <span class="services__card-terminal-msg services__card-terminal-msg--result">migration completed</span>
+            </div>
+          </div>
           <div class="services__card-arrow">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
@@ -1067,7 +1152,7 @@
           </div>
         </div>
         <div class="services__card-content">
-          <h3 class="services__card-title">Миграция</h3>
+          <!-- <h3 class="services__card-title">Миграция</h3> -->
           <div class="services__card-text">Переносим серверы, базы данных и корпоративные приложения в облако поэтапно — с проверкой данных на каждом шаге и сопровождением после завершения работ.</div>
           <ul class="services__card-list">
             <li>Перенос виртуальных машин</li>
@@ -1085,8 +1170,47 @@
     </div>
     <div class="swiper-slide">
       <a class="services__card" href="support.html" aria-label="Подробнее о поддержке">
-        <div class="services__card-img">
-          <img src="img/support.png" alt="Поддержка" />
+        <div class="services__card-img services__card-img--terminal">
+          <div class="services__card-terminal" aria-hidden="true">
+            <div class="services__card-terminal-title">Поддержка</div>
+            <div class="services__card-terminal-subtitle">managed infrastructure support</div>
+            <div class="services__card-terminal-divider">
+              <span class="services__card-terminal-divider-line"></span>
+              <span class="services__card-terminal-divider-arrows"></span>
+            </div>
+            <div class="services__card-terminal-log">
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:30:01</span>
+                <span class="services__card-terminal-tag">[INFO]</span>
+                <span class="services__card-terminal-msg">monitoring active</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:30:15</span>
+                <span class="services__card-terminal-tag">[STATUS]</span>
+                <span class="services__card-terminal-msg">services running</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:30:30</span>
+                <span class="services__card-terminal-tag">[STATUS]</span>
+                <span class="services__card-terminal-msg">backups synchronized</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:30:45</span>
+                <span class="services__card-terminal-tag">[STATUS]</span>
+                <span class="services__card-terminal-msg">redundancy enabled</span>
+              </div>
+              <div class="services__card-terminal-row">
+                <span class="services__card-terminal-time">10:31:00</span>
+                <span class="services__card-terminal-tag">[CHECK]</span>
+                <span class="services__card-terminal-msg">verifying network health across active nodes</span>
+              </div>
+            </div>
+            <div class="services__card-terminal-result">
+              <span class="services__card-terminal-time">10:31:12</span>
+              <span class="services__card-terminal-tag services__card-terminal-tag--result">[RESULT]</span>
+              <span class="services__card-terminal-msg services__card-terminal-msg--result">all systems operational</span>
+            </div>
+          </div>
           <div class="services__card-arrow" >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.4173 0.704692C12.6855 0.710117 12.902 0.926837 12.9076 1.19493L13.1019 10.901C13.1072 11.1769 12.8876 11.4051 12.6117 11.4107C12.3356 11.4163 12.1064 11.1966 12.1009 10.9205L11.931 2.38926L1.21128 13.108C1.01601 13.3033 0.699507 13.3033 0.504245 13.108C0.309206 12.9127 0.309057 12.5962 0.504245 12.401L11.224 1.68223L2.69174 1.51133C2.41593 1.50566 2.19719 1.27738 2.20249 1.00157C2.20805 0.725512 2.43619 0.505811 2.71225 0.511332L12.4173 0.704692Z" fill="white"/>
@@ -1094,7 +1218,7 @@
           </div>
         </div>
         <div class="services__card-content">
-          <h3 class="services__card-title">Поддержка</h3>
+          <!-- <h3 class="services__card-title">Поддержка</h3> -->
           <div class="services__card-text">Поддерживаем инфраструктуру в режиме 24/7: мониторинг, устранение сбоев, плановые работы. Три тарифа — под задачи любого масштаба.</div>
           <ul class="services__card-list">
             <li>Мониторинг доступности</li>
@@ -1464,10 +1588,10 @@
   </div>
 </footer>
  
-    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260901115310"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260901115310"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260901115310"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260901115310"></script>
-<script src="js/app.min.js?_v=20260901115310"></script>
+    <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js?_v=20260904165636"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js?_v=20260904165636"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js?_v=20260904165636"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js?_v=20260904165636"></script>
+<script src="js/app.min.js?_v=20260904165636"></script>
   </body>
 </html>

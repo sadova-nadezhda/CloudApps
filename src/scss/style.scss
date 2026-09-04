@@ -1201,6 +1201,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     margin-top: var(--pad-40);
     @media(max-width: 767px) {
       margin-top: calc(24 * var(--width-multiplier));
+      overflow: visible;
     }
     .swiper-wrapper {
       display: grid;
@@ -1230,9 +1231,120 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         @include full-img-cover;
         transition: transform 0.3s ease-out;
       }
+      &--terminal {
+        aspect-ratio: auto;
+      }
     }
     &:hover &-img img {
       transform: scale(1.04);
+    }
+    &-terminal {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: calc(270 * var(--width-multiplier));
+      padding: var(--pad-24);
+      border: 1px solid rgba(138, 56, 245, 0.35);
+      border-radius: var(--br-16);
+      background-color: #0A0A0C;
+      font-family: IBMPlexMono, monospace;
+      @media(max-width: 1024px) {
+        padding: var(--pad-20);
+      }
+      @media(max-width: 767px) {
+        padding: var(--pad-16);
+      }
+    }
+    &-terminal-title {
+      color: var(--primary, $primary);
+      font: 700 calc(30 * var(--width-multiplier))/1.1 IBMPlexMono;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    &-terminal-subtitle {
+      margin-top: calc(6 * var(--width-multiplier));
+      color: var(--txt-gray, $txt-gray);
+      font-size: calc(12 * var(--width-multiplier));
+    }
+    &-terminal-divider {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: calc(8 * var(--width-multiplier));
+      margin: calc(16 * var(--width-multiplier)) 0;
+    }
+    &-terminal-divider-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: rgba(138, 56, 245, 0.3);
+    }
+    &-terminal-divider-arrows {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0;
+      height: calc(9 * var(--width-multiplier));
+      background-image: repeating-linear-gradient(115deg, var(--primary, $primary) 0 4px, transparent 4px 11px);
+      transform: translateY(-50%);
+      transition: width linear;
+    }
+    &-terminal-log {
+      display: flex;
+      flex-direction: column;
+      gap: calc(6 * var(--width-multiplier));
+    }
+    &-terminal-row {
+      display: grid;
+      grid-template-columns: 0.2fr 0.25fr 1fr;
+      column-gap: calc(10 * var(--width-multiplier));
+      font-size: calc(10 * var(--width-multiplier));
+      line-height: 1.2;
+      @media(max-width: 767px) {
+        grid-template-columns: 0.2fr 0.35fr 1fr;
+        column-gap: calc(4 * var(--width-multiplier));
+      }
+    }
+    &-terminal-time {
+      color: #96A0B2;
+      opacity: 0.6;
+    }
+    &-terminal-tag {
+      color: var(--primary, $primary);
+      font-weight: 500;
+      &--result {
+        color: var(--secondary, $secondary);
+        font-weight: 600;
+        font-size: calc(10 * var(--width-multiplier));
+      }
+    }
+    &-terminal-msg {
+      color: #96A0B2;
+      &--result {
+        color: var(--secondary, $secondary);
+        font-weight: 700;
+        font-size: calc(14 * var(--width-multiplier));
+        @media(max-width: 767px) {
+          font-size: calc(12 * var(--width-multiplier));
+        }
+      }
+    }
+    &-terminal-result {
+      display: grid;
+      grid-template-columns: 0.2fr 0.25fr 1fr;
+      column-gap: calc(10 * var(--width-multiplier));
+      align-items: center;
+      margin-top: auto;
+      padding-top: calc(14 * var(--width-multiplier));
+      .services__card-terminal-time {
+        color: var(--secondary, #9FF549);
+        font-size: calc(10 * var(--width-multiplier));
+        font-weight: 600;
+        opacity: 1;
+      }
+      @media(max-width: 767px) {
+        grid-template-columns: 0.2fr 0.35fr 1fr;
+        column-gap: calc(4 * var(--width-multiplier));
+      }
     }
     &-arrow {
       position: absolute;
@@ -2787,10 +2899,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       display: grid;
       gap: var(--gap);
       align-items: start;
-      // Десктоп: лента в шахматном порядке, шире экрана. Ширину колонки держим
-      // равной 1/6 контейнера, карточка занимает две колонки, соседний ряд
-      // смещён на одну — сдвигом ленты по горизонтали управляет ScrollTrigger
-      // (initHistoryScroll в app.js), секция на это время пинится.
+
       @media(min-width: 1025px) {
         --col: calc((100% - 5 * var(--gap)) / 6);
         grid-auto-columns: var(--col);
@@ -4868,3 +4977,4 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     transform: translateX(calc(-100% - var(--clients-gap)));
   }
 }
+
