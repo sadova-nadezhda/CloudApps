@@ -1,0 +1,123 @@
+@import "mixins.scss";
+
+// Общие паттерны-заготовки. Классы, которые их расширяют, склеиваются
+// в один селектор в собранном CSS.
+//
+// ВАЖНО: этот файл должен подключаться РОВНО ОДИН РАЗ (из style.scss).
+// %-заготовки дают вывод в месте своего объявления, поэтому повторный
+// @import продублирует все склеенные правила.
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Скрытый скроллбар у горизонтальных лент
+%hide-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Отступ под фиксированной шапкой на внутренних страницах
+%page-offset {
+  padding-top: w(80);
+  @include mobile {
+    padding-top: 0;
+  }
+}
+
+%swiper-disabled {
+  &.swiper-button-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+// Прозрачная стрелка навигации слайдера
+%ghost-arrow {
+  @extend %flex-center;
+  border: none;
+  background: none;
+  color: var(--txt-gray, $txt-gray);
+  cursor: pointer;
+  @include transition;
+  &:hover {
+    color: var(--txt-white, $txt-white);
+    background-color: rgba($txt-white, 0.1);
+  }
+  svg {
+    width: w(18);
+    height: w(15);
+    pointer-events: none;
+  }
+}
+
+%slider-arrow {
+  @extend %ghost-arrow;
+  @extend %swiper-disabled;
+  width: w(40);
+  height: w(40);
+  border-radius: var(--br-8);
+}
+
+// Квадратная кнопка-стрелка в углу карточки
+%card-arrow {
+  @extend %flex-center;
+  position: absolute;
+  top: var(--pad-16);
+  right: var(--pad-16);
+  width: w(42);
+  height: w(42);
+  border-radius: var(--br-6);
+  background-color: var(--primary, $primary);
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+  svg {
+    width: w(14);
+    height: w(14);
+    pointer-events: none;
+  }
+}
+
+// Пилюля-фильтр на подложке карточки
+%tab-pill {
+  padding: w(10) w(16);
+  border: none;
+  border-radius: var(--br-8);
+  background-color: var(--card-bg, $card-bg);
+  color: var(--txt-gray, $txt-gray);
+  font: 500 w(14)/1 Nunito;
+  cursor: pointer;
+  @include transition;
+  &.is-active {
+    background-color: var(--primary, $primary);
+    color: var(--txt-white, $txt-white);
+  }
+}
+
+// Прозрачный таб внутри группы-переключателя
+%tab-ghost {
+  border: none;
+  border-radius: var(--br-6);
+  background-color: transparent;
+  color: var(--txt-gray, $txt-gray);
+  cursor: pointer;
+  @include transition;
+  &.is-active {
+    background-color: var(--primary, $primary);
+    color: var(--txt-white, $txt-white);
+  }
+}
+
+// Пагинация слайдера: видна только на мобильных
+%mobile-pagination {
+  display: none;
+  @include mobile {
+    position: static;
+    display: block;
+    margin-top: var(--pad-16);
+    text-align: center;
+  }
+}

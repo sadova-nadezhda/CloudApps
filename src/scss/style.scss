@@ -2,6 +2,8 @@
 @import "vars.scss";
 @import "global.scss";
 @import "mixins.scss";
+// patterns.scss даёт CSS-вывод — подключать строго один раз
+@import "patterns.scss";
 @import "header.scss";
 @import "footer.scss";
 @import "preloader.scss";
@@ -11,13 +13,13 @@
 
 .container {
   width: 100%;
-  padding: 0 calc(40 * var(--width-multiplier));
-  @media(min-width: 1921px) {
-    max-width: calc(1440 * var(--width-multiplier));
+  padding: 0 w(40);
+  @include wide {
+    max-width: w(1440);
     margin: 0 auto;
   }
-  @media(max-width: 1024px) {
-    padding: 0 calc(16 * var(--width-multiplier));
+  @include tablet {
+    padding: 0 w(16);
   }
 }
 
@@ -31,36 +33,24 @@
 
 .section {
   &-pad {
-    padding: calc(130 * var(--width-multiplier)) 0;
-    @media(max-width: 1024px) {
-      padding: calc(100 * var(--width-multiplier)) 0;
+    padding: w(130) 0;
+    @include tablet {
+      padding: w(100) 0;
     }
-    @media(max-width: 767px) {
-      padding: calc(80 * var(--width-multiplier)) 0;
+    @include mobile {
+      padding: w(80) 0;
     }
     &-top {
-      padding-top: calc(130 * var(--width-multiplier));
-      @media(max-width: 1024px) {
-        padding-top: calc(100 * var(--width-multiplier));
-      }
-      @media(max-width: 767px) {
-        padding-top: calc(80 * var(--width-multiplier));
-      }
+      @include section-space(padding-top);
     }
     &-bottom {
-      padding-bottom: calc(130 * var(--width-multiplier));
-      @media(max-width: 1024px) {
-        padding-bottom: calc(100 * var(--width-multiplier));
-      }
-      @media(max-width: 767px) {
-        padding-bottom: calc(80 * var(--width-multiplier));
-      }
+      @include section-space(padding-bottom);
     }
   }
   &-top {
-    margin-top: calc(128 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      margin-top: calc(112 * var(--width-multiplier));
+    margin-top: w(128);
+    @include mobile {
+      margin-top: w(112);
     }
   }
   &-hidden {
@@ -69,16 +59,14 @@
 }
 
 .button {
+  @extend %flex-center;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: max-content;
-  padding: calc(14 * var(--width-multiplier)) calc(28 * var(--width-multiplier));
-  border: calc(1 * var(--width-multiplier)) solid transparent;
+  padding: w(14) w(28);
+  border: w(1) solid transparent;
   border-radius: var(--br-8);
   background-color: transparent;
-  font: 500 calc(16 * var(--width-multiplier))/1 Nunito;
+  font: 500 w(16)/1 Nunito;
   overflow: hidden;
   transition: background-color 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out;
   &:disabled {
@@ -98,19 +86,19 @@
     border-color: var(--txt-white, $txt-white);
     color: var(--txt-white, $txt-white);
     &:hover:not(:disabled) {
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba($txt-white, 0.15);
     }
   }
   &-light {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba($txt-white, 0.2);
     color: var(--txt-white, $txt-white);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba($txt-white, 0.1);
     &:hover:not(:disabled) {
-      border-color: rgba(255, 255, 255, 0.4);
-      background-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba($txt-white, 0.4);
+      background-color: rgba($txt-white, 0.15);
     }
   }
-  @media(max-width: 767px) {
+  @include mobile {
     width: 100%;
   }
 }
@@ -139,28 +127,25 @@
 }
 
 .breadcrumbs {
-  margin-bottom: calc(16 * var(--width-multiplier));
-  font-size: calc(14 * var(--width-multiplier));
+  margin-bottom: w(16);
+  font-size: w(14);
   font-weight: 500;
   line-height: 1;
-  @media(max-width: 767px) {
-    font-size: calc(12 * var(--width-multiplier));
+  @include mobile {
+    font-size: w(12);
   }
   &__list {
+    @extend %hide-scrollbar;
     display: flex;
     align-items: center;
-    gap: calc(8 * var(--width-multiplier));
-    color: rgba(255, 255, 255, 0.4);
+    gap: w(8);
+    color: rgba($txt-white, 0.4);
     flex-wrap: nowrap;
     overflow-x: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
     li {
       display: flex;
       align-items: center;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       white-space: nowrap;
       &:not(:first-child)::before {
         content: "/";
@@ -173,7 +158,7 @@
       }
     }
     span {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba($txt-white, 0.6);
     }
   }
 }
@@ -187,38 +172,24 @@
 }
 
 .filters {
+  @extend %hide-scrollbar;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: calc(8 * var(--width-multiplier));
+  gap: w(8);
   margin-top: var(--pad-24);
-  @media(max-width: 767px) {
+  @include mobile {
     flex-wrap: nowrap;
-    margin: calc(20 * var(--width-multiplier)) calc(-16 * var(--width-multiplier)) 0;
-    padding: 0 calc(16 * var(--width-multiplier));
+    margin: w(20) w(-16) 0;
+    padding: 0 w(16);
     overflow-x: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }
 
 .filter {
-  padding: calc(10 * var(--width-multiplier)) calc(16 * var(--width-multiplier));
-  border: none;
-  border-radius: var(--br-8);
-  background-color: var(--card-bg, $card-bg);
-  color: var(--txt-gray, $txt-gray);
-  font: 500 calc(14 * var(--width-multiplier))/1 Nunito;
+  @extend %tab-pill;
   white-space: nowrap;
-  cursor: pointer;
-  @include transition;
   &:hover {
-    color: var(--txt-white, $txt-white);
-  }
-  &.is-active {
-    background-color: var(--primary, $primary);
     color: var(--txt-white, $txt-white);
   }
 }
@@ -229,8 +200,8 @@
 
 .show-more {
   margin: var(--pad-40) auto 0;
-  @media(max-width: 767px) {
-    margin-top: calc(24 * var(--width-multiplier));
+  @include mobile {
+    margin-top: w(24);
   }
   &[hidden] {
     display: none;
@@ -242,26 +213,26 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--gap);
-  @media(max-width: 767px) {
+  @include mobile {
     flex-direction: column;
-    gap: calc(16 * var(--width-multiplier));
+    gap: w(16);
   }
   &__title {
-    max-width: calc(900 * var(--width-multiplier));
-    font: 700 calc(36 * var(--width-multiplier))/1.1 Nunito;
-    @media (max-width: 1024px) {
+    max-width: w(900);
+    font: 700 w(36)/1.1 Nunito;
+    @include tablet {
       max-width: none;
-      font-size: calc(32 * var(--width-multiplier));
+      font-size: w(32);
     }
-    @media (max-width: 767px) {
-      font-size: calc(26 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(26);
     }
   }
   &__text {
-    max-width: calc(900 * var(--width-multiplier));
-    margin-top: calc(16 * var(--width-multiplier));
+    max-width: w(900);
+    margin-top: w(16);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 1024px) {
+    @include tablet {
       max-width: none;
     }
   }
@@ -269,9 +240,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: calc(16 * var(--width-multiplier));
+    gap: w(16);
     flex-shrink: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
@@ -279,10 +250,10 @@
   }
   &__date {
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(14 * var(--width-multiplier));
+    font-size: w(14);
     font-weight: 600;
-    @media(max-width: 767px) {
-      font-size: calc(12 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(12);
       opacity: 0.6;
     }
   }
@@ -290,73 +261,72 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: calc(10 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    gap: w(10);
+    @include mobile {
       justify-content: flex-start;
     }
     li {
-      padding: calc(6 * var(--width-multiplier)) calc(8 * var(--width-multiplier));
+      padding: w(6) w(8);
       border-radius: var(--br-6);
       background-color: var(--card-bg, $card-bg);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 500;
       white-space: nowrap;
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
   }
 }
 
 .article {
-  max-width: calc(1130 * var(--width-multiplier));
-  margin: 0 auto;
-  margin-top: var(--pad-40);
+  max-width: w(1130);
+  margin: var(--pad-40) auto 0;
   color: var(--txt-gray, $txt-gray);
-  font-size: calc(18 * var(--width-multiplier));
-  @media(max-width: 767px) {
+  font-size: w(18);
+  @include mobile {
     margin-top: var(--pad-24);
-    font-size: calc(16 * var(--width-multiplier));
+    font-size: w(16);
   }
   > * + * {
-    margin-top: calc(20 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    margin-top: w(20);
+    @include mobile {
       margin-top: var(--pad-16);
     }
   }
   h2,
   h3 {
-    margin-top: calc(48 * var(--width-multiplier));
+    margin-top: w(48);
     color: var(--txt-white, $txt-white);
-    @media(max-width: 767px) {
-      margin-top: calc(32 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(32);
     }
   }
   h2 {
-    font: 700 calc(28 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(20 * var(--width-multiplier));
+    font: 700 w(28)/1.2 Nunito;
+    @include mobile {
+      font-size: w(20);
     }
   }
   h3 {
-    font: 700 calc(20 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(18 * var(--width-multiplier));
+    font: 700 w(20)/1.2 Nunito;
+    @include mobile {
+      font-size: w(18);
     }
   }
   ul,
   ol {
     display: flex;
     flex-direction: column;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
     list-style: none;
   }
   ol {
     counter-reset: article-ol;
     li {
       position: relative;
-      padding-left: calc(24 * var(--width-multiplier));
+      padding-left: w(24);
       counter-increment: article-ol;
       &::before {
         content: counter(article-ol) ".";
@@ -367,18 +337,7 @@
     }
   }
   ul li {
-    position: relative;
-    padding-left: calc(18 * var(--width-multiplier));
-    &::before {
-      content: "";
-      position: absolute;
-      top: calc(9 * var(--width-multiplier));
-      left: 0;
-      width: calc(6 * var(--width-multiplier));
-      height: calc(6 * var(--width-multiplier));
-      border-radius: 50%;
-      background-color: var(--primary, $primary);
-    }
+    @include bullet-item($pad: 18, $top: 9);
   }
   strong {
     color: var(--txt-white, $txt-white);
@@ -394,11 +353,11 @@
   // акцентная врезка
   &__note {
     padding: var(--pad-24);
-    border-left: calc(3 * var(--width-multiplier)) solid var(--secondary, $secondary);
+    border-left: w(3) solid var(--secondary, $secondary);
     border-radius: var(--br-16);
-    background-color: var(--card-bg,$card-bg);
+    background-color: var(--card-bg, $card-bg);
     color: var(--secondary, $secondary);
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
@@ -409,7 +368,7 @@
     img {
       @include full-img-cover;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       aspect-ratio: 16 / 10;
     }
   }
@@ -420,13 +379,9 @@
 .swiper {
   width: 100%;
   height: 100%;
-  &-slide {
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }    
+  &-slide img {
+    display: block;
+    @include full-img-cover;
   }
 }
 
@@ -438,27 +393,28 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: calc(60 * var(--width-multiplier));
-    min-height: calc(620 * var(--width-multiplier));
+    gap: w(60);
+    min-height: w(620);
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
-      gap: calc(40 * var(--width-multiplier));
+    @include tablet {
+      gap: w(40);
       min-height: 0;
       padding: 0;
       border-radius: 0;
       background-color: transparent;
     }
-    @media(max-width: 767px) {
-      gap: calc(32 * var(--width-multiplier));
+    @include mobile {
+      gap: w(32);
     }
   }
   &__body {
-    max-width: calc(684 * var(--width-multiplier));
+    max-width: w(684);
   }
   &__title {
-    text-shadow: 1px 1px 20px 0px #FFFFFF40;
+    // было "1px 1px 20px 0px" — четыре длины, декларация целиком отбрасывалась браузером
+    text-shadow: 1px 1px w(20) rgba($txt-white, 0.25);
   }
   &__text {
     margin-top: var(--pad-16);
@@ -467,29 +423,29 @@
     display: flex;
     align-items: center;
     gap: var(--pad-16);
-    margin-top: calc(32 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    margin-top: w(32);
+    @include mobile {
       flex-direction: column;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
     }
   }
   &__img {
     position: absolute;
     bottom: 0;
-    right: calc(68 * var(--width-multiplier));
-    height: calc(620 * var(--width-multiplier));
+    right: w(68);
+    height: w(620);
     img {
       width: auto;
       max-width: 1400px;
       height: 100%;
       object-fit: contain;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       position: static;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: calc(320 * var(--width-multiplier));
+      height: w(320);
       border-radius: var(--br-16);
       background-color: var(--card-bg, $card-bg);
       img {
@@ -497,94 +453,94 @@
         height: 100%;
       }
     }
-    @media(max-width: 767px) {
-      height: calc(220 * var(--width-multiplier));
+    @include mobile {
+      height: w(220);
     }
   }
   &-inner {
     .hero__container {
       justify-content: center;
-      min-height: calc(480 * var(--width-multiplier));
-      @media(max-width: 1024px) {
+      min-height: w(480);
+      @include tablet {
         min-height: 0;
       }
     }
     .hero__body {
-      max-width: calc(754 * var(--width-multiplier));
-      @media(max-width: 1024px) {
+      max-width: w(754);
+      @include tablet {
         max-width: none;
       }
     }
     .hero__text {
-      max-width: calc(630 * var(--width-multiplier));
+      max-width: w(630);
       color: var(--txt-gray, $txt-gray);
-      @media(max-width: 1024px) {
+      @include tablet {
         max-width: none;
       }
     }
     .hero__img {
       right: var(--pad-40);
-      height: calc(480 * var(--width-multiplier));
-      @media(max-width: 1024px) {
+      height: w(480);
+      @include tablet {
         right: auto;
-        height: calc(320 * var(--width-multiplier));
+        height: w(320);
       }
-      @media(max-width: 767px) {
-        height: calc(220 * var(--width-multiplier));
+      @include mobile {
+        height: w(220);
       }
     }
   }
   &__partners {
-    max-width: calc(745 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    max-width: w(745);
+    @include tablet {
       max-width: unset;
       padding: var(--pad-16);
       border-radius: var(--br-16);
       background-color: var(--card-bg, $card-bg);
     }
     &-title {
-      max-width: calc(420 * var(--width-multiplier));
-      font: 700 calc(18 * var(--width-multiplier))/1.1 Nunito;
+      max-width: w(420);
+      font: 700 w(18)/1.1 Nunito;
     }
     .clients__marquee {
-      margin-top: calc(32 * var(--width-multiplier));
+      margin-top: w(32);
     }
   }
 }
 
 .advantages {
   &__title {
-    max-width: calc(910 * var(--width-multiplier));
+    max-width: w(910);
   }
   &__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
   }
   &__main {
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       flex-direction: column-reverse;
       align-items: center;
       padding: var(--pad-16);
     }
     &-img {
-      width: calc(249 * var(--width-multiplier));
-      height: calc(227 * var(--width-multiplier));
+      width: w(249);
+      height: w(227);
       margin: auto auto 0;
-      @media(max-width: 1024px) {
-        width: calc(175 * var(--width-multiplier));
-        height: calc(160 * var(--width-multiplier));
+      @include tablet {
+        width: w(175);
+        height: w(160);
         margin: 0 auto;
       }
       img {
@@ -594,24 +550,10 @@
   }
   &__slider {
     grid-column: 2 / -1;
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
     }
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--gap);
-      @media(max-width: 1024px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      @media(max-width: 767px) {
-        display: flex;
-        gap: 0;
-      }
-    }
-    .swiper-slide {
-      height: auto;
-    }
+    @include swiper-grid(3, $tablet-cols: 2);
   }
   &__card {
     display: flex;
@@ -619,40 +561,22 @@
     justify-content: space-between;
     gap: var(--gap);
     height: 100%;
-    min-height: calc(180 * var(--width-multiplier));
+    min-height: w(180);
     padding: var(--pad-16);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     font-weight: 500;
   }
   &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(62 * var(--width-multiplier));
-    height: calc(62 * var(--width-multiplier));
-    flex-shrink: 0;
-    border-radius: var(--br-8);
-    background: var(--primary);
-    svg {
-      width: calc(32 * var(--width-multiplier));
-      height: calc(32 * var(--width-multiplier));
-      pointer-events: none;
-    }
+    @include icon-box(62, $icon: 32);
     img {
-      width: calc(32 * var(--width-multiplier));
-      height: calc(32 * var(--width-multiplier));
+      width: w(32);
+      height: w(32);
       object-fit: contain;
     }
   }
   &__pagination {
-    display: none;
-    @media(max-width: 767px) {
-      position: static;
-      display: block;
-      margin-top: calc(16 * var(--width-multiplier));
-      text-align: center;
-    }
+    @extend %mobile-pagination;
   }
   &-nt {
     .advantages__grid {
@@ -670,82 +594,82 @@
   &__container {
     position: relative;
     padding: var(--pad-40);
-    border-radius: calc(20 * var(--width-multiplier));
+    border-radius: w(20);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       padding: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: 0;
       border-radius: 0;
       background-color: transparent;
     }
   }
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    margin-top: w(12);
+    @include mobile {
       color: var(--txt-gray, $txt-gray);
     }
   }
   &__body {
     display: grid;
-    grid-template-columns: calc(325 * var(--width-multiplier)) minmax(0, 1fr);
-    gap: calc(12 * var(--width-multiplier));
-    margin-top: calc(40 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    grid-template-columns: w(325) minmax(0, 1fr);
+    gap: w(12);
+    margin-top: w(40);
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(24 * var(--width-multiplier));
-      margin-top: calc(32 * var(--width-multiplier));
+      gap: w(24);
+      margin-top: w(32);
     }
-    @media(max-width: 767px) {
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(24);
     }
   }
   &__stats {
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    @media(max-width: 1024px) {
+    @include tablet {
       order: 2;
       flex-direction: row;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
     }
   }
   &__stat {
     padding: var(--pad-20);
     border-radius: var(--br-16);
-    background-color: #26292E;
-    @media(max-width: 1024px) {
+    background-color: var(--card-inner, $card-inner);
+    @include tablet {
       flex: 1;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
       background-color: var(--card-bg, $card-bg);
     }
     &-num {
       color: var(--primary, $primary);
-      font: 700 calc(28 * var(--width-multiplier))/1.2 Nunito;
+      font: 700 w(28)/1.2 Nunito;
     }
     &-label {
-      margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(4);
       font-weight: 700;
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       text-transform: uppercase;
-      @media(max-width: 767px) {
+      @include mobile {
         font-weight: 500;
-        font-size: calc(12 * var(--width-multiplier));
+        font-size: w(12);
         text-transform: none;
       }
     }
     &-text {
-      margin-top: calc(10 * var(--width-multiplier));
+      margin-top: w(10);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
-      @media(max-width: 767px) {
+      font-size: w(14);
+      @include mobile {
         display: none;
       }
     }
@@ -757,8 +681,8 @@
     right: 0;
     height: calc(100% - 40 * var(--width-multiplier));
     width: 100%;
-    max-width: calc(980 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    max-width: w(980);
+    @include tablet {
       position: relative;
       top: unset;
       bottom: unset;
@@ -767,20 +691,18 @@
       max-width: unset;
       order: 1;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       flex-direction: column;
-      gap: calc(24 * var(--width-multiplier));
+      gap: w(24);
     }
     &-img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @extend %flex-center;
       width: 100%;
       height: 100%;
-      @media(max-width: 767px) {
+      @include mobile {
         flex-direction: column;
-        gap: calc(24 * var(--width-multiplier));
+        gap: w(24);
         height: auto;
       }
     }
@@ -788,7 +710,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 966 / 530;
-      @media(max-width: 767px) {
+      @include mobile {
         display: contents;
       }
     }
@@ -796,8 +718,8 @@
       display: block;
       width: 100%;
       height: 100%;
-      @media(max-width: 767px) {
-        height: calc(280 * var(--width-multiplier));
+      @include mobile {
+        height: w(280);
         padding: var(--pad-16);
         border-radius: var(--br-16);
         background-color: var(--card-bg, $card-bg);
@@ -822,17 +744,17 @@
   &__dot {
     r: 8;
     fill: var(--secondary, $secondary);
-    stroke: #FFFFFF;
+    stroke: var(--txt-white, $txt-white);
     stroke-width: 2;
     cursor: pointer;
     transform-box: fill-box;
     transform-origin: center;
     transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease-in-out;
-    @media(max-width: 767px) {
+    @include mobile {
       r: 12;
       stroke-width: 3.5;
     }
-    @media(min-width: 768px) and (hover: hover) {
+    @include hover-desktop {
       opacity: 0.55;
       transform: scale(0.62);
       &.is-active {
@@ -858,31 +780,31 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    @media(max-width: 767px) {
+    @include mobile {
       position: static;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
     }
   }
   &__city {
     position: absolute;
-    min-width: calc(150 * var(--width-multiplier));
-    padding: calc(12 * var(--width-multiplier));
-    padding-bottom: calc(24 * var(--width-multiplier));
+    min-width: w(150);
+    padding: w(12);
+    padding-bottom: w(24);
     border-radius: var(--br-8);
     background-color: var(--tag-bg, $tag-bg);
     transform: translate(-50%, calc(-100% - 24 * var(--width-multiplier)));
     white-space: nowrap;
-    @media(max-width: 767px) {
+    @include mobile {
       position: static;
-      padding: calc(12 * var(--width-multiplier));
+      padding: w(12);
       border-radius: var(--br-8);
       background-color: var(--card-bg, $card-bg);
       transform: none;
       white-space: normal;
     }
-    @media(min-width: 768px) and (hover: hover) {
+    @include hover-desktop {
       opacity: 0;
       visibility: hidden;
       transform-origin: 50% 100%;
@@ -914,19 +836,19 @@
     }
     &-name {
       color: var(--secondary, $secondary);
-      font-size: calc(14 * var(--width-multiplier));
-      @media(max-width: 767px) {
+      font-size: w(14);
+      @include mobile {
         color: var(--txt-white, $txt-white);
-        font-size: calc(16 * var(--width-multiplier));
+        font-size: w(16);
       }
     }
     &-tier {
-      margin-top: calc(12 * var(--width-multiplier));
-      font-size: calc(14 * var(--width-multiplier));
-      @media(max-width: 767px) {
-        margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(12);
+      font-size: w(14);
+      @include mobile {
+        margin-top: w(4);
         color: var(--secondary, $secondary);
-        font-size: calc(12 * var(--width-multiplier));
+        font-size: w(12);
       }
     }
   }
@@ -954,38 +876,27 @@
 }
 
 // пунктир для разделителей плиток в .platform__grid
-$dash-color: rgba(255, 255, 255, 1);
-$dash-size: calc(2 * var(--width-multiplier));
-$dash-step: calc(4 * var(--width-multiplier));
+$dash-color: rgba($txt-white, 1);
+$dash-size: w(2);
+$dash-step: w(4);
 $dash-y: repeating-linear-gradient(to bottom, $dash-color 0 $dash-size, transparent $dash-size $dash-step);
 $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transparent $dash-size $dash-step);
 
 .platform {
   &__title {
-    max-width: calc(900 * var(--width-multiplier));
+    max-width: w(900);
   }
   &__tabs {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       align-items: center;
-      gap: calc(8 * var(--width-multiplier));
-      margin-top: calc(20 * var(--width-multiplier));
+      gap: w(8);
+      margin-top: w(20);
     }
   }
   &__tab {
-    padding: calc(10 * var(--width-multiplier)) calc(16 * var(--width-multiplier));
-    border: none;
-    border-radius: var(--br-8);
-    background-color: var(--card-bg, $card-bg);
-    color: var(--txt-gray, $txt-gray);
-    font: 500 calc(14 * var(--width-multiplier))/1 Nunito;
-    cursor: pointer;
-    @include transition;
-    &.is-active {
-      background-color: var(--primary, $primary);
-      color: var(--txt-white, $txt-white);
-    }
+    @extend %tab-pill;
   }
   &__grid {
     position: relative;
@@ -993,7 +904,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-auto-rows: 1fr;
     gap: var(--gap);
-    margin-top: calc(40 * var(--width-multiplier));
+    margin-top: w(40);
     // пунктир идёт по центрам колонок и строк, каждый псевдоэлемент накрывает свою
     // группу (строки 1-2 и 3-4), поэтому вертикали не пересекают границу между ними
     &::before,
@@ -1009,18 +920,18 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       // + 2 горизонтали по центрам строк группы
       background-image: $dash-y, $dash-y, $dash-y, $dash-x, $dash-x;
       background-size:
-        calc(1 * var(--width-multiplier)) 100%,
-        calc(1 * var(--width-multiplier)) 100%,
-        calc(1 * var(--width-multiplier)) 100%,
-        100% calc(1 * var(--width-multiplier)),
-        100% calc(1 * var(--width-multiplier));
+        w(1) 100%,
+        w(1) 100%,
+        w(1) 100%,
+        100% w(1),
+        100% w(1);
       background-position:
         calc((100% - 3 * var(--gap)) * 0.375 + var(--gap)) 0,
         calc((100% - 3 * var(--gap)) * 0.625 + var(--gap) * 2) 0,
         calc((100% - 3 * var(--gap)) * 0.875 + var(--gap) * 3) 0,
         0 calc((100% - var(--gap)) / 4),
         0 calc((100% - var(--gap)) * 0.75 + var(--gap));
-      @media(max-width: 1024px) {
+      @include tablet {
         content: none;
       }
     }
@@ -1032,24 +943,24 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       top: calc(50% + var(--gap) / 2);
       bottom: 0;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-auto-rows: auto;
-      margin-top: calc(32 * var(--width-multiplier));
+      margin-top: w(32);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       display: block;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
   }
   &__group {
     display: contents;
-    @media(max-width: 767px) {
+    @include mobile {
       display: none;
       &.is-active {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: calc(8 * var(--width-multiplier));
+        gap: w(8);
       }
     }
   }
@@ -1061,16 +972,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-24) var(--pad-20);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: span 2;
       grid-row: auto;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       display: none;
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
-      margin-bottom: calc(32 * var(--width-multiplier));
+      margin-top: w(12);
+      margin-bottom: w(32);
       color: var(--txt-gray, $txt-gray);
     }
     &-button {
@@ -1082,35 +993,34 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: calc(16 * var(--width-multiplier));
-    min-height: calc(152 * var(--width-multiplier));
+    gap: w(16);
+    min-height: w(152);
     padding: var(--pad-16);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     overflow: hidden;
     @include transition;
     &-name {
-      max-width: calc(160 * var(--width-multiplier));
-      font-size: calc(18 * var(--width-multiplier));
+      max-width: w(160);
+      font-size: w(18);
       font-weight: 600;
-      @media(max-width: 767px) {
+      @include mobile {
         max-width: none;
       }
     }
     &-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(42 * var(--width-multiplier));
-      height: calc(42 * var(--width-multiplier));
+      @extend %flex-center;
+      width: w(42);
+      height: w(42);
       border-radius: var(--br-6);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba($txt-white, 0.2);
+      background-color: rgba($txt-white, 0.1);
       backdrop-filter: blur(10px);
-      transition: background-color 0.3s ease-out, background-color 0.3s ease-out;
+      // было "background-color, background-color" — border-color не анимировался
+      transition: background-color 0.3s ease-out, border-color 0.3s ease-out;
       svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(14 * var(--width-multiplier));
+        width: w(14);
+        height: w(14);
         pointer-events: none;
       }
       path {
@@ -1118,26 +1028,25 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       }
     }
     &:hover &-arrow {
-      border-color: rgba(159, 245, 73, 0.2);
-      background-color: rgba(159, 245, 73, 0.1);
-
+      border-color: rgba($secondary, 0.2);
+      background-color: rgba($secondary, 0.1);
       path {
         stroke: var(--secondary, $secondary);
       }
     }
     &-img {
       position: absolute;
-      top: calc(7 * var(--width-multiplier));
-      bottom: calc(7 * var(--width-multiplier));
-      right: calc(14 * var(--width-multiplier));
-      height: calc(138 * var(--width-multiplier));
+      top: w(7);
+      bottom: w(7);
+      right: w(14);
+      height: w(138);
       pointer-events: none;
       img {
         width: auto;
         height: 100%;
         object-fit: contain;
       }
-      @media(max-width: 767px) {
+      @include mobile {
         display: none;
       }
     }
@@ -1150,19 +1059,19 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-24) var(--pad-20);
     border-radius: var(--br-16);
     background: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: span 2;
       grid-row: auto;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-column: auto;
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
-      margin-bottom: calc(32 * var(--width-multiplier));
+      margin-top: w(12);
+      margin-bottom: w(32);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
     }
     .button {
       width: 100%;
@@ -1177,44 +1086,27 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
   }
   &__head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--gap);
-    @media(max-width: 767px) {
-      display: contents;
-    }
+    @include split-head($align: flex-start);
   }
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__button {
     flex-shrink: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       order: 1;
       flex-shrink: unset;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
   }
   &__swiper {
     margin-top: var(--pad-40);
-    @media(max-width: 767px) {
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(24);
       overflow: visible;
     }
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--gap);
-      @media(max-width: 767px) {
-        display: flex;
-        gap: 0;
-      }
-    }
-    .swiper-slide {
-      height: auto;
-    }
+    @include swiper-grid(3);
   }
   &__card {
     display: flex;
@@ -1242,48 +1134,48 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       display: flex;
       flex-direction: column;
       height: 100%;
-      min-height: calc(270 * var(--width-multiplier));
+      min-height: w(270);
       padding: var(--pad-24);
-      border: 1px solid rgba(138, 56, 245, 0.35);
+      border: 1px solid rgba($primary, 0.35);
       border-radius: var(--br-16);
       background-color: #0A0A0C;
       font-family: IBMPlexMono, monospace;
-      @media(max-width: 1024px) {
+      @include tablet {
         padding: var(--pad-20);
       }
-      @media(max-width: 767px) {
+      @include mobile {
         padding: var(--pad-16);
       }
     }
     &-terminal-title {
       color: var(--primary, $primary);
-      font: 700 calc(30 * var(--width-multiplier))/1.1 IBMPlexMono;
+      font: 700 w(30)/1.1 IBMPlexMono;
       text-transform: uppercase;
       letter-spacing: 0.01em;
     }
     &-terminal-subtitle {
-      margin-top: calc(6 * var(--width-multiplier));
+      margin-top: w(6);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
     }
     &-terminal-divider {
       position: relative;
       display: flex;
       align-items: center;
-      gap: calc(8 * var(--width-multiplier));
-      margin: calc(16 * var(--width-multiplier)) 0;
+      gap: w(8);
+      margin: w(16) 0;
     }
     &-terminal-divider-line {
       flex-grow: 1;
       height: 1px;
-      background-color: rgba(138, 56, 245, 0.3);
+      background-color: rgba($primary, 0.3);
     }
     &-terminal-divider-arrows {
       position: absolute;
       top: 50%;
       left: 0;
       width: 0;
-      height: calc(9 * var(--width-multiplier));
+      height: w(9);
       background-image: repeating-linear-gradient(115deg, var(--primary, $primary) 0 4px, transparent 4px 11px);
       transform: translateY(-50%);
       transition: width linear;
@@ -1291,17 +1183,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &-terminal-log {
       display: flex;
       flex-direction: column;
-      gap: calc(6 * var(--width-multiplier));
+      gap: w(6);
     }
     &-terminal-row {
       display: grid;
       grid-template-columns: 0.2fr 0.25fr 1fr;
-      column-gap: calc(10 * var(--width-multiplier));
-      font-size: calc(10 * var(--width-multiplier));
+      column-gap: w(10);
+      font-size: w(10);
       line-height: 1.2;
-      @media(max-width: 767px) {
+      @include mobile {
         grid-template-columns: 0.2fr 0.35fr 1fr;
-        column-gap: calc(4 * var(--width-multiplier));
+        column-gap: w(4);
       }
     }
     &-terminal-time {
@@ -1314,7 +1206,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       &--result {
         color: var(--secondary, $secondary);
         font-weight: 600;
-        font-size: calc(10 * var(--width-multiplier));
+        font-size: w(10);
       }
     }
     &-terminal-msg {
@@ -1322,47 +1214,32 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       &--result {
         color: var(--secondary, $secondary);
         font-weight: 700;
-        font-size: calc(14 * var(--width-multiplier));
-        @media(max-width: 767px) {
-          font-size: calc(12 * var(--width-multiplier));
+        font-size: w(14);
+        @include mobile {
+          font-size: w(12);
         }
       }
     }
     &-terminal-result {
       display: grid;
       grid-template-columns: 0.2fr 0.25fr 1fr;
-      column-gap: calc(10 * var(--width-multiplier));
+      column-gap: w(10);
       align-items: center;
       margin-top: auto;
-      padding-top: calc(14 * var(--width-multiplier));
+      padding-top: w(14);
       .services__card-terminal-time {
-        color: var(--secondary, #9FF549);
-        font-size: calc(10 * var(--width-multiplier));
+        color: var(--secondary, $secondary);
+        font-size: w(10);
         font-weight: 600;
         opacity: 1;
       }
-      @media(max-width: 767px) {
+      @include mobile {
         grid-template-columns: 0.2fr 0.35fr 1fr;
-        column-gap: calc(4 * var(--width-multiplier));
+        column-gap: w(4);
       }
     }
     &-arrow {
-      position: absolute;
-      top: calc(16 * var(--width-multiplier));
-      right: calc(16 * var(--width-multiplier));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(42 * var(--width-multiplier));
-      height: calc(42 * var(--width-multiplier));
-      border-radius: var(--br-6);
-      background-color: var(--primary, $primary);
-      transition: background-color 0.3s ease-out, color 0.3s ease-out;
-      svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(14 * var(--width-multiplier));
-        pointer-events: none;
-      }
+      @extend %card-arrow;
     }
     &:hover &-arrow {
       background-color: var(--secondary, $secondary);
@@ -1375,46 +1252,35 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       padding: var(--pad-20);
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
-      margin-bottom: calc(20 * var(--width-multiplier));
+      margin-top: w(12);
+      margin-bottom: w(20);
       color: var(--txt-gray, $txt-gray);
     }
     &-list {
       display: flex;
       flex-direction: column;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       margin-top: auto;
-      padding-top: calc(20 * var(--width-multiplier));
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: w(20);
+      border-top: 1px solid rgba($txt-white, 0.1);
       li {
-        position: relative;
-        padding-left: calc(16 * var(--width-multiplier));
-        &::before {
-          content: "";
-          position: absolute;
-          top: calc(8 * var(--width-multiplier));
-          left: 0;
-          width: calc(6 * var(--width-multiplier));
-          height: calc(6 * var(--width-multiplier));
-          border-radius: 50%;
-          background-color: var(--primary, $primary);
-        }
+        @include bullet-item;
       }
     }
     &-link {
       display: inline-flex;
       align-items: center;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       width: max-content;
-      margin-top: calc(40 * var(--width-multiplier));
+      margin-top: w(40);
       color: var(--primary, $primary);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 600;
       line-height: 1;
       @include transition;
       svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(12 * var(--width-multiplier));
+        width: w(14);
+        height: w(12);
         flex-shrink: 0;
       }
     }
@@ -1423,13 +1289,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__pagination {
-    display: none;
-    @media(max-width: 767px) {
-      position: static;
-      display: block;
-      margin-top: calc(16 * var(--width-multiplier));
-      text-align: center;
-    }
+    @extend %mobile-pagination;
   }
 }
 
@@ -1441,30 +1301,30 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     position: absolute;
     top: 0;
     right: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       position: static;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
   }
   &__body {
     position: relative;
     width: calc(50% - var(--gap) / 2);
-    margin-top: calc(32 * var(--width-multiplier));
+    margin-top: w(32);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       flex-direction: column;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       width: 100%;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
       border-radius: 0;
       background-color: transparent;
     }
   }
   &__item {
     display: contents;
-    @media(max-width: 767px) {
+    @include mobile {
       display: block;
       border-radius: var(--br-16);
       background-color: var(--card-bg, $card-bg);
@@ -1475,13 +1335,13 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: calc(16 * var(--width-multiplier));
+    gap: w(16);
     width: 100%;
     padding: var(--pad-24);
     border: none;
     background: none;
     color: var(--txt-gray, $txt-gray);
-    font: 500 calc(20 * var(--width-multiplier))/1.2 Nunito;
+    font: 500 w(20)/1.2 Nunito;
     text-align: left;
     cursor: pointer;
     @include transition;
@@ -1491,13 +1351,13 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     .faq__item.is-open & {
       color: var(--txt-white, $txt-white);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
     }
     &-arrow {
-      width: calc(22 * var(--width-multiplier));
-      height: calc(22 * var(--width-multiplier));
+      width: w(22);
+      height: w(22);
       flex-shrink: 0;
       @include transition;
       .faq__item.is-open & {
@@ -1513,14 +1373,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: none;
     width: 100%;
     padding: var(--pad-24);
-    padding-bottom: calc(80 * var(--width-multiplier));
+    padding-bottom: w(80);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    font-size: calc(18 * var(--width-multiplier));
+    font-size: w(18);
     .faq__item.is-open & {
       display: block;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       position: static;
       display: block;
       width: auto;
@@ -1528,11 +1388,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       padding: 0 var(--pad-16);
       border-radius: 0;
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       overflow: hidden;
       transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
       .faq__item.is-open & {
-        max-height: calc(400 * var(--width-multiplier));
+        max-height: w(400);
         padding: 0 var(--pad-16) var(--pad-16);
       }
     }
@@ -1546,7 +1406,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     justify-content: space-between;
     width: 100%;
     padding: var(--pad-24);
-    @media(max-width: 767px) {
+    @include mobile {
       display: none;
     }
   }
@@ -1559,61 +1419,45 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__arrows {
     display: flex;
     align-items: center;
-    gap: calc(4 * var(--width-multiplier));
+    gap: w(4);
   }
   &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(42 * var(--width-multiplier));
-    height: calc(42 * var(--width-multiplier));
-    border: none;
+    @extend %ghost-arrow;
+    width: w(42);
+    height: w(42);
     border-radius: var(--br-6);
-    background: none;
-    color: var(--txt-gray, $txt-gray);
-    cursor: pointer;
-    @include transition;
-    &:hover {
-      color: var(--txt-white, $txt-white);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    svg {
-      width: calc(18 * var(--width-multiplier));
-      height: calc(15 * var(--width-multiplier));
-      pointer-events: none;
-    }
   }
 }
 
 .cta {
   &__container {
     position: relative;
-    padding: calc(60 * var(--width-multiplier)) var(--pad-40);
+    padding: w(60) var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       padding: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
   &__body {
-    max-width: calc(745 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    max-width: w(745);
+    @include tablet {
       max-width: none;
     }
   }
   &__title {
-    font: 700 calc(28 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(24 * var(--width-multiplier));
+    font: 700 w(28)/1.2 Nunito;
+    @include mobile {
+      font-size: w(24);
     }
   }
   &__text {
-    max-width: calc(680 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    max-width: w(680);
+    margin-top: w(12);
+    @include mobile {
       color: var(--txt-gray, $txt-gray);
     }
   }
@@ -1621,11 +1465,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     align-items: center;
     gap: var(--pad-16);
-    margin-top: calc(40 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    margin-top: w(40);
+    @include mobile {
       flex-direction: column;
-      gap: calc(12 * var(--width-multiplier));
-      margin-top: calc(24 * var(--width-multiplier));
+      gap: w(12);
+      margin-top: w(24);
     }
     .button {
       text-align: center;
@@ -1634,88 +1478,87 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__list {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(10 * var(--width-multiplier));
-    max-width: calc(530 * var(--width-multiplier));
-    margin-top: calc(40 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    gap: w(10);
+    max-width: w(530);
+    margin-top: w(40);
+    @include mobile {
       align-items: flex-start;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       white-space: nowrap;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
     li {
-      padding: calc(10 * var(--width-multiplier)) calc(14 * var(--width-multiplier));
-      border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.4);
+      padding: w(10) w(14);
+      border: w(1) solid rgba($txt-white, 0.4);
       border-radius: var(--br-16);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
       font-weight: 500;
       line-height: 1;
     }
   }
   &__img {
     position: absolute;
-    bottom: calc(-32 * var(--width-multiplier));
-    right: calc(40 * var(--width-multiplier));
-    height: calc(554 * var(--width-multiplier));
+    bottom: w(-32);
+    right: w(40);
+    height: w(554);
     pointer-events: none;
     img {
       width: auto;
       height: 100%;
       object-fit: contain;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       position: static;
       display: flex;
       justify-content: center;
-      height: calc(360 * var(--width-multiplier));
-      margin-top: calc(32 * var(--width-multiplier));
-      transform: none;
+      height: w(360);
+      margin-top: w(32);
     }
-    @media(max-width: 767px) {
-      height: calc(280 * var(--width-multiplier));
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      height: w(280);
+      margin-top: w(24);
     }
   }
 }
 
 .how {
   &__text {
-    max-width: calc(785 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
+    max-width: w(785);
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__body {
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
-      margin-top: calc(32 * var(--width-multiplier));
+    @include tablet {
+      margin-top: w(32);
     }
-    @media(max-width: 767px) {
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(24);
     }
   }
   &__list {
-    --step-gap: calc(56 * var(--width-multiplier));
-    --line-in: calc(122 * var(--width-multiplier));
-    --line-out: calc(139 * var(--width-multiplier));
+    --step-gap: #{w(56)};
+    --line-in: #{w(122)};
+    --line-out: #{w(139)};
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     column-gap: var(--gap);
     row-gap: var(--step-gap);
-    @media(max-width: 1024px) {
-      --step-gap: calc(40 * var(--width-multiplier));
+    @include tablet {
+      --step-gap: #{w(40)};
       grid-template-columns: minmax(0, 1fr);
     }
-    @media(max-width: 767px) {
-      --step-gap: calc(32 * var(--width-multiplier));
+    @include mobile {
+      --step-gap: #{w(32)};
     }
   }
   &__item {
     position: relative;
     padding: var(--pad-20);
     border-radius: var(--br-16);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba($txt-white, 0.1);
     background-color: var(--card-bg, $card-bg);
-    @media(min-width: 1025px) {
+    @include desktop {
       @for $i from 1 through 5 {
         &:nth-child(#{$i}) {
           grid-column: $i;
@@ -1723,46 +1566,46 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         }
       }
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
     &-num {
       display: block;
       color: var(--primary, $primary);
-      font: 700 calc(14 * var(--width-multiplier))/1 Nunito;
-      letter-spacing: calc(1 * var(--width-multiplier));
+      font: 700 w(14)/1 Nunito;
+      letter-spacing: w(1);
     }
     &-body {
-      margin-top: calc(12 * var(--width-multiplier));
+      margin-top: w(12);
     }
     &-title {
-      font-size: calc(20 * var(--width-multiplier));
+      font-size: w(20);
       font-weight: 700;
       line-height: 1.2;
-      @media(max-width: 767px) {
-        font-size: calc(18 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(18);
       }
     }
     &-text {
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
     }
     &-line {
       position: absolute;
       top: 100%;
-      left: calc(28 * var(--width-multiplier));
+      left: w(28);
       width: 0;
       height: var(--step-gap);
       color: var(--primary, $primary);
-      border-left: calc(2 * var(--width-multiplier)) dashed currentColor;
+      border-left: w(2) dashed currentColor;
       pointer-events: none;
       svg {
         display: none;
         width: 100%;
         height: 100%;
       }
-      @media(min-width: 1025px) {
+      @include desktop {
         left: auto;
         right: calc(var(--gap) * -1);
         width: var(--line-in);
@@ -1793,10 +1636,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 
 .result {
   &__text {
-    max-width: calc(785 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
+    max-width: w(785);
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 1024px) {
+    @include tablet {
       max-width: none;
     }
   }
@@ -1805,10 +1648,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
-      margin-top: calc(24 * var(--width-multiplier));
+      gap: w(12);
+      margin-top: w(24);
     }
   }
   &__card {
@@ -1816,26 +1659,26 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     &-title {
-      font-size: calc(20 * var(--width-multiplier));
+      font-size: w(20);
       font-weight: 700;
       line-height: 1.2em;
-      @media(max-width: 767px) {
-        font-size: calc(18 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(18);
       }
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
+      margin-top: w(12);
       color: var(--txt-gray, $txt-gray);
-      @media(max-width: 767px) {
-        margin-top: calc(8 * var(--width-multiplier));
+      @include mobile {
+        margin-top: w(8);
       }
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
       &:has(.result__icon) {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
-        column-gap: calc(12 * var(--width-multiplier));
+        column-gap: w(12);
         .result__icon {
           grid-row: span 2;
           margin-bottom: 0;
@@ -1844,22 +1687,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(48 * var(--width-multiplier));
-    height: calc(48 * var(--width-multiplier));
-    flex-shrink: 0;
-    margin-bottom: calc(16 * var(--width-multiplier));
-    border-radius: var(--br-8);
-    background-color: var(--primary, $primary);
+    @include icon-box(48);
+    margin-bottom: w(16);
     svg {
-      width: calc(30 * var(--width-multiplier));
+      width: w(30);
       height: auto;
       pointer-events: none;
     }
     img {
-      width: calc(30 * var(--width-multiplier));
+      width: w(30);
       height: auto;
       object-fit: contain;
     }
@@ -1870,10 +1706,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .result-three {
   .result__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
     }
   }
@@ -1883,10 +1719,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .result-five {
   .result__grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
     }
   }
@@ -1895,7 +1731,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &:nth-child(-n + 2) {
       grid-column: span 3;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
       &:nth-child(-n + 2) {
         grid-column: auto;
@@ -1907,14 +1743,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .expertise {
   &__container {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) calc(555 * var(--width-multiplier));
-    gap: calc(135 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    grid-template-columns: minmax(0, 1fr) w(555);
+    gap: w(135);
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(40 * var(--width-multiplier));
+      gap: w(40);
     }
-    @media(max-width: 767px) {
-      gap: calc(32 * var(--width-multiplier));
+    @include mobile {
+      gap: w(32);
     }
   }
   &__text {
@@ -1922,9 +1758,9 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
     gap: var(--pad-16);
     margin-top: var(--pad-24);
-    @media(max-width: 767px) {
-      gap: calc(12 * var(--width-multiplier));
-      margin-top: calc(12 * var(--width-multiplier));
+    @include mobile {
+      gap: w(12);
+      margin-top: w(12);
       color: var(--txt-gray, $txt-gray);
     }
   }
@@ -1932,16 +1768,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     margin-top: var(--pad-24);
     padding: var(--pad-24);
     border-radius: var(--br-16);
-    background-color: rgba(159, 245, 73, 0.1);
+    background-color: rgba($secondary, 0.1);
     &-title {
       color: var(--secondary, $secondary);
-      font: 700 calc(18 * var(--width-multiplier))/1 Nunito;
+      font: 700 w(18)/1 Nunito;
     }
     &-text {
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
       color: var(--txt-gray, $txt-gray);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
       background-color: var(--card-bg, $card-bg);
     }
@@ -1949,7 +1785,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__list {
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
   }
   &__item {
     display: flex;
@@ -1962,41 +1798,34 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       background-color: var(--primary, $primary);
       .expertise__item-num {
         color: var(--primary, $primary);
-        background-color: #FFFFFF;
+        background-color: var(--txt-white, $txt-white);
       }
       .expertise__item-text {
         color: #E4CAFF;
       }
     }
     &-num {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(32 * var(--width-multiplier));
-      height: calc(32 * var(--width-multiplier));
-      flex-shrink: 0;
-      border-radius: 50%;
-      background-color: var(--primary, $primary);
-      font: 700 calc(14 * var(--width-multiplier))/1 Nunito;
+      @include icon-box(32, $radius: 50%);
+      font: 700 w(14)/1 Nunito;
       transition: background-color 0.3s ease-out, color 0.3s ease-out;
-      @media(max-width: 767px) {
-        width: calc(24 * var(--width-multiplier));
-        height: calc(24 * var(--width-multiplier));
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        width: w(24);
+        height: w(24);
+        font-size: w(12);
       }
     }
     &-title {
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       font-weight: 600;
       line-height: 1;
     }
     &-text {
-      margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(4);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       transition: color 0.3s ease-out;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       align-items: flex-start;
       padding: 0;
       border-radius: 0;
@@ -2007,17 +1836,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .clients {
   &__title {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: block;
-      margin-bottom: calc(24 * var(--width-multiplier));
+      margin-bottom: w(24);
       color: var(--primary, $primary);
-      font: 700 calc(18 * var(--width-multiplier))/1.2 Nunito;
+      font: 700 w(18)/1.2 Nunito;
     }
   }
   &__marquee {
-    --clients-gap: calc(70 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      --clients-gap: calc(40 * var(--width-multiplier));
+    --clients-gap: #{w(70)};
+    @include mobile {
+      --clients-gap: #{w(40)};
     }
     display: flex;
     gap: var(--clients-gap);
@@ -2040,10 +1869,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     img {
       width: auto;
-      height: calc(70 * var(--width-multiplier));
+      height: w(70);
       object-fit: contain;
-      @media(max-width: 767px) {
-        height: calc(42 * var(--width-multiplier));
+      @include mobile {
+        height: w(42);
       }
     }
   }
@@ -2054,39 +1883,26 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     position: relative;
   }
   &__text {
-    max-width: calc(620 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
+    max-width: w(620);
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__button {
     position: absolute;
     top: 0;
     right: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       position: static;
-      margin-top: calc(24 * var(--width-multiplier));
+      margin-top: w(24);
     }
   }
   &__swiper {
     margin-top: var(--pad-40);
-    @media(max-width: 767px) {
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(24);
     }
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--gap);
-      @media(max-width: 1024px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      @media(max-width: 767px) {
-        display: flex;
-        align-items: stretch;
-        gap: 0;
-      }
-    }
+    @include swiper-grid(4, $tablet-cols: 2, $mobile-align: stretch);
     .swiper-slide {
-      height: auto;
       // две вертикальные карточки
       // две широкие
       &:nth-child(-n + 2) {
@@ -2095,7 +1911,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       &:nth-child(n + 3) {
         grid-column: span 2;
       }
-      @media(max-width: 1024px) {
+      @include tablet {
         &:nth-child(-n + 2) {
           grid-row: auto;
         }
@@ -2114,7 +1930,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     overflow: hidden;
     &--wide {
       flex-direction: row;
-      @media(max-width: 767px) {
+      @include mobile {
         flex-direction: column;
       }
     }
@@ -2124,8 +1940,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       aspect-ratio: 4 / 3;
       overflow: hidden;
       .cases__card--wide & {
-        width: calc(240 * var(--width-multiplier));
-        @media(max-width: 767px) {
+        width: w(240);
+        @include mobile {
           width: 100%;
         }
       }
@@ -2148,8 +1964,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: calc(127 * var(--width-multiplier)) !important;
-      height: calc(94 * var(--width-multiplier)) !important;
+      width: w(127) !important;
+      height: w(94) !important;
       object-fit: contain !important;
       z-index: 2;
     }
@@ -2157,22 +1973,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       transform: scale(1.04);
     }
     &-arrow {
-      position: absolute;
-      top: calc(16 * var(--width-multiplier));
-      right: calc(16 * var(--width-multiplier));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(42 * var(--width-multiplier));
-      height: calc(42 * var(--width-multiplier));
-      border-radius: var(--br-6);
-      background-color: var(--primary, $primary);
+      @extend %card-arrow;
       z-index: 2;
       @include transition;
       svg {
-        width: calc(16 * var(--width-multiplier));
-        height: calc(16 * var(--width-multiplier));
-        pointer-events: none;
+        width: w(16);
+        height: w(16);
       }
     }
     &:hover &-arrow {
@@ -2185,77 +1991,71 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       flex-direction: column;
       flex-grow: 1;
       padding: var(--pad-16);
-      margin-top: calc(-16 * var(--width-multiplier));
+      margin-top: w(-16);
       border-radius: var(--br-16);
       background-color: var(--card-bg, $card-bg);
       z-index: 1;
       .cases__card--wide & {
         margin-top: 0;
-        padding-right: calc(80 * var(--width-multiplier));
-        margin-left: calc(-16 * var(--width-multiplier));
-        @media(max-width: 767px) {
+        padding-right: w(80);
+        margin-left: w(-16);
+        @include mobile {
           margin-left: 0;
-          margin-top: calc(-16 * var(--width-multiplier));
+          margin-top: w(-16);
           padding: var(--pad-16);
         }
       }
     }
     &-title {
-      font-size: calc(20 * var(--width-multiplier));
+      font-size: w(20);
       font-weight: 500;
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
-      font-size: calc(14 * var(--width-multiplier));
+      margin-top: w(12);
+      font-size: w(14);
     }
     &-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       white-space: nowrap;
       margin-top: auto;
-      padding-top: calc(32 * var(--width-multiplier));
+      padding-top: w(32);
       li {
-        padding: calc(6 * var(--width-multiplier)) calc(8 * var(--width-multiplier));
+        padding: w(6) w(8);
         border-radius: var(--br-6);
         background-color: var(--tag-bg, $tag-bg);
-        font-size: calc(12 * var(--width-multiplier));
+        font-size: w(12);
       }
     }
   }
 }
 
 .cases-page {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   .cases__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
-      margin-top: calc(24 * var(--width-multiplier));
+      gap: w(12);
+      margin-top: w(24);
     }
   }
 }
 
 .cases-inner {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__gallery {
     margin-top: var(--pad-40);
     overflow: visible;
-    @media(max-width: 767px) {
-      margin-top: calc(24 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(24);
     }
   }
   &__slide {
@@ -2276,41 +2076,18 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__arrows {
     display: flex;
     align-items: center;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
   }
   &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(40 * var(--width-multiplier));
-    height: calc(40 * var(--width-multiplier));
-    border: none;
-    border-radius: var(--br-8);
-    background: none;
-    color: var(--txt-gray, $txt-gray);
-    cursor: pointer;
-    @include transition;
-    &:hover {
-      color: var(--txt-white, $txt-white);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    &.swiper-button-disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    svg {
-      width: calc(18 * var(--width-multiplier));
-      height: calc(15 * var(--width-multiplier));
-      pointer-events: none;
-    }
+    @extend %slider-arrow;
   }
 }
 
 .info {
   &__title {
-    font: 700 calc(28 * var(--width-multiplier))/1.1 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(24 * var(--width-multiplier));
+    font: 700 w(28)/1.1 Nunito;
+    @include mobile {
+      font-size: w(24);
     }
   }
   &__card {
@@ -2321,30 +2098,19 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    font-size: calc(22 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      gap: calc(12 * var(--width-multiplier));
+    font-size: w(22);
+    @include mobile {
+      gap: w(12);
       margin-top: var(--pad-16);
       padding: var(--pad-16);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
     }
     ul {
       display: flex;
       flex-direction: column;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       li {
-        position: relative;
-        padding-left: calc(16 * var(--width-multiplier));
-        &::before {
-          content: "";
-          position: absolute;
-          top: calc(8 * var(--width-multiplier));
-          left: 0;
-          width: calc(6 * var(--width-multiplier));
-          height: calc(6 * var(--width-multiplier));
-          border-radius: 50%;
-          background-color: var(--primary, $primary);
-        }
+        @include bullet-item;
       }
     }
   }
@@ -2352,10 +2118,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 
 .solution {
   &__text {
-    max-width: calc(785 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
+    max-width: w(785);
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 1024px) {
+    @include tablet {
       max-width: none;
     }
   }
@@ -2364,12 +2130,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(20, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: var(--pad-24);
     }
   }
@@ -2377,25 +2143,25 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__main {
     grid-column: 7 / span 8;
     grid-row: 1;
-    padding: calc(32 * var(--width-multiplier));
+    padding: w(32);
     border-radius: var(--br-16);
     background-color: var(--secondary, $secondary);
     color: var(--page-bg, $page-bg);
     text-align: center;
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: 1 / -1;
       grid-row: auto;
     }
-    @media(max-width: 767px) {
-      margin-bottom: calc(12 * var(--width-multiplier));
+    @include mobile {
+      margin-bottom: w(12);
       padding: var(--pad-16);
       text-align: left;
     }
     &-text {
       margin-top: var(--pad-16);
       opacity: 0.7;
-      @media(max-width: 767px) {
-        margin-top: calc(8 * var(--width-multiplier));
+      @include mobile {
+        margin-top: w(8);
       }
     }
   }
@@ -2403,7 +2169,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-column: span 5;
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
@@ -2418,7 +2184,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       grid-row: 1;
       align-self: end;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
       &:nth-child(2),
       &:nth-child(3) {
@@ -2427,40 +2193,30 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         align-self: auto;
       }
     }
-    @media(max-width: 767px) {
+    @include mobile {
       flex-direction: row;
       align-items: center;
       padding: var(--pad-16);
     }
     &-num {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(32 * var(--width-multiplier));
-      height: calc(32 * var(--width-multiplier));
-      flex-shrink: 0;
-      border-radius: 50%;
-      background-color: var(--primary, $primary);
+      @include icon-box(32, $radius: 50%);
       color: var(--txt-white, $txt-white);
-      font: 700 calc(14 * var(--width-multiplier))/1 Nunito;
+      font: 700 w(14)/1 Nunito;
     }
   }
 }
 
 .news {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__text {
-    max-width: calc(900 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
+    max-width: w(900);
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 1024px) {
+    @include tablet {
       max-width: none;
     }
-    @media(max-width: 767px) {
-      font-size: calc(14 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(14);
     }
   }
   &__grid {
@@ -2468,13 +2224,13 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
-      margin-top: calc(24 * var(--width-multiplier));
+      gap: w(12);
+      margin-top: w(24);
     }
   }
   &__card {
@@ -2497,22 +2253,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       transform: scale(1.04);
     }
     &-arrow {
-      position: absolute;
-      top: var(--pad-16);
-      right: var(--pad-16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(42 * var(--width-multiplier));
-      height: calc(42 * var(--width-multiplier));
-      border-radius: var(--br-6);
-      background-color: var(--primary, $primary);
-      transition: background-color 0.3s ease-out, color 0.3s ease-out;
-      svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(14 * var(--width-multiplier));
-        pointer-events: none;
-      }
+      @extend %card-arrow;
     }
     &:hover &-arrow {
       background-color: var(--secondary, $secondary);
@@ -2523,7 +2264,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       flex-direction: column;
       flex-grow: 1;
       padding: var(--pad-20);
-      @media(max-width: 767px) {
+      @include mobile {
         padding: var(--pad-16);
       }
     }
@@ -2531,49 +2272,46 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
     }
     &-tag {
-      padding: calc(6 * var(--width-multiplier)) calc(10 * var(--width-multiplier));
+      padding: w(6) w(10);
       border-radius: var(--br-6);
-      background-color: rgba(255, 255, 255, 0.06);
+      background-color: rgba($txt-white, 0.06);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
     }
     &-date {
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
     }
     &-title {
-      margin-top: calc(16 * var(--width-multiplier));
-      font-size: calc(18 * var(--width-multiplier));
-      @media(max-width: 767px) {
-        font-size: calc(16 * var(--width-multiplier));
+      margin-top: w(16);
+      font-size: w(18);
+      @include mobile {
+        font-size: w(16);
       }
     }
     &-text {
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
     }
   }
 }
 
 .sitemap {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__grid {
     columns: 3;
     column-gap: var(--gap);
     margin-top: var(--pad-40);
     margin-bottom: calc(var(--gap) * -1);
-    @media(max-width: 1024px) {
+    @include tablet {
       columns: 2;
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       columns: 1;
       margin-top: var(--pad-16);
     }
@@ -2584,41 +2322,32 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
   &__col-title {
     padding-bottom: var(--pad-16);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba($txt-white, 0.08);
     color: var(--txt-white, $txt-white);
-    font: 700 calc(20 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(18 * var(--width-multiplier));
+    font: 700 w(20)/1.2 Nunito;
+    @include mobile {
+      font-size: w(18);
     }
   }
   &__list {
     display: flex;
     flex-direction: column;
-    gap: calc(14 * var(--width-multiplier));
+    gap: w(14);
     margin-top: var(--pad-16);
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(16 * var(--width-multiplier));
+    font-size: w(16);
     font-weight: 600;
     > li > a {
-      position: relative;
+      @include bullet-item($pad: 18);
       display: inline-block;
-      padding-left: calc(18 * var(--width-multiplier));
       @include transition;
       &::before {
-        content: "";
-        position: absolute;
-        top: calc(8 * var(--width-multiplier));
-        left: 0;
-        width: calc(6 * var(--width-multiplier));
-        height: calc(6 * var(--width-multiplier));
-        border-radius: 50%;
-        background-color: var(--primary, $primary);
         @include transition;
       }
       &:hover {
@@ -2631,12 +2360,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__ext {
     display: inline-block;
-    margin-left: calc(8 * var(--width-multiplier));
-    padding: calc(4 * var(--width-multiplier)) calc(8 * var(--width-multiplier));
+    margin-left: w(8);
+    padding: w(4) w(8);
     border-radius: var(--br-6);
     background-color: var(--tag-bg, $tag-bg);
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(12 * var(--width-multiplier));
+    font-size: w(12);
     font-weight: 500;
     line-height: 1;
     vertical-align: middle;
@@ -2645,15 +2374,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__sublist {
     display: flex;
     flex-direction: column;
-    gap: calc(10 * var(--width-multiplier));
-    margin-top: calc(12 * var(--width-multiplier));
-    margin-left: calc(18 * var(--width-multiplier));
-    padding-left: calc(16 * var(--width-multiplier));
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: calc(15 * var(--width-multiplier));
+    gap: w(10);
+    margin-top: w(12);
+    margin-left: w(18);
+    padding-left: w(16);
+    border-left: 1px solid rgba($txt-white, 0.08);
+    font-size: w(15);
     font-weight: 500;
-    @media(max-width: 767px) {
-      font-size: calc(14 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(14);
     }
     a {
       @include transition;
@@ -2672,60 +2401,52 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 }
 
 .legal {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__body {
     display: grid;
-    grid-template-columns: calc(300 * var(--width-multiplier)) minmax(0, 1fr);
+    grid-template-columns: w(300) minmax(0, 1fr);
     align-items: start;
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       margin-top: var(--pad-16);
     }
   }
   &__toc {
+    @extend %hide-scrollbar;
     position: sticky;
-    top: calc(100 * var(--width-multiplier));
-    // max-height: calc(100vh - (140 * var(--width-multiplier)));
+    top: w(100);
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     overflow-y: auto;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    @media(max-width: 1024px) {
+    @include tablet {
       position: static;
-      // max-height: none;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
   &__toc-title {
     color: var(--txt-white, $txt-white);
-    font: 700 calc(22 * var(--width-multiplier))/1.1 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(18 * var(--width-multiplier));
+    font: 700 w(22)/1.1 Nunito;
+    @include mobile {
+      font-size: w(18);
     }
   }
   &__toc-list {
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     margin-top: var(--pad-16);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 767px) {
-      font-size: calc(14 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(14);
     }
     a {
       @include transition;
@@ -2742,30 +2463,26 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     h2,
     h3 {
-      scroll-margin-top: calc(100 * var(--width-multiplier));
+      scroll-margin-top: w(100);
     }
   }
 }
 
 .news-inner {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__img {
     aspect-ratio: 21 / 9;
-    max-width: calc(1130 * var(--width-multiplier));
-    margin: 0 auto;
-    margin-top: var(--pad-40);
+    max-width: w(1130);
+    margin: var(--pad-40) auto 0;
     border-radius: var(--br-16);
     overflow: hidden;
     img {
       @include full-img-cover;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       aspect-ratio: 16 / 10;
       margin-top: var(--pad-16);
     }
@@ -2775,52 +2492,37 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .news-other {
   &__swiper {
     margin-top: var(--pad-40);
-    @media(max-width: 767px) {
+    @include mobile {
       margin-top: var(--pad-24);
     }
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--gap);
-      @media(max-width: 1024px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      @media(max-width: 767px) {
-        display: flex;
-        align-items: stretch;
-        gap: 0;
-      }
-    }
-    .swiper-slide {
-      height: auto;
-    }
+    @include swiper-grid(3, $tablet-cols: 2, $mobile-align: stretch);
   }
 }
 
 .about {
   &__label {
-    font: 700 calc(36 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(28 * var(--width-multiplier));
+    font: 700 w(36)/1.2 Nunito;
+    @include mobile {
+      font-size: w(28);
     }
   }
   &__title {
     margin-top: var(--pad-40);
-    font: 700 calc(48 * var(--width-multiplier))/1.25 Nunito;
-    @media(max-width: 1024px) {
-      font-size: calc(24 * var(--width-multiplier));
+    font: 700 w(48)/1.25 Nunito;
+    @include tablet {
+      font-size: w(24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       margin-top: var(--pad-24);
-      font-size: calc(18 * var(--width-multiplier));
+      font-size: w(18);
     }
   }
   &__body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) calc(400 * var(--width-multiplier));
+    grid-template-columns: minmax(0, 1fr) w(400);
     gap: var(--pad-40);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
       margin-top: var(--pad-24);
@@ -2831,57 +2533,43 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
     gap: var(--pad-24);
     color: var(--txt-gray, $txt-gray);
-    p {
-      &:first-child {
-        color: var(--txt-white, $txt-white);
-      }
+    p:first-child {
+      color: var(--txt-white, $txt-white);
     }
   }
   &__list {
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    @media(max-width: 767px) {
-      gap: calc(12 * var(--width-multiplier));
+    @include mobile {
+      gap: w(12);
     }
   }
   &__item {
     display: flex;
     align-items: center;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     padding: var(--pad-20) var(--pad-16);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(48 * var(--width-multiplier));
-      height: calc(48 * var(--width-multiplier));
-      flex-shrink: 0;
-      border-radius: var(--br-8);
-      background-color: var(--primary, $primary);
-      svg {
-        width: calc(24 * var(--width-multiplier));
-        height: calc(24 * var(--width-multiplier));
-        pointer-events: none;
-      }
+      @include icon-box(48, $icon: 24);
     }
     &-title {
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       font-weight: 700;
       line-height: 1;
     }
     &-text {
-      margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(4);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       line-height: 1;
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
@@ -2891,7 +2579,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__swiper {
     margin-top: var(--pad-40);
     overflow: visible;
-    @media(max-width: 767px) {
+    @include mobile {
       margin-top: var(--pad-24);
       overflow: hidden;
     }
@@ -2900,24 +2588,24 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       gap: var(--gap);
       align-items: start;
 
-      @media(min-width: 1025px) {
+      @include desktop {
         --col: calc((100% - 5 * var(--gap)) / 6);
         grid-auto-columns: var(--col);
         grid-template-rows: auto auto;
         will-change: transform;
       }
-      @media(max-width: 1024px) {
+      @include tablet {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: stretch;
       }
-      @media(max-width: 767px) {
+      @include mobile {
         display: flex;
         gap: 0;
       }
     }
     .swiper-slide {
       height: auto;
-      @media(min-width: 1025px) {
+      @include desktop {
         @for $pair from 0 through 5 {
           &:nth-child(#{2 * $pair + 1}) {
             grid-column: #{3 * $pair + 1} / span 2;
@@ -2938,12 +2626,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
     &-title {
-      font: 700 calc(24 * var(--width-multiplier))/1.1 Nunito;
-      @media(max-width: 1024px) {
-        font-size: calc(20 * var(--width-multiplier));
+      font: 700 w(24)/1.1 Nunito;
+      @include tablet {
+        font-size: w(20);
       }
-      @media(max-width: 767px) {
-        font-size: calc(18 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(18);
       }
     }
     &-year {
@@ -2953,14 +2641,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       }
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
+      margin-top: w(12);
       color: var(--txt-gray, $txt-gray);
     }
   }
   &__link {
     position: absolute;
-    width: calc(121 * var(--width-multiplier));
-    height: calc(139 * var(--width-multiplier));
+    width: w(121);
+    height: w(139);
     pointer-events: none;
     svg {
       width: 100%;
@@ -2978,50 +2666,27 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       bottom: 86%;
       left: 46%;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       display: none;
     }
   }
   &__nav {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: var(--pad-16);
     }
   }
   &__arrows {
     display: flex;
     align-items: center;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
   }
   &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(40 * var(--width-multiplier));
-    height: calc(40 * var(--width-multiplier));
-    border: none;
-    border-radius: var(--br-8);
-    background: none;
-    color: var(--txt-gray, $txt-gray);
-    cursor: pointer;
-    @include transition;
-    &:hover {
-      color: var(--txt-white, $txt-white);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    &.swiper-button-disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
-    svg {
-      width: calc(18 * var(--width-multiplier));
-      height: calc(15 * var(--width-multiplier));
-      pointer-events: none;
-    }
+    @extend %slider-arrow;
   }
 }
 
@@ -3032,40 +2697,40 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__head {
     display: grid;
-    grid-template-columns: calc(440 * var(--width-multiplier)) minmax(0, 1fr);
+    grid-template-columns: w(440) minmax(0, 1fr);
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
     }
   }
   &__text {
-    font-size: calc(18 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      font-size: calc(16 * var(--width-multiplier));
+    font-size: w(18);
+    @include mobile {
+      font-size: w(16);
     }
   }
   &__label {
-    margin-top: calc(32 * var(--width-multiplier));
+    margin-top: w(32);
     color: var(--primary, $primary);
-    font-size: calc(14 * var(--width-multiplier));
+    font-size: w(14);
     font-weight: 700;
     text-transform: uppercase;
-    @media(max-width: 767px) {
+    @include mobile {
       margin-top: var(--pad-20);
     }
   }
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(12 * var(--width-multiplier));
-    margin-top: calc(16 * var(--width-multiplier));
+    gap: w(12);
+    margin-top: w(16);
     li {
-      padding: calc(10 * var(--width-multiplier)) calc(14 * var(--width-multiplier));
-      border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.4);
-      border-radius: calc(100 * var(--width-multiplier));
-      font-size: calc(14 * var(--width-multiplier));
+      padding: w(10) w(14);
+      border: w(1) solid rgba($txt-white, 0.4);
+      border-radius: w(100);
+      font-size: w(14);
       font-weight: 500;
       line-height: 1;
       white-space: nowrap;
@@ -3078,26 +2743,20 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     img {
       @include full-img-cover;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       aspect-ratio: 3 / 2;
     }
   }
   &__top {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--gap);
-    margin-top: calc(130 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      display: contents;
-    }
+    @include split-head($align: flex-end);
+    margin-top: w(130);
   }
   &__nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: var(--gap);
-    @media(max-width: 767px) {
+    @include mobile {
       order: 1;
       justify-content: space-between;
       margin-top: var(--pad-24);
@@ -3105,39 +2764,34 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__counter {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: block;
     }
   }
   &__arrows {
     display: flex;
     align-items: center;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
   }
   &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(40 * var(--width-multiplier));
-    height: calc(40 * var(--width-multiplier));
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.2);
+    @extend %flex-center;
+    @extend %swiper-disabled;
+    width: w(40);
+    height: w(40);
+    border: w(1) solid rgba($txt-white, 0.2);
     border-radius: var(--br-8);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba($txt-white, 0.1);
     color: var(--txt-gray, $txt-gray);
     backdrop-filter: blur(10px);
     cursor: pointer;
     @include transition;
     &:hover {
-      border-color: rgba(255, 255, 255, 0.4);
+      border-color: rgba($txt-white, 0.4);
       color: var(--txt-white, $txt-white);
     }
-    &.swiper-button-disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
     svg {
-      width: calc(18 * var(--width-multiplier));
-      height: calc(15 * var(--width-multiplier));
+      width: w(18);
+      height: w(15);
       pointer-events: none;
     }
   }
@@ -3159,7 +2813,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     overflow: hidden;
     &-img {
       position: relative;
-      height: calc(300 * var(--width-multiplier));
+      height: w(300);
       overflow: hidden;
       img {
         @include full-img-cover;
@@ -3172,10 +2826,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         bottom: 0;
         width: 100%;
         height: 55%;
-        background: linear-gradient(180deg, rgba(31, 34, 39, 0) 0%, #1F2227 100%);
+        background: linear-gradient(180deg, rgba($card-bg, 0) 0%, var(--card-bg, $card-bg) 100%);
       }
-      @media(max-width: 767px) {
-        height: calc(240 * var(--width-multiplier));
+      @include mobile {
+        height: w(240);
       }
     }
     &-body {
@@ -3183,19 +2837,19 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     &-line {
       display: block;
-      width: calc(40 * var(--width-multiplier));
-      height: calc(4 * var(--width-multiplier));
-      margin-bottom: calc(12 * var(--width-multiplier));
-      border-radius: calc(2 * var(--width-multiplier));
+      width: w(40);
+      height: w(4);
+      margin-bottom: w(12);
+      border-radius: w(2);
       background-color: var(--primary, $primary);
     }
     &-name {
-      font-size: calc(18 * var(--width-multiplier));
+      font-size: w(18);
       font-weight: 700;
       line-height: 1.1em;
     }
     &-role {
-      margin-top: calc(6 * var(--width-multiplier));
+      margin-top: w(6);
       color: var(--txt-gray, $txt-gray);
     }
   }
@@ -3203,22 +2857,22 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 
 .contacts {
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) calc(711 * var(--width-multiplier));
+    grid-template-columns: minmax(0, 1fr) w(711);
     grid-template-rows: auto minmax(0, 1fr);
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: none;
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
-      gap: calc(12 * var(--width-multiplier));
+    @include mobile {
+      gap: w(12);
     }
   }
   &__list {
@@ -3231,14 +2885,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
       grid-row: auto;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-16);
-      padding: calc(12 * var(--width-multiplier));
+      padding: w(12);
     }
   }
   &__item {
@@ -3253,13 +2907,13 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__label {
     color: var(--primary, $primary);
-    font-size: calc(14 * var(--width-multiplier));
+    font-size: w(14);
     font-weight: 600;
     line-height: 1;
   }
   &__value {
     display: block;
-    margin-top: calc(6 * var(--width-multiplier));
+    margin-top: w(6);
   }
   &__link {
     width: max-content;
@@ -3274,7 +2928,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-column: 1;
     grid-row: 2;
     display: block;
-    min-height: calc(300 * var(--width-multiplier));
+    min-height: w(300);
     border-radius: var(--br-16);
     overflow: hidden;
     img, iframe {
@@ -3288,20 +2942,20 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       @include position-abs;
       width: 100%;
       height: 100%;
-      background-color: rgba(31, 34, 39, 0.6);
+      background-color: rgba($card-bg, 0.6);
       z-index: -1;
     }
     &:hover img, &:hover iframe {
       transform: scale(1.04);
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
       grid-row: auto;
-      height: calc(320 * var(--width-multiplier));
+      height: w(320);
       min-height: unset;
     }
-    @media(max-width: 767px) {
-      height: calc(240 * var(--width-multiplier));
+    @include mobile {
+      height: w(240);
     }
   }
   &__form {
@@ -3312,17 +2966,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-column: auto;
       grid-row: auto;
       padding: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
     &-title {
       margin-bottom: var(--pad-24);
-      @media(max-width: 767px) {
+      @include mobile {
         margin-bottom: var(--pad-16);
       }
     }
@@ -3331,11 +2985,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .form__bottom {
       margin-top: auto;
-      @media(max-width: 767px) {
+      @include mobile {
         flex-direction: column;
         align-items: stretch;
         gap: var(--pad-16);
-        margin-top: calc(8 * var(--width-multiplier));
+        margin-top: w(8);
       }
     }
   }
@@ -3343,29 +2997,23 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 
 .vacancies {
   &__container {
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       flex-direction: column;
     }
   }
   &__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--gap);
-    @media(max-width: 767px) {
-      display: contents;
-    }
+    @include split-head;
   }
   &__title {
-    max-width: calc(745 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    max-width: w(745);
+    @include mobile {
       max-width: none;
     }
   }
   &__button {
     flex-shrink: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       order: 1;
       margin-top: var(--pad-24);
     }
@@ -3375,10 +3023,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
     }
@@ -3386,45 +3034,35 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__item {
     display: flex;
     align-items: flex-start;
-    gap: calc(16 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      gap: calc(12 * var(--width-multiplier));
+    gap: w(16);
+    @include mobile {
+      gap: w(12);
     }
     &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(40 * var(--width-multiplier));
-      height: calc(40 * var(--width-multiplier));
-      flex-shrink: 0;
-      border-radius: 50%;
-      background-color: rgba(138, 56, 245, 0.1);
+      @include icon-box(40, $icon: 20, $radius: 50%, $bg: rgba($primary, 0.1));
       color: var(--primary, $primary);
-      @media(max-width: 767px) {
-        width: calc(32 * var(--width-multiplier));
-        height: calc(32 * var(--width-multiplier));
+      @include mobile {
+        width: w(32);
+        height: w(32);
       }
       svg {
-        width: calc(20 * var(--width-multiplier));
-        height: calc(20 * var(--width-multiplier));
-        pointer-events: none;
-        @media(max-width: 767px) {
-          width: calc(16 * var(--width-multiplier));
-          height: calc(16 * var(--width-multiplier));
+        @include mobile {
+          width: w(16);
+          height: w(16);
         }
       }
     }
     &-title {
-      font-size: calc(18 * var(--width-multiplier));
+      font-size: w(18);
       font-weight: 700;
       line-height: 1;
     }
     &-text {
-      margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(4);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      font-size: w(14);
+      @include mobile {
+        font-size: w(12);
       }
     }
   }
@@ -3432,23 +3070,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 
 .jobs {
   &__container {
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       flex-direction: column;
     }
   }
   &__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--pad-24);
-    @media(max-width: 767px) {
-      display: contents;
-    }
+    @include split-head($gap: var(--pad-24));
   }
   &__button {
     flex-shrink: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       order: 1;
       margin-top: var(--pad-24);
     }
@@ -3458,11 +3090,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
     }
@@ -3472,60 +3104,60 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
     padding: var(--pad-24);
     border-radius: var(--br-16);
-    background-color: #1F2227;
-    @media(max-width: 767px) {
+    background-color: var(--card-bg, $card-bg);
+    @include mobile {
       padding: var(--pad-16);
     }
     &-title {
       margin-top: var(--pad-16);
-      font: 500 calc(20 * var(--width-multiplier))/1.2 Nunito;
-      @media(max-width: 767px) {
-        margin-top: calc(12 * var(--width-multiplier));
-        font-size: calc(18 * var(--width-multiplier));
+      font: 500 w(20)/1.2 Nunito;
+      @include mobile {
+        margin-top: w(12);
+        font-size: w(18);
       }
     }
     &-text {
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
       color: var(--txt-gray, $txt-gray);
     }
   }
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
   }
   &__tag {
-    padding: calc(10 * var(--width-multiplier)) calc(14 * var(--width-multiplier));
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.4);
-    border-radius: calc(18 * var(--width-multiplier));
-    font-size: calc(14 * var(--width-multiplier));
+    padding: w(10) w(14);
+    border: w(1) solid rgba($txt-white, 0.4);
+    border-radius: w(18);
+    font-size: w(14);
     font-weight: 500;
     line-height: 1;
     &--muted {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba($txt-white, 0.5);
     }
   }
   &__link {
     display: flex;
     align-items: center;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
     width: max-content;
     margin-top: auto;
     padding-top: var(--pad-16);
     color: var(--primary, $primary);
-    font-size: calc(14 * var(--width-multiplier));
+    font-size: w(14);
     font-weight: 600;
     @include transition;
     svg {
-      width: calc(14 * var(--width-multiplier));
-      height: calc(12 * var(--width-multiplier));
+      width: w(14);
+      height: w(12);
       pointer-events: none;
       @include transition;
     }
     &:hover {
       color: var(--secondary, $secondary);
       svg {
-        transform: translateX(calc(4 * var(--width-multiplier)));
+        transform: translateX(w(4));
       }
     }
   }
@@ -3534,20 +3166,20 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .resume {
   &__container {
     padding: var(--pad-40);
-    border-radius: calc(20 * var(--width-multiplier));
+    border-radius: w(20);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       padding: var(--pad-40) var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-40) var(--pad-16);
     }
   }
   &__form.form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: calc(60 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    gap: w(60);
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
     }
@@ -3557,7 +3189,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
   }
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__drop {
@@ -3567,10 +3199,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    min-height: calc(300 * var(--width-multiplier));
+    min-height: w(300);
     margin-top: var(--pad-40);
     padding: var(--pad-24);
-    border: calc(1 * var(--width-multiplier)) dashed rgba(255, 255, 255, 0.2);
+    border: w(1) dashed rgba($txt-white, 0.2);
     border-radius: var(--br-16);
     text-align: center;
     cursor: pointer;
@@ -3578,7 +3210,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &:hover,
     &.is-drag {
       border-color: var(--primary, $primary);
-      background-color: rgba(138, 56, 245, 0.06);
+      background-color: rgba($primary, 0.06);
     }
     &.is-filled {
       border-style: solid;
@@ -3589,40 +3221,29 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       opacity: 0;
       pointer-events: none;
     }
-    @media(max-width: 767px) {
-      min-height: calc(120 * var(--width-multiplier));
+    @include mobile {
+      min-height: w(120);
       margin-top: var(--pad-24);
       padding: var(--pad-20) var(--pad-16);
     }
     &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(40 * var(--width-multiplier));
-      height: calc(40 * var(--width-multiplier));
+      @include icon-box(40, $icon: 24, $radius: 50%, $bg: rgba($primary, 0.2));
       margin-bottom: var(--pad-16);
-      border-radius: 50%;
-      background-color: rgba(138, 56, 245, 0.2);
       color: var(--primary, $primary);
-      svg {
-        width: calc(24 * var(--width-multiplier));
-        height: calc(24 * var(--width-multiplier));
-        pointer-events: none;
-      }
-      @media(max-width: 767px) {
+      @include mobile {
         display: none;
       }
     }
     &-title {
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       font-weight: 700;
       line-height: 1.2;
       word-break: break-word;
     }
     &-text {
-      margin-top: calc(6 * var(--width-multiplier));
+      margin-top: w(6);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
     }
   }
   &__fields {
@@ -3632,8 +3253,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     .form__bottom {
       flex-direction: column;
       align-items: flex-start;
-      gap: calc(24 * var(--width-multiplier));
-      @media(max-width: 767px) {
+      gap: w(24);
+      @include mobile {
         align-items: stretch;
       }
     }
@@ -3641,23 +3262,20 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 }
 
 .calc {
-  padding-top: calc(80 * var(--width-multiplier));
-  @media(max-width: 767px) {
-    padding-top: 0;
-  }
+  @extend %page-offset;
   &__head {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     column-gap: var(--pad-24);
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
     }
   }
   &__title {
     grid-column: 1;
     grid-row: 1;
-    max-width: calc(785 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    max-width: w(785);
+    @include mobile {
       grid-column: auto;
       grid-row: auto;
       max-width: none;
@@ -3666,10 +3284,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__text {
     grid-column: 1;
     grid-row: 2;
-    max-width: calc(785 * var(--width-multiplier));
-    margin-top: calc(16 * var(--width-multiplier));
+    max-width: w(785);
+    margin-top: w(16);
     color: var(--txt-gray, $txt-gray);
-    @media(max-width: 767px) {
+    @include mobile {
       grid-column: auto;
       grid-row: auto;
       max-width: none;
@@ -3680,7 +3298,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-row: 1;
     align-self: start;
     flex-shrink: 0;
-    @media(max-width: 767px) {
+    @include mobile {
       grid-column: auto;
       grid-row: auto;
       margin-top: var(--pad-24);
@@ -3688,48 +3306,39 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__periods {
     display: flex;
-    gap: calc(4 * var(--width-multiplier));
+    gap: w(4);
     width: max-content;
     max-width: 100%;
     margin-top: var(--pad-24);
-    padding: calc(4 * var(--width-multiplier));
-    border-radius: calc(8 * var(--width-multiplier));
+    padding: w(4);
+    border-radius: w(8);
     background-color: var(--card-bg, $card-bg);
     overflow-x: auto;
-    @media(max-width: 767px) {
+    @include mobile {
       width: 100%;
     }
   }
   &__period {
-    padding: calc(8 * var(--width-multiplier)) var(--pad-16);
-    border: none;
-    border-radius: var(--br-6);
-    background-color: transparent;
-    color: var(--txt-gray, $txt-gray);
-    font-size: calc(14 * var(--width-multiplier));
+    @extend %tab-ghost;
+    padding: w(8) var(--pad-16);
+    font-size: w(14);
     font-weight: 600;
     line-height: 1;
     white-space: nowrap;
-    cursor: pointer;
-    @include transition;
     &:hover {
       color: var(--txt-white, $txt-white);
     }
-    &.is-active {
-      background-color: var(--primary, $primary);
-      color: var(--txt-white, $txt-white);
-    }
-    @media(max-width: 767px) {
+    @include mobile {
       flex-grow: 1;
     }
   }
   &__body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) calc(440 * var(--width-multiplier));
+    grid-template-columns: minmax(0, 1fr) w(440);
     align-items: start;
     gap: var(--gap);
-    margin-top: calc(32 * var(--width-multiplier));
-    @media(max-width: 1024px) {
+    margin-top: w(32);
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-16);
       margin-top: var(--pad-24);
@@ -3740,7 +3349,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    @media(max-width: 1024px) {
+    @include tablet {
       gap: var(--pad-16);
     }
   }
@@ -3748,10 +3357,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-40);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       padding: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
@@ -3761,15 +3370,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
     }
   }
   &__card-title,
   &__request-title {
-    font: 700 calc(20 * var(--width-multiplier))/1 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(18 * var(--width-multiplier));
+    font: 700 w(20)/1 Nunito;
+    @include mobile {
+      font-size: w(18);
     }
   }
   &__grid {
@@ -3777,26 +3386,26 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-24);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: calc(12 * var(--width-multiplier));
-      row-gap: calc(16 * var(--width-multiplier));
+      column-gap: w(12);
+      row-gap: w(16);
       margin-top: var(--pad-16);
     }
   }
   &__field {
     display: flex;
     flex-direction: column;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
     &--wide {
       grid-column: span 2;
-      @media(max-width: 1024px) {
+      @include tablet {
         grid-column: span 1;
       }
     }
     &--stack {
       grid-column: span 2;
-      @media(max-width: 1024px) {
+      @include tablet {
         grid-column: 1 / -1;
       }
     }
@@ -3806,22 +3415,22 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__label {
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(14 * var(--width-multiplier));
+    font-size: w(14);
     font-weight: 500;
     line-height: 1;
-    @media(max-width: 767px) {
-      font-size: calc(12 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(12);
     }
   }
   &__input,
   &__select {
     width: 100%;
-    padding: calc(12 * var(--width-multiplier)) var(--pad-16);
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.1);
-    border-radius: calc(8 * var(--width-multiplier));
-    background-color: rgba(255, 255, 255, 0.04);
+    padding: w(12) var(--pad-16);
+    border: w(1) solid rgba($txt-white, 0.1);
+    border-radius: w(8);
+    background-color: rgba($txt-white, 0.04);
     color: var(--txt-white, $txt-white);
-    font: 500 calc(16 * var(--width-multiplier))/1 Nunito;
+    font: 500 w(16)/1 Nunito;
     @include transition;
     &:focus {
       border-color: var(--primary, $primary);
@@ -3837,12 +3446,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__select {
-    padding-right: calc(40 * var(--width-multiplier));
+    padding-right: w(40);
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4L6 8L10 4' stroke='%23B8B8B8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right var(--pad-16) center;
-    background-size: calc(14 * var(--width-multiplier));
+    background-size: w(14);
     cursor: pointer;
     option {
       background-color: var(--card-bg, $card-bg);
@@ -3853,7 +3462,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     position: relative;
     display: block;
     .calc__input {
-      padding-right: calc(74 * var(--width-multiplier));
+      padding-right: w(74);
     }
     &-btn {
       position: absolute;
@@ -3861,14 +3470,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       display: flex;
       align-items: center;
       justify-content: center;
-      width: calc(32 * var(--width-multiplier));
-      height: calc(32 * var(--width-multiplier));
+      width: w(32);
+      height: w(32);
       padding: 0;
-      border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.1);
+      border: w(1) solid rgba($txt-white, 0.1);
       border-radius: var(--br-6);
-      background-color: rgba(255, 255, 255, 0.06);
+      background-color: rgba($txt-white, 0.06);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       line-height: 1;
       transform: translateY(-50%);
       cursor: pointer;
@@ -3882,17 +3491,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         pointer-events: none;
       }
       &[data-step^="-"] {
-        right: calc(42 * var(--width-multiplier));
+        right: w(42);
       }
       &:not([data-step^="-"]) {
-        right: calc(6 * var(--width-multiplier));
+        right: w(6);
       }
     }
   }
   &__checks {
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     margin-top: var(--pad-20);
   }
   &__check {
@@ -3906,41 +3515,41 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .form__check-text {
       color: var(--txt-white, $txt-white);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       font-weight: 500;
     }
   }
   &__total {
-    border: calc(1.5 * var(--width-multiplier)) solid var(--primary, $primary);
+    border: w(1.5) solid var(--primary, $primary);
     &-label {
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 500;
       line-height: 1;
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
     &-sum {
-      margin-top: calc(8 * var(--width-multiplier));
-      font: 700 calc(36 * var(--width-multiplier))/1 Nunito;
-      @media(max-width: 767px) {
-        font-size: calc(32 * var(--width-multiplier));
+      margin-top: w(8);
+      font: 700 w(36)/1 Nunito;
+      @include mobile {
+        font-size: w(32);
       }
     }
     &-note {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: calc(8 * var(--width-multiplier));
-      margin-top: calc(8 * var(--width-multiplier));
+      gap: w(8);
+      margin-top: w(8);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       line-height: 1;
       li {
         display: flex;
         align-items: center;
-        gap: calc(8 * var(--width-multiplier));
+        gap: w(8);
         &:last-child {
           color: var(--secondary, $secondary);
         }
@@ -3953,17 +3562,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &-list {
       display: flex;
       flex-direction: column;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: var(--pad-16);
       padding-top: var(--pad-16);
-      border-top: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
+      border-top: w(1) solid rgba($txt-white, 0.08);
     }
     &-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: calc(12 * var(--width-multiplier));
-      font-size: calc(14 * var(--width-multiplier));
+      gap: w(12);
+      font-size: w(14);
       font-weight: 600;
       line-height: 1;
       span:first-child {
@@ -3978,17 +3587,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: var(--pad-16);
       padding-top: var(--pad-16);
-      border-top: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
+      border-top: w(1) solid rgba($txt-white, 0.08);
       font-weight: 700;
       line-height: 1;
       span:last-child {
         color: var(--secondary, $secondary);
-        font-size: calc(20 * var(--width-multiplier));
-        @media(max-width: 767px) {
-          font-size: calc(18 * var(--width-multiplier));
+        font-size: w(20);
+        @include mobile {
+          font-size: w(18);
         }
       }
     }
@@ -3996,44 +3605,44 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__tariff {
     &-title {
       color: var(--secondary, $secondary);
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
       font-weight: 600;
-      @media(max-width: 767px) {
+      @include mobile {
         color: var(--txt-white, $txt-white);
       }
     }
     &-list {
       display: flex;
       flex-direction: column;
-      gap: calc(10 * var(--width-multiplier));
+      gap: w(10);
       margin-top: var(--pad-16);
       li {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: calc(12 * var(--width-multiplier));
-        font-size: calc(14 * var(--width-multiplier));
+        gap: w(12);
+        font-size: w(14);
         font-weight: 500;
         line-height: 1;
         span:first-child {
           color: var(--txt-gray, $txt-gray);
           font-weight: 400;
         }
-        @media(max-width: 767px) {
-          font-size: calc(12 * var(--width-multiplier));
+        @include mobile {
+          font-size: w(12);
         }
       }
     }
     &-note {
       margin-top: var(--pad-16);
       padding-top: var(--pad-16);
-      border-top: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
+      border-top: w(1) solid rgba($txt-white, 0.08);
       color: var(--secondary, $secondary);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 500;
       line-height: 1;
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
   }
@@ -4041,65 +3650,53 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     margin-top: var(--pad-20);
     .form__label {
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 500;
     }
     .form__input {
-      padding: calc(12 * var(--width-multiplier)) var(--pad-16);
-      border-radius: calc(8 * var(--width-multiplier));
-      font-size: calc(16 * var(--width-multiplier));
+      padding: w(12) var(--pad-16);
+      border-radius: w(8);
+      font-size: w(16);
       font-weight: 500;
       line-height: 1;
     }
     &-submit {
       width: 100%;
-      margin-top: calc(8 * var(--width-multiplier));
+      margin-top: w(8);
     }
   }
   &__note {
     display: flex;
     align-items: center;
-    gap: calc(16 * var(--width-multiplier));
-    margin-top: calc(32 * var(--width-multiplier));
+    gap: w(16);
+    margin-top: w(32);
     padding: var(--pad-20);
     border-radius: var(--br-16);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba($txt-white, 0.08);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       align-items: flex-start;
       padding: var(--pad-16);
     }
     &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(24 * var(--width-multiplier));
-      height: calc(24 * var(--width-multiplier));
-      flex-shrink: 0;
-      border-radius: var(--br-8);
-      background-color: rgba(138, 56, 245, 0.2);
+      @include icon-box(24, $icon: 16, $bg: rgba($primary, 0.2));
       color: var(--primary, $primary);
-      svg {
-        width: calc(16 * var(--width-multiplier));
-        height: calc(16 * var(--width-multiplier));
-        pointer-events: none;
-      }
     }
     &-text {
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      font-size: w(14);
+      @include mobile {
+        font-size: w(12);
       }
     }
     &_s {
       margin-top: var(--pad-16);
       color: var(--secondary, $secondary);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       font-weight: 500;
       line-height: 1;
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
   }
@@ -4111,14 +3708,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: var(--pad-40);
     padding: var(--pad-24);
-    border-radius: calc(20 * var(--width-multiplier));
+    border-radius: w(20);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       padding: 0;
       border-radius: 0;
       background-color: transparent;
@@ -4129,16 +3726,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: calc(48 * var(--width-multiplier));
+    min-height: w(48);
     padding: var(--pad-24) 0;
-    padding-right: calc(40 * var(--width-multiplier));
+    padding-right: w(40);
     // горизонтальный разделитель у всех строк, кроме последней
     &:not(:nth-last-child(-n + 2)) {
-      border-bottom: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.06);
+      border-bottom: w(1) solid rgba($txt-white, 0.06);
     }
     // вертикальный разделитель между колонками
     &:nth-child(even) {
-      padding-left: calc(40 * var(--width-multiplier));
+      padding-left: w(40);
       padding-right: 0;
     }
     &:nth-child(even)::before {
@@ -4146,16 +3743,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       position: absolute;
       top: 50%;
       left: 0;
-      width: calc(1 * var(--width-multiplier));
-      height: calc(40 * var(--width-multiplier));
-      background-color: rgba(255, 255, 255, 0.06);
+      width: w(1);
+      height: w(40);
+      background-color: rgba($txt-white, 0.06);
       transform: translateY(-50%);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16);
-      border-radius: calc(12 * var(--width-multiplier));
+      border-radius: w(12);
       background-color: var(--card-bg, $card-bg);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       &:not(:nth-last-child(-n + 2)) {
         border-bottom: none;
       }
@@ -4172,40 +3769,31 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
 .plans {
   &__tabs {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
-      gap: calc(4 * var(--width-multiplier));
+      gap: w(4);
       margin-top: var(--pad-24);
-      padding: calc(4 * var(--width-multiplier));
-      border-radius: calc(8 * var(--width-multiplier));
-      background-color: #1F2227;
+      padding: w(4);
+      border-radius: w(8);
+      background-color: var(--card-bg, $card-bg);
     }
   }
   &__tab {
+    @extend %tab-ghost;
     flex: 1;
-    padding: calc(8 * var(--width-multiplier)) calc(12 * var(--width-multiplier));
-    border: none;
-    border-radius: var(--br-6);
-    background-color: transparent;
-    color: var(--txt-gray, $txt-gray);
-    font: 500 calc(16 * var(--width-multiplier))/1 Nunito;
-    cursor: pointer;
-    @include transition;
-    &.is-active {
-      background-color: var(--primary, $primary);
-      color: var(--txt-white, $txt-white);
-    }
+    padding: w(8) w(12);
+    font: 500 w(16)/1 Nunito;
   }
   &__wrap {
     margin-top: var(--pad-40);
-    border-radius: calc(16 * var(--width-multiplier));
+    border-radius: w(16);
     background-color: var(--card-bg, $card-bg);
     overflow: hidden;
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
       overflow-x: auto;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       border-radius: 0;
       background-color: transparent;
       overflow: visible;
@@ -4213,26 +3801,26 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__table {
     width: 100%;
-    min-width: calc(900 * var(--width-multiplier));
+    min-width: w(900);
     border-collapse: collapse;
-    font-size: calc(16 * var(--width-multiplier));
+    font-size: w(16);
     font-weight: 500;
     text-align: center;
     th,
     td {
       padding: var(--pad-20);
-      border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.07);
+      border: w(1) solid rgba($txt-white, 0.07);
     }
     thead th {
       padding: var(--pad-24);
-      background-color: #1F2227;
-      font: 700 calc(24 * var(--width-multiplier))/1.1 Nunito;
+      background-color: var(--card-bg, $card-bg);
+      font: 700 w(24)/1.1 Nunito;
     }
     tbody tr {
-      background-color: #181A1F;
+      background-color: var(--row-bg, $row-bg);
     }
     tbody tr:nth-child(even) {
-      background-color: #1F2227;
+      background-color: var(--card-bg, $card-bg);
     }
     tbody .plans__param {
       color: var(--txt-gray, $txt-gray);
@@ -4240,12 +3828,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__param {
-    width: calc(340 * var(--width-multiplier));
+    width: w(340);
     text-align: left;
     &-note {
       display: block;
-      margin-top: calc(4 * var(--width-multiplier));
-      font-size: calc(14 * var(--width-multiplier));
+      margin-top: w(4);
+      font-size: w(14);
     }
   }
   &__accent {
@@ -4253,7 +3841,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__row--price {
     td {
-      font: 700 calc(24 * var(--width-multiplier))/1.1 Nunito;
+      font: 700 w(24)/1.1 Nunito;
     }
   }
   &__mark {
@@ -4262,8 +3850,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     justify-content: center;
     color: var(--secondary, $secondary);
     svg {
-      width: calc(24 * var(--width-multiplier));
-      height: calc(24 * var(--width-multiplier));
+      width: w(24);
+      height: w(24);
       pointer-events: none;
     }
     &--no {
@@ -4279,7 +3867,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     padding: var(--pad-24);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
-    @media(max-width: 767px) {
+    @include mobile {
       flex-direction: column;
       align-items: stretch;
       gap: var(--pad-16);
@@ -4295,12 +3883,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   // ====== мобильный вид: таблица превращается в карточку одного тарифа ======
-  @media(max-width: 767px) {
+  @include mobile {
     &__table {
       display: block;
       min-width: 0;
       padding: var(--pad-20);
-      border: calc(1.5 * var(--width-multiplier)) solid var(--secondary, $secondary);
+      border: w(1.5) solid var(--secondary, $secondary);
       border-radius: var(--br-16);
       background-color: var(--card-bg, $card-bg);
       text-align: left;
@@ -4312,8 +3900,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         display: flex;
         align-items: baseline;
         justify-content: space-between;
-        gap: calc(12 * var(--width-multiplier));
-        padding: calc(6 * var(--width-multiplier)) 0;
+        gap: w(12);
+        padding: w(6) 0;
       }
       th,
       td {
@@ -4326,7 +3914,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
         padding: 0;
         background-color: transparent;
         color: var(--txt-gray, $txt-gray);
-        font: 500 calc(14 * var(--width-multiplier))/1.2 Nunito;
+        font: 500 w(14)/1.2 Nunito;
         text-align: left;
       }
       thead .plans__param {
@@ -4355,29 +3943,29 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       gap: 0;
       margin-bottom: var(--pad-16);
       padding-bottom: var(--pad-16);
-      border-bottom: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.1);
+      border-bottom: w(1) solid rgba($txt-white, 0.1);
       td {
-        font: 700 calc(32 * var(--width-multiplier))/1.1 Nunito;
+        font: 700 w(32)/1.1 Nunito;
         text-align: left;
       }
       .plans__param-name {
         display: none;
       }
       .plans__param-note {
-        margin-top: calc(6 * var(--width-multiplier));
+        margin-top: w(6);
         color: var(--txt-gray, $txt-gray);
       }
     }
     &__row[data-type="mark"] {
       flex-direction: row-reverse;
       justify-content: flex-end;
-      gap: calc(10 * var(--width-multiplier));
+      gap: w(10);
       margin-top: var(--pad-16);
       padding-top: var(--pad-16);
-      border-top: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.1);
+      border-top: w(1) solid rgba($txt-white, 0.1);
       ~ .plans__row[data-type="mark"] {
         margin-top: 0;
-        padding-top: calc(6 * var(--width-multiplier));
+        padding-top: w(6);
         border-top: none;
       }
     }
@@ -4389,48 +3977,34 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--pad-24);
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: minmax(0, 1fr);
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
     }
   }
   &__title {
-    max-width: calc(670 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    max-width: w(670);
+    @include mobile {
       max-width: none;
     }
   }
   &__text {
-    max-width: calc(555 * var(--width-multiplier));
+    max-width: w(555);
     margin-left: auto;
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(18 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    font-size: w(18);
+    @include mobile {
       max-width: none;
       margin-left: unset;
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
     }
   }
   &__swiper {
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--gap);
-      @media(max-width: 1024px) {
-        gap: var(--pad-16);
-      }
-      @media(max-width: 767px) {
-        display: flex;
-        gap: 0;
-      }
-    }
-    .swiper-slide {
-      height: auto;
-    }
+    @include swiper-grid(3, $tablet-gap: var(--pad-16));
   }
   &__card {
     display: flex;
@@ -4441,10 +4015,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     overflow: hidden;
     &-img {
       position: relative;
-      height: calc(220 * var(--width-multiplier));
+      height: w(220);
       flex-shrink: 0;
-      @media(max-width: 767px) {
-        height: calc(160 * var(--width-multiplier));
+      @include mobile {
+        height: w(160);
       }
       img {
         @include full-img-cover;
@@ -4455,21 +4029,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       transform: scale(1.04);
     }
     &-arrow {
-      position: absolute;
-      top: var(--pad-16);
-      right: var(--pad-16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(40 * var(--width-multiplier));
-      height: calc(40 * var(--width-multiplier));
+      @extend %card-arrow;
+      width: w(40);
+      height: w(40);
       border-radius: var(--br-8);
-      background-color: var(--primary, $primary);
       color: var(--txt-white, $txt-white);
       @include transition;
       svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(14 * var(--width-multiplier));
+        width: w(14);
+        height: w(14);
         pointer-events: none;
       }
     }
@@ -4479,60 +4047,54 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     &-body {
       padding: var(--pad-20);
-      @media(max-width: 767px) {
+      @include mobile {
         padding: var(--pad-16);
       }
     }
     &-title {
-      font: 700 calc(24 * var(--width-multiplier))/1.1 Nunito;
-      @media(max-width: 767px) {
-        font-size: calc(18 * var(--width-multiplier));
+      font: 700 w(24)/1.1 Nunito;
+      @include mobile {
+        font-size: w(18);
       }
     }
     &-text {
-      margin-top: calc(12 * var(--width-multiplier));
+      margin-top: w(12);
       color: var(--txt-gray, $txt-gray);
-      @media(max-width: 767px) {
-        font-size: calc(12 * var(--width-multiplier));
+      @include mobile {
+        font-size: w(12);
       }
     }
   }
   &__pagination {
-    display: none;
-    @media(max-width: 767px) {
-      position: static;
-      display: block;
-      margin-top: var(--pad-16);
-      text-align: center;
-    }
+    @extend %mobile-pagination;
   }
 }
 
 .arch {
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(18 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      font-size: calc(16 * var(--width-multiplier));
+    font-size: w(18);
+    @include mobile {
+      font-size: w(16);
     }
   }
   &__tabs {
     display: none;
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
-      gap: calc(8 * var(--width-multiplier));
+      gap: w(8);
       margin-top: var(--pad-24);
     }
   }
   &__tab {
     flex: 1;
-    padding: calc(10 * var(--width-multiplier)) calc(12 * var(--width-multiplier));
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.2);
+    padding: w(10) w(12);
+    border: w(1) solid rgba($txt-white, 0.2);
     border-radius: var(--br-8);
     background-color: var(--card-bg, $card-bg);
     color: var(--txt-white, $txt-white);
-    font: 500 calc(16 * var(--width-multiplier))/1 Nunito;
+    font: 500 w(16)/1 Nunito;
     cursor: pointer;
     @include transition;
     &.is-active {
@@ -4542,10 +4104,10 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__group {
     margin-top: var(--pad-40);
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       display: none;
       margin-top: var(--pad-16);
       &.is-active {
@@ -4554,8 +4116,8 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     &-title {
       color: var(--primary, $primary);
-      font: 700 calc(24 * var(--width-multiplier))/1.2 Nunito;
-      @media(max-width: 767px) {
+      font: 700 w(24)/1.2 Nunito;
+      @include mobile {
         display: none;
       }
     }
@@ -4565,13 +4127,13 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--gap);
     margin-top: var(--pad-24);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--pad-16);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: 0;
     }
   }
@@ -4581,7 +4143,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     flex-direction: column;
     justify-content: space-between;
     gap: var(--pad-24);
-    min-height: calc(152 * var(--width-multiplier));
+    min-height: w(152);
     padding: var(--pad-16);
     border-radius: var(--br-16);
     background-color: var(--card-bg, $card-bg);
@@ -4590,29 +4152,27 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &-name {
       position: relative;
       z-index: 1;
-      max-width: calc(150 * var(--width-multiplier));
-      font-size: calc(18 * var(--width-multiplier));
+      max-width: w(150);
+      font-size: w(18);
       font-weight: 600;
       line-height: 1.2;
-      @media(max-width: 767px) {
+      @include mobile {
         max-width: none;
       }
     }
     &-arrow {
+      @extend %flex-center;
       position: relative;
       z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(42 * var(--width-multiplier));
-      height: calc(42 * var(--width-multiplier));
-      border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.2);
+      width: w(42);
+      height: w(42);
+      border: w(1) solid rgba($txt-white, 0.2);
       border-radius: var(--br-6);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba($txt-white, 0.1);
       transition: background-color 0.3s ease-out, border-color 0.3s ease-out, color 0.3s ease-out;
       svg {
-        width: calc(14 * var(--width-multiplier));
-        height: calc(14 * var(--width-multiplier));
+        width: w(14);
+        height: w(14);
         pointer-events: none;
       }
     }
@@ -4623,15 +4183,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &-img {
       position: absolute;
       top: 50%;
-      right: calc(12 * var(--width-multiplier));
-      width: calc(115 * var(--width-multiplier));
-      height: calc(138 * var(--width-multiplier));
+      right: w(12);
+      width: w(115);
+      height: w(138);
       transform: translateY(-50%);
       pointer-events: none;
       img {
         @include full-img-contain;
       }
-      @media(max-width: 767px) {
+      @include mobile {
         display: none;
       }
     }
@@ -4642,7 +4202,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   .arch__swiper {
     margin-top: var(--pad-40);
     overflow: visible;
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-top: var(--pad-24);
     }
     .swiper-wrapper {
@@ -4655,12 +4215,12 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   .arch__card {
     height: 100%;
     &-name {
-      @media(max-width: 767px) {
-        max-width: calc(140 * var(--width-multiplier));
+      @include mobile {
+        max-width: w(140);
       }
     }
     &-img {
-      @media(max-width: 767px) {
+      @include mobile {
         display: block;
       }
     }
@@ -4673,7 +4233,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: var(--gap);
-    @media(max-width: 1024px) {
+    @include tablet {
       grid-template-columns: minmax(0, 1fr);
       gap: var(--pad-24);
     }
@@ -4684,38 +4244,36 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     gap: var(--pad-24);
     margin-top: var(--pad-24);
     color: var(--txt-gray, $txt-gray);
-    p {
-      &:first-child {
-        color: var(--txt-white, $txt-white);
-      }
+    p:first-child {
+      color: var(--txt-white, $txt-white);
     }
-    @media(max-width: 767px) {
+    @include mobile {
       gap: var(--pad-16);
       margin-top: var(--pad-16);
     }
   }
   &__media {
-    height: calc(440 * var(--width-multiplier));
-    border-radius: calc(16 * var(--width-multiplier));
+    height: w(440);
+    border-radius: w(16);
     background-color: var(--card-bg, $card-bg);
     overflow: hidden;
     img {
       @include full-img-cover;
     }
-    @media(max-width: 1024px) {
-      height: calc(320 * var(--width-multiplier));
+    @include tablet {
+      height: w(320);
     }
-    @media(max-width: 767px) {
-      height: calc(200 * var(--width-multiplier));
+    @include mobile {
+      height: w(200);
     }
   }
 }
 
 .page-error {
   .container {
-    padding: 0 calc(100 * var(--width-multiplier));
-    @media(max-width: 1024px) {
-      padding: 0 calc(16 * var(--width-multiplier));
+    padding: 0 w(100);
+    @include tablet {
+      padding: 0 w(16);
     }
   }
   &__container {
@@ -4723,7 +4281,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: var(--pad-40);
-    @media(max-width: 767px) {
+    @include mobile {
       display: flex;
       flex-direction: column-reverse;
       gap: var(--pad-24);
@@ -4731,41 +4289,41 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__title {
-    font: 700 calc(36 * var(--width-multiplier))/1.2 Nunito;
-    @media(max-width: 1024px) {
-      font-size: calc(28 * var(--width-multiplier));
+    font: 700 w(36)/1.2 Nunito;
+    @include tablet {
+      font-size: w(28);
     }
-    @media(max-width: 767px) {
-      font-size: calc(24 * var(--width-multiplier));
+    @include mobile {
+      font-size: w(24);
     }
   }
   &__text {
-    max-width: calc(480 * var(--width-multiplier));
-    margin-top: calc(16 * var(--width-multiplier));
+    max-width: w(480);
+    margin-top: w(16);
     color: var(--txt-gray, $txt-gray);
-    font-size: calc(18 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    font-size: w(18);
+    @include mobile {
       max-width: none;
-      font-size: calc(16 * var(--width-multiplier));
+      font-size: w(16);
     }
   }
   &__button {
     margin-top: var(--pad-24);
   }
   &__img {
-    width: calc(594 * var(--width-multiplier));
-    height: calc(594 * var(--width-multiplier));
+    width: w(594);
+    height: w(594);
     margin-left: auto;
     img {
       @include full-img-contain;
     }
-    @media(max-width: 1024px) {
-      width: calc(400 * var(--width-multiplier));
-      height: calc(400 * var(--width-multiplier));
+    @include tablet {
+      width: w(400);
+      height: w(400);
     }
-    @media(max-width: 767px) {
-      width: calc(240 * var(--width-multiplier));
-      height: calc(240 * var(--width-multiplier));
+    @include mobile {
+      width: w(240);
+      height: w(240);
       margin: 0 auto;
     }
   }
@@ -4785,7 +4343,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   pointer-events: none;
   overflow-y: auto;
   transition: opacity 0.3s ease-out;
-  @media(max-width: 767px) {
+  @include mobile {
     padding: var(--pad-16);
   }
 }
@@ -4795,7 +4353,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   display: none;
   flex-direction: column;
   width: 100%;
-  max-width: calc(710 * var(--width-multiplier));
+  max-width: w(710);
   margin: auto;
   padding: var(--pad-40);
   border-radius: var(--br-16);
@@ -4803,18 +4361,16 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &.open {
     display: flex;
   }
-  @media(max-width: 767px) {
+  @include mobile {
     padding: var(--pad-24) var(--pad-16);
   }
   &__close {
+    @extend %flex-center;
     position: absolute;
     top: var(--pad-20);
     right: var(--pad-20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(36 * var(--width-multiplier));
-    height: calc(36 * var(--width-multiplier));
+    width: w(36);
+    height: w(36);
     padding: 0;
     border: none;
     background: none;
@@ -4828,46 +4384,46 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       height: 100%;
       pointer-events: none;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       top: var(--pad-16);
       right: var(--pad-16);
     }
   }
   &__head {
     margin-bottom: var(--pad-24);
-    padding-right: calc(48 * var(--width-multiplier));
+    padding-right: w(48);
   }
   &__title {
-    font: 700 calc(24 * var(--width-multiplier))/1.1 Nunito;
-    @media(max-width: 767px) {
-      font-size: calc(20 * var(--width-multiplier));
+    font: 700 w(24)/1.1 Nunito;
+    @include mobile {
+      font-size: w(20);
     }
   }
   &__text {
-    margin-top: calc(12 * var(--width-multiplier));
+    margin-top: w(12);
     color: var(--txt-gray, $txt-gray);
   }
   &__img {
-    width: calc(150 * var(--width-multiplier));
-    height: calc(150 * var(--width-multiplier));
-    margin: 0 auto calc(16 * var(--width-multiplier));
+    width: w(150);
+    height: w(150);
+    margin: 0 auto w(16);
     img {
       @include full-img-contain;
     }
-    @media(max-width: 767px) {
-      width: calc(120 * var(--width-multiplier));
-      height: calc(120 * var(--width-multiplier));
+    @include mobile {
+      width: w(120);
+      height: w(120);
     }
   }
   &__button {
     margin: var(--pad-24) auto 0;
   }
   &-success {
-    max-width: calc(480 * var(--width-multiplier));
-    min-height: calc(434 * var(--width-multiplier));
+    max-width: w(480);
+    min-height: w(434);
     text-align: center;
     .modal__text {
-      margin-bottom: calc(24 * var(--width-multiplier));
+      margin-bottom: w(24);
     }
     .modal__button {
       margin-top: auto;
@@ -4884,7 +4440,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   &__field {
     display: flex;
     flex-direction: column;
-    gap: calc(8 * var(--width-multiplier));
+    gap: w(8);
   }
   &__label {
     i {
@@ -4894,29 +4450,29 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
   }
   &__input {
     width: 100%;
-    padding: calc(14 * var(--width-multiplier)) var(--pad-20);
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.1);
-    border-radius: calc(12 * var(--width-multiplier));
-    background-color: rgba(255, 255, 255, 0.03);
+    padding: w(14) var(--pad-20);
+    border: w(1) solid rgba($txt-white, 0.1);
+    border-radius: w(12);
+    background-color: rgba($txt-white, 0.03);
     color: var(--txt-white, $txt-white);
-    font: 400 calc(16 * var(--width-multiplier))/1.4 Nunito;
+    font: 400 w(16)/1.4 Nunito;
     @include transition;
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba($txt-white, 0.5);
     }
     &:focus {
       border-color: var(--primary, $primary);
       outline: none;
     }
     &--area {
-      min-height: calc(100 * var(--width-multiplier));
+      min-height: w(100);
       resize: none;
     }
   }
   &__check {
     display: flex;
     align-items: center;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     cursor: pointer;
     input {
       position: absolute;
@@ -4924,19 +4480,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       pointer-events: none;
     }
     &-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(20 * var(--width-multiplier));
-      height: calc(20 * var(--width-multiplier));
+      @extend %flex-center;
+      width: w(20);
+      height: w(20);
       flex-shrink: 0;
-      border: calc(1 * var(--width-multiplier)) solid var(--primary, $primary);
+      border: w(1) solid var(--primary, $primary);
       border-radius: var(--br-6);
       color: var(--primary, $primary);
       @include transition;
       svg {
-        width: calc(10 * var(--width-multiplier));
-        height: calc(8 * var(--width-multiplier));
+        width: w(10);
+        height: w(8);
         opacity: 0;
         @include transition;
       }
@@ -4945,11 +4499,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       opacity: 1;
     }
     input:focus-visible + &-box {
-      box-shadow: 0 0 0 calc(3 * var(--width-multiplier)) rgba(138, 56, 245, 0.3);
+      box-shadow: 0 0 0 w(3) rgba($primary, 0.3);
     }
     &-text {
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(12 * var(--width-multiplier));
+      font-size: w(12);
       font-weight: 500;
     }
   }
@@ -4957,15 +4511,15 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: calc(12 * var(--width-multiplier));
-    margin-top: calc(8 * var(--width-multiplier));
-    @media(max-width: 767px) {
+    gap: w(12);
+    margin-top: w(8);
+    @include mobile {
       flex-direction: column;
     }
   }
   &__submit {
-    @media(max-width: 767px) {
-      margin-top: calc(8 * var(--width-multiplier));
+    @include mobile {
+      margin-top: w(8);
     }
   }
 }

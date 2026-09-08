@@ -4,17 +4,17 @@
   left: 0;
   right: 0;
   z-index: 9;
-  --header-height: calc(96 * var(--width-multiplier));
+  --header-height: #{w(96)};
   @include transition;
-  @media(max-width: 767px) {
-    --header-height: calc(72 * var(--width-multiplier));
+  @include mobile {
+    --header-height: #{w(72)};
   }
   &::before {
     content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(18, 19, 20, 0.9);
-    backdrop-filter: blur(calc(12 * var(--width-multiplier)));
+    backdrop-filter: blur(w(12));
     opacity: 0;
     pointer-events: none;
     @include transition;
@@ -24,9 +24,9 @@
     opacity: 1;
   }
   &.scrolled {
-    --header-height: calc(88 * var(--width-multiplier));
-    @media(max-width: 767px) {
-      --header-height: calc(80 * var(--width-multiplier));
+    --header-height: #{w(88)};
+    @include mobile {
+      --header-height: #{w(80)};
     }
     .header__container {
       padding: var(--pad-20) 0;
@@ -37,40 +37,40 @@
     z-index: 10;
     display: flex;
     align-items: center;
-    gap: calc(24 * var(--width-multiplier));
+    gap: w(24);
     padding: var(--pad-40) 0;
     transition: padding 0.3s ease-out;
-    @media(max-width: 1024px) {
+    @include tablet {
       padding: var(--pad-24) 0;
     }
-    @media(max-width: 767px) {
+    @include mobile {
       padding: var(--pad-16) 0;
     }
   }
   &__logo {
-    width: calc(95 * var(--width-multiplier));
-    height: calc(48 * var(--width-multiplier));
+    width: w(95);
+    height: w(48);
     flex-shrink: 0;
     img {
       @include full-img-contain;
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       margin-right: auto;
     }
-    @media(max-width: 767px) {
-      height: calc(40 * var(--width-multiplier));
+    @include mobile {
+      height: w(40);
     }
   }
   &__nav {
     margin-right: auto;
-    @media(max-width: 1024px) {
+    @include tablet {
       display: none;
     }
   }
   &__menu {
     display: flex;
     align-items: center;
-    gap: calc(24 * var(--width-multiplier));
+    gap: w(24);
   }
   &__menu-item {
     position: relative;
@@ -82,12 +82,12 @@
   &__menu-trigger {
     display: flex;
     align-items: center;
-    gap: calc(6 * var(--width-multiplier));
+    gap: w(6);
     padding: 0;
     border: none;
     background: none;
     color: var(--txt-white, $txt-white);
-    font: 400 calc(16 * var(--width-multiplier))/1.4 Nunito;
+    font: 400 w(16)/1.4 Nunito;
     cursor: pointer;
     white-space: nowrap;
     @include transition;
@@ -99,8 +99,8 @@
     }
   }
   &__menu-arrow {
-    width: calc(12 * var(--width-multiplier));
-    height: calc(12 * var(--width-multiplier));
+    width: w(12);
+    height: w(12);
     flex-shrink: 0;
     @include transition;
     .header__menu-item--open &,
@@ -114,15 +114,15 @@
   &__dropdown {
     position: absolute;
     top: calc(100% + 12 * var(--width-multiplier));
-    left: calc(-16 * var(--width-multiplier));
-    min-width: calc(200 * var(--width-multiplier));
+    left: w(-16);
+    min-width: w(200);
     padding: var(--pad-16);
-    border: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
-    border-radius: calc(12 * var(--width-multiplier));
+    border: w(1) solid rgba($txt-white, 0.08);
+    border-radius: w(12);
     background-color: var(--card-bg, $card-bg);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(calc(-8 * var(--width-multiplier)));
+    transform: translateY(w(-8));
     @include transition;
     &::before {
       content: "";
@@ -130,7 +130,7 @@
       left: 0;
       right: 0;
       bottom: 100%;
-      height: calc(12 * var(--width-multiplier));
+      height: w(12);
     }
     .header__menu-item--open &,
     .header__lang--open & {
@@ -140,10 +140,10 @@
     }
     &--lang {
       left: 0;
-      min-width: calc(140 * var(--width-multiplier));
-      @media(max-width: 1024px) {
+      min-width: w(140);
+      @include tablet {
         left: auto;
-        right: calc(-16 * var(--width-multiplier));
+        right: w(-16);
       }
     }
     &--mega {
@@ -151,10 +151,10 @@
       left: 0;
       right: 0;
       width: 100%;
-      padding: calc(32 * var(--width-multiplier));
+      padding: w(32);
       border-radius: 0;
-      border-bottom-left-radius: calc(12 * var(--width-multiplier));
-      border-bottom-right-radius: calc(12 * var(--width-multiplier));
+      border-bottom-left-radius: w(12);
+      border-bottom-right-radius: w(12);
       background-color: var(--card-bg, $card-bg);
       box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.4);
     }
@@ -162,18 +162,18 @@
   &__drop-list {
     display: flex;
     flex-direction: column;
-    gap: calc(12 * var(--width-multiplier));
+    gap: w(12);
     li a {
       display: block;
-      padding: calc(6 * var(--width-multiplier));
-      border-radius: calc(4 * var(--width-multiplier));
+      padding: w(6);
+      border-radius: w(4);
       color: var(--txt-gray, $txt-gray);
       white-space: nowrap;
       @include transition;
       &:hover,
       &.is-active {
         color: var(--txt-white, $txt-white);
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba($txt-white, 0.1);
       }
     }
   }
@@ -183,7 +183,7 @@
   &__mega {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: calc(64 * var(--width-multiplier));
+    column-gap: w(64);
     align-items: stretch;
     &-col {
       position: relative;
@@ -193,45 +193,45 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: calc(-32 * var(--width-multiplier));
-        width: calc(1 * var(--width-multiplier));
-        background-color: rgba(255, 255, 255, 0.08);
+        left: w(-32);
+        width: w(1);
+        background-color: rgba($txt-white, 0.08);
       }
     }
     &-head {
-      margin-bottom: calc(16 * var(--width-multiplier));
+      margin-bottom: w(16);
     }
     &-title {
-      font: 700 calc(16 * var(--width-multiplier))/1 Nunito;
+      font: 700 w(16)/1 Nunito;
     }
     &-text {
-      margin-top: calc(4 * var(--width-multiplier));
+      margin-top: w(4);
       color: var(--txt-gray, $txt-gray);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
     }
     &-list {
       display: flex;
       flex-direction: column;
-      gap: calc(4 * var(--width-multiplier));
+      gap: w(4);
     }
     &-card {
       display: flex;
       align-items: flex-start;
-      gap: calc(12 * var(--width-multiplier));
-      padding: calc(12 * var(--width-multiplier)) var(--pad-16);
+      gap: w(12);
+      padding: w(12) var(--pad-16);
       border-radius: var(--br-8);
-      font-size: calc(14 * var(--width-multiplier));
+      font-size: w(14);
       @include transition;
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba($txt-white, 0.1);
       }
       &-icon {
         display: flex;
         flex-shrink: 0;
         color: var(--txt-white, $txt-white);
         svg {
-          width: calc(20 * var(--width-multiplier));
-          height: calc(20 * var(--width-multiplier));
+          width: w(20);
+          height: w(20);
           pointer-events: none;
         }
       }
@@ -240,22 +240,22 @@
         flex: 1;
         min-width: 0;
         flex-direction: column;
-        gap: calc(4 * var(--width-multiplier));
+        gap: w(4);
       }
       &-name {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: calc(8 * var(--width-multiplier));
+        gap: w(8);
         font-weight: 600;
       }
       &-arrow {
-        width: calc(17 * var(--width-multiplier));
-        height: calc(15 * var(--width-multiplier));
+        width: w(17);
+        height: w(15);
         flex-shrink: 0;
         color: var(--secondary, $secondary);
         opacity: 0;
-        transform: translateX(calc(-4 * var(--width-multiplier)));
+        transform: translateX(w(-4));
         @include transition;
       }
       &:hover &-arrow {
@@ -273,10 +273,10 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: calc(24 * var(--width-multiplier));
+    gap: w(24);
 
-    @media(max-width: 1024px) {
-      gap: calc(16 * var(--width-multiplier));
+    @include tablet {
+      gap: w(16);
       .header__login,
       .header__button {
         display: none;
@@ -288,12 +288,12 @@
     &-trigger {
       display: flex;
       align-items: center;
-      gap: calc(6 * var(--width-multiplier));
+      gap: w(6);
       padding: 0;
       border: none;
       background: none;
       color: var(--txt-white, $txt-white);
-      font: 400 calc(16 * var(--width-multiplier))/1.4 Nunito;
+      font: 400 w(16)/1.4 Nunito;
       cursor: pointer;
       @include transition;
       &:hover {
@@ -306,7 +306,7 @@
   }
   &__login {
     position: relative;
-    padding-left: calc(24 * var(--width-multiplier));
+    padding-left: w(24);
     white-space: nowrap;
     @include transition;
     &::before {
@@ -314,10 +314,10 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: calc(1 * var(--width-multiplier));
-      height: calc(24 * var(--width-multiplier));
+      width: w(1);
+      height: w(24);
       transform: translateY(-50%);
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba($txt-white, 0.2);
     }
     &:hover {
       color: var(--secondary, $secondary);
@@ -330,28 +330,28 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(44 * var(--width-multiplier));
-    height: calc(44 * var(--width-multiplier));
-    padding: calc(12 * var(--width-multiplier));
+    width: w(44);
+    height: w(44);
+    padding: w(12);
     border-radius: var(--br-8);
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba($txt-white, 0.06);
     cursor: pointer;
     flex-shrink: 0;
     span {
       display: block;
       width: 100%;
-      height: calc(2 * var(--width-multiplier));
-      border-radius: calc(2 * var(--width-multiplier));
+      height: w(2);
+      border-radius: w(2);
       background-color: var(--txt-white, $txt-white);
       transform-origin: center;
       @include transition;
     }
     &--open {
-      span:nth-child(1) { transform: translateY(calc(9 * var(--width-multiplier))) rotate(45deg); }
+      span:nth-child(1) { transform: translateY(w(9)) rotate(45deg); }
       span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-      span:nth-child(3) { transform: translateY(calc(-9 * var(--width-multiplier))) rotate(-45deg); }
+      span:nth-child(3) { transform: translateY(w(-9)) rotate(-45deg); }
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       display: flex;
     }
   }
@@ -367,7 +367,7 @@
     z-index: 8;
     display: none;
     flex-direction: column;
-    gap: calc(32 * var(--width-multiplier));
+    gap: w(32);
     padding: var(--pad-16);
     background-color: var(--page-bg, $page-bg);
     overflow-y: auto;
@@ -376,7 +376,7 @@
     &.is-open {
       transform: translateX(0);
     }
-    @media(max-width: 1024px) {
+    @include tablet {
       display: flex;
     }
     &-menu {
@@ -384,9 +384,9 @@
       flex-direction: column;
     }
     &-item {
-      border-bottom: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
+      border-bottom: w(1) solid rgba($txt-white, 0.08);
       &:first-child {
-        border-top: calc(1 * var(--width-multiplier)) solid rgba(255, 255, 255, 0.08);
+        border-top: w(1) solid rgba($txt-white, 0.08);
       }
     }
     &-trigger {
@@ -398,7 +398,7 @@
       border: none;
       background: none;
       color: inherit;
-      font: 400 calc(18 * var(--width-multiplier))/1.4 Nunito;
+      font: 400 w(18)/1.4 Nunito;
       cursor: pointer;
       .header__mobile-item--open > & {
         color: var(--primary, $primary);
@@ -407,11 +407,11 @@
     &-link {
       display: block;
       padding: var(--pad-16) 0;
-      font-size: calc(18 * var(--width-multiplier));
+      font-size: w(18);
     }
     &-arrow {
-      width: calc(16 * var(--width-multiplier));
-      height: calc(16 * var(--width-multiplier));
+      width: w(16);
+      height: w(16);
       flex-shrink: 0;
       @include transition;
       .header__mobile-item--open > .header__mobile-trigger &,
@@ -440,7 +440,7 @@
       flex-direction: column;
       margin-bottom: var(--pad-16);
       border-radius: var(--br-8);
-      background-color: rgba(255, 255, 255, 0.04);
+      background-color: rgba($txt-white, 0.04);
     }
 
     &-drop-list li + li::before,
@@ -448,30 +448,30 @@
     &-sub-list li + li::before {
       content: "";
       display: block;
-      height: calc(1 * var(--width-multiplier));
+      height: w(1);
       margin: 0 var(--pad-16);
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: rgba($txt-white, 0.08);
     }
     &-drop-list {
       li a {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: calc(8 * var(--width-multiplier));
-        padding: calc(14 * var(--width-multiplier)) var(--pad-16);
+        gap: w(8);
+        padding: w(14) var(--pad-16);
         color: var(--txt-gray, $txt-gray);
-        font-size: calc(16 * var(--width-multiplier));
+        font-size: w(16);
         @include transition;
         &:hover,
         &.is-active {
           color: var(--txt-white, $txt-white);
-          background-color: rgba(255, 255, 255, 0.04);
+          background-color: rgba($txt-white, 0.04);
         }
       }
     }
     &-drop-ext {
-      width: calc(16 * var(--width-multiplier));
-      height: calc(16 * var(--width-multiplier));
+      width: w(16);
+      height: w(16);
       flex-shrink: 0;
       opacity: 0.6;
     }
@@ -480,11 +480,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: calc(14 * var(--width-multiplier)) var(--pad-16);
+      padding: w(14) var(--pad-16);
       border: none;
       background: none;
       color: var(--txt-white, $txt-white);
-      font: 400 calc(16 * var(--width-multiplier))/1.4 Nunito;
+      font: 400 w(16)/1.4 Nunito;
       text-align: left;
       cursor: pointer;
       @include transition;
@@ -495,12 +495,12 @@
     &-sub-list {
       display: flex;
       flex-direction: column;
-      padding: 0 var(--pad-16) calc(8 * var(--width-multiplier));
+      padding: 0 var(--pad-16) w(8);
       li a {
         display: block;
-        padding: calc(12 * var(--width-multiplier)) 0;
+        padding: w(12) 0;
         color: var(--txt-gray, $txt-gray);
-        font-size: calc(16 * var(--width-multiplier));
+        font-size: w(16);
         @include transition;
         &:hover,
         &.is-active {
@@ -515,7 +515,7 @@
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      gap: calc(12 * var(--width-multiplier));
+      gap: w(12);
       margin-top: auto;
       .button {
         width: 100%;

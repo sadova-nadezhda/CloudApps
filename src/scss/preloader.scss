@@ -1,4 +1,4 @@
-@import "vars.scss";
+@import "mixins.scss";
 
 
 $pl-intro: 4s;
@@ -47,12 +47,12 @@ html.preloader-off .preloader {
     position: relative;
     z-index: 1;
     display: block;
-    width: calc(360 * var(--width-multiplier));
+    width: w(360);
     height: auto;
     overflow: visible;
 
-    @media (max-width: 767px) {
-      width: calc(260 * var(--width-multiplier));
+    @include mobile {
+      width: w(260);
     }
   }
 }
