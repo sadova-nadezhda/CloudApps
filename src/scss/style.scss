@@ -2585,18 +2585,17 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .swiper-wrapper {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--gap);
-      align-items: start;
+      align-items: stretch;
 
-      @include desktop {
+      @include desktop-landscape {
         --col: calc((100% - 5 * var(--gap)) / 6);
+        grid-template-columns: none;
         grid-auto-columns: var(--col);
         grid-template-rows: auto auto;
+        align-items: start;
         will-change: transform;
-      }
-      @include tablet {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: stretch;
       }
       @include mobile {
         display: flex;
@@ -2605,7 +2604,7 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
     .swiper-slide {
       height: auto;
-      @include desktop {
+      @include desktop-landscape {
         @for $pair from 0 through 5 {
           &:nth-child(#{2 * $pair + 1}) {
             grid-column: #{3 * $pair + 1} / span 2;
@@ -2646,10 +2645,14 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     }
   }
   &__link {
+    display: none;
     position: absolute;
     width: w(121);
     height: w(139);
     pointer-events: none;
+    @include desktop-landscape {
+      display: block;
+    }
     svg {
       width: 100%;
       height: 100%;
@@ -2665,9 +2668,6 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
     &-3 {
       bottom: 86%;
       left: 46%;
-    }
-    @include tablet {
-      display: none;
     }
   }
   &__nav {

@@ -21,6 +21,12 @@ $bp-mobile: 767px; // мобильные
   @media (min-width: $bp-desktop) { @content; }
 }
 
+// Десктоп с горизонтальным экраном (не вертикальный монитор).
+// Синхронизировано с HISTORY_PIN_MEDIA в app.js
+@mixin desktop-landscape {
+  @media (min-width: $bp-desktop) and (min-aspect-ratio: 5/4) { @content; }
+}
+
 @mixin tablet {
   @media (max-width: $bp-tablet) { @content; }
 }

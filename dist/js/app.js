@@ -1175,6 +1175,10 @@
 
   const HISTORY_TOP_SHIFT = -60;
 
+  // На вертикальных мониторах лента занимает малую часть экрана и пин даёт пустоты —
+  // там показываем статичную сетку. Синхронизировано с миксином desktop-landscape
+  const HISTORY_PIN_MEDIA = "(min-width: 1025px) and (min-aspect-ratio: 5/4)";
+
   const historyStartOffset = (section) => {
     const header = $(".header");
     const top = (header ? header.offsetHeight : 0) + s(HISTORY_TOP_GAP);
@@ -1196,7 +1200,7 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.matchMedia().add("(min-width: 1025px)", () => {
+    gsap.matchMedia().add(HISTORY_PIN_MEDIA, () => {
       const cards = $$(".swiper-slide", track);
       if (!cards.length) return;
 
