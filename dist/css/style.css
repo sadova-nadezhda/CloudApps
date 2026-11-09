@@ -4828,8 +4828,12 @@ html.preloader-off .preloader {
 }
 
 .arch__card:hover .arch__card-arrow {
-  border-color: var(--secondary, #9FF549);
-  background-color: var(--secondary, #9FF549);
+  border-color: rgba(159, 245, 73, 0.2);
+  background-color: rgba(159, 245, 73, 0.1);
+}
+
+.arch__card:hover .arch__card-arrow path {
+  stroke: var(--secondary, #9FF549);
 }
 
 .arch__card-img {

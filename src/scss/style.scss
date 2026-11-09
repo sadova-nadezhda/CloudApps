@@ -4177,8 +4177,11 @@ $dash-x: repeating-linear-gradient(to right, $dash-color 0 $dash-size, transpare
       }
     }
     &:hover &-arrow {
-      border-color: var(--secondary, $secondary);
-      background-color: var(--secondary, $secondary);
+      border-color: rgba($secondary, 0.2);
+      background-color: rgba($secondary, 0.1);
+      path {
+        stroke: var(--secondary, $secondary);
+      }
     }
     &-img {
       position: absolute;
